@@ -18,7 +18,7 @@ public class ClienteDAOMYSQL implements ClienteDAO
 	private static final String update = "UPDATE cliente SET nombre=?, apellido=?, direccion=?, celular=?, email=?, clienteAlDia=? WHERE idCliente=?";
 	private static final String delete = "DELETE FROM cliente WHERE idCliente=?";
 	private static final String readAll = "SELECT * FROM cliente";
-	private static final String readForId = "SELECT * FROM WHERE idCliente=?";
+	private static final String readForId = "SELECT * FROM cliente WHERE idCliente=?";
 	
 	public static ClienteDAOMYSQL getInstance()
 	{
