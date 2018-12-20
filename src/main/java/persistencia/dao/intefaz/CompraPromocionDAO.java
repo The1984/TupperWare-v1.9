@@ -11,4 +11,6 @@ public interface CompraPromocionDAO
 	
 	public CompraPromocionDTO readForId (int compraPromocion);
 	
+	public int idUltimoInsert ();
+	
 }

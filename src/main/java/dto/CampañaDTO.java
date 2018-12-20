@@ -11,7 +11,8 @@ public class CampañaDTO
 	private String año;
 	private Date cierre;
 	private List<CompraDTO> compras;
-	
+	private List<PremioDTO> premios;
+
 	public int getIdCampaña() 
 	{
 		return idCampaña;
@@ -60,6 +61,16 @@ public class CampañaDTO
 	public void setCompras(List<CompraDTO> compras) 
 	{
 		this.compras = compras;
+	}
+
+	public List<PremioDTO> getPremios() 
+	{
+		return premios;
+	}
+
+	public void setPremios(List<PremioDTO> premios) 
+	{
+		this.premios = premios;
 	}
 
 }
