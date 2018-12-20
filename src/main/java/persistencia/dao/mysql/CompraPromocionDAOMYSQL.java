@@ -15,6 +15,7 @@ public class CompraPromocionDAOMYSQL implements CompraPromocionDAO
 	private static final String insert = "INSERT INTO compraPromocion (idPromocion) VALUES(?)";
 	private static final String delete = "DELETE FROM compraPromocion WHERE idCompraPromocion=?";
 	private static final String readForId = "Select * FROM compraPromocion WHERE idCompraPromocion=?";
+	private static final String idUltimoInsert = "SELECT @@IDENTITY as idUltimo";
 
 	public static CompraPromocionDAOMYSQL getInstance()
 	{
@@ -87,6 +88,28 @@ public class CompraPromocionDAOMYSQL implements CompraPromocionDAO
 			e.printStackTrace();
 		}
 		return compraPromocion;
+	}
+
+	@Override
+	public int idUltimoInsert() 
+	{
+		PreparedStatement statement;
+		ResultSet resultSet;
+		Conexion conexion = Conexion.getConexion();
+		try 
+		{
+			statement = conexion.getSQLConexion().prepareStatement(idUltimoInsert);
+			resultSet = statement.executeQuery();
+			while(resultSet.next())
+			{
+			    return resultSet.getInt("idUltimo");
+			}	
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return 0;
 	}	
 	
 }
