@@ -10,7 +10,7 @@ public class Main
 		
 		ControladorLogin controladorLogin = new ControladorLogin();
 		controladorLogin.initialize();
-	
+		
 	}
 
 }
