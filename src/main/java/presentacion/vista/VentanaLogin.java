@@ -5,6 +5,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import java.awt.Color;
+import java.awt.Toolkit;
+
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 
@@ -24,6 +26,8 @@ public class VentanaLogin
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
 		frame.getContentPane().setLayout(null);
+		
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaLogin.class.getResource("/Imagenes/iconVentana.png")));
 		
 		WelcomeLabel = new JLabel("");
 		WelcomeLabel.setHorizontalAlignment(SwingConstants.CENTER);
