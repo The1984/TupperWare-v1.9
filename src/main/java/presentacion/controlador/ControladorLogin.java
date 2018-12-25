@@ -43,7 +43,8 @@ public class ControladorLogin implements KeyListener
 			if (passIntro.equals(passOriginal)) 
 			{
 				this.ventanaLogin.close();
-				
+				ControladorPrincipal controladorPrincipal = new ControladorPrincipal();
+				controladorPrincipal.initialize();
 			}
 			else
 			{

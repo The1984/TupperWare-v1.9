@@ -10,7 +10,7 @@ public class Conexion
 	private Connection connection;
 	private String user="root";
 	private String pass="root";
-	private String bd="tupperware";
+	private String bd="TupperWare";
 	
 	private Conexion()
 	{
