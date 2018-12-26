@@ -38,7 +38,8 @@ public class ControladorVentanaPrincipal
 		this.ventanaPrincipal.limpiarPanelCentral();
 		PanelGestionCliente panelCliente = new PanelGestionCliente();
 		ventanaPrincipal.setearPanelCentral(panelCliente);		
-		new ControladorPanelGestionCliente(panelCliente);
+		ControladorPanelGestionCliente contro = new ControladorPanelGestionCliente(panelCliente);
+		contro.initialize();
 	}
 	
 	private void mostrarPanelCompra()
@@ -46,7 +47,8 @@ public class ControladorVentanaPrincipal
 		this.ventanaPrincipal.limpiarPanelCentral();
 		PanelCompra panelCompra = new PanelCompra();
 		ventanaPrincipal.setearPanelCentral(panelCompra);
-		new ControladorPanelCompra(panelCompra);		
+		ControladorPanelCompra contro = new ControladorPanelCompra(panelCompra);
+		contro.initialize();
 	}
 	
 }

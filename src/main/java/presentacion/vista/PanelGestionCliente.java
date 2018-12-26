@@ -12,6 +12,9 @@ import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 import java.awt.GridLayout;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import java.awt.Font;
 
 public class PanelGestionCliente extends JPanel 
 {
@@ -20,44 +23,60 @@ public class PanelGestionCliente extends JPanel
 
 	private JTable tablaClientes;
 	private DefaultTableModel modelClientes;
-	private String[] nombreColumnas = { "Nombre","Apellido","Dirección","Teléfono","E-Mail"};
-	
+	private String[] nombreColumnas = { "Nombre","Apellido","Dirección","Celular","E-mail"};
+	private JTextField textFiltro;
+
 	public PanelGestionCliente() 
 	{
 		setBackground(Color.ORANGE);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		
-		JPanel panel = new JPanel();
+		JPanel PanelBotonera = new JPanel();
+		
+		textFiltro = new JTextField();
+		textFiltro.setColumns(10);
+		
+		JLabel lblFiltro = new JLabel("Filtro:");
+		lblFiltro.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
-						.addComponent(scrollPane, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE))
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(PanelBotonera, GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(lblFiltro, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(textFiltro, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addGap(63)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(25)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(textFiltro, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblFiltro))
+					.addGap(18)
 					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+					.addComponent(PanelBotonera, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
 		);
-		panel.setLayout(new GridLayout(0, 4, 0, 0));
+		PanelBotonera.setLayout(new GridLayout(0, 4, 0, 0));
 		
 		JButton btnAgregar = new JButton("Agregar");
-		panel.add(btnAgregar);
+		PanelBotonera.add(btnAgregar);
 		
 		JButton btnEditar = new JButton("Editar");
-		panel.add(btnEditar);
+		PanelBotonera.add(btnEditar);
 		
 		JButton btnEliminar = new JButton("Eliminar");
-		panel.add(btnEliminar);
+		PanelBotonera.add(btnEliminar);
 		
 		modelClientes = new DefaultTableModel(null, nombreColumnas) 
 			{
@@ -102,6 +121,16 @@ public class PanelGestionCliente extends JPanel
 	public void setNombreColumnas(String[] nombreColumnas) 
 	{
 		this.nombreColumnas = nombreColumnas;
+	}
+	
+	public JTextField getTextFiltro() 
+	{
+		return textFiltro;
+	}
+
+	public void setTextFiltro(JTextField textFiltro) 
+	{
+		this.textFiltro = textFiltro;
 	}
 	
 }
