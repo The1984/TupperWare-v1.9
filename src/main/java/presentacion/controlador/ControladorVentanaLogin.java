@@ -7,12 +7,12 @@ import presentacion.vista.VentanaLogin;
 import util.Encriptador;
 import util.OwnerProperties;
 
-public class ControladorLogin implements KeyListener 
+public class ControladorVentanaLogin implements KeyListener 
 {
 
 	VentanaLogin ventanaLogin;
 
-	public ControladorLogin() 
+	public ControladorVentanaLogin() 
 	{
 		this.ventanaLogin = new VentanaLogin();
 		this.ventanaLogin.getPassword().addKeyListener(this);
@@ -43,7 +43,7 @@ public class ControladorLogin implements KeyListener
 			if (passIntro.equals(passOriginal)) 
 			{
 				this.ventanaLogin.close();
-				ControladorPrincipal controladorPrincipal = new ControladorPrincipal();
+				ControladorVentanaPrincipal controladorPrincipal = new ControladorVentanaPrincipal();
 				controladorPrincipal.initialize();
 			}
 			else

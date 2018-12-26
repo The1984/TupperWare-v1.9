@@ -1,6 +1,6 @@
 package main;
 
-import presentacion.controlador.ControladorLogin;
+import presentacion.controlador.ControladorVentanaLogin;
 
 public class Main 
 {
@@ -8,7 +8,7 @@ public class Main
 	public static void main(String[] args) 
 	{
 		
-		ControladorLogin controladorLogin = new ControladorLogin();
+		ControladorVentanaLogin controladorLogin = new ControladorVentanaLogin();
 		controladorLogin.initialize();
 		
 	}
