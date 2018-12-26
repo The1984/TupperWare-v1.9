@@ -25,7 +25,10 @@ public class PanelGestionCliente extends JPanel
 	private DefaultTableModel modelClientes;
 	private String[] nombreColumnas = { "Nombre","Apellido","Dirección","Celular","E-mail"};
 	private JTextField textFiltro;
-
+	private JButton btnAgregar;
+	private JButton btnEditar ;
+	private JButton btnEliminar;
+	
 	public PanelGestionCliente() 
 	{
 		setBackground(Color.ORANGE);
@@ -69,13 +72,13 @@ public class PanelGestionCliente extends JPanel
 		);
 		PanelBotonera.setLayout(new GridLayout(0, 4, 0, 0));
 		
-		JButton btnAgregar = new JButton("Agregar");
+		btnAgregar = new JButton("Agregar");
 		PanelBotonera.add(btnAgregar);
 		
-		JButton btnEditar = new JButton("Editar");
+		btnEditar = new JButton("Editar");
 		PanelBotonera.add(btnEditar);
 		
-		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar = new JButton("Eliminar");
 		PanelBotonera.add(btnEliminar);
 		
 		modelClientes = new DefaultTableModel(null, nombreColumnas) 
@@ -131,6 +134,21 @@ public class PanelGestionCliente extends JPanel
 	public void setTextFiltro(JTextField textFiltro) 
 	{
 		this.textFiltro = textFiltro;
+	}
+
+	public JButton getBtnAgregar() 
+	{
+		return btnAgregar;
+	}
+
+	public JButton getBtnEditar() 
+	{
+		return btnEditar;
+	}
+
+	public JButton getBtnEliminar() 
+	{
+		return btnEliminar;
 	}
 	
 }
