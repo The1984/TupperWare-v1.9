@@ -25,6 +25,7 @@ public class ControladorPanelGestionCliente implements KeyListener, Observador
 		this.panelCliente = panel;
 		this.clientes_en_tabla = null;
 		this.clientes_filtrados = new ArrayList<ClienteDTO>();
+		this.clientes_filtrados = GestorClientes.getInstance().readAll();
 		this.panelCliente.getTextFiltro().addKeyListener(this);
 		this.panelCliente.getBtnAgregar().addActionListener(e -> this.agregarCliente());
 		this.panelCliente.getBtnEditar().addActionListener(e -> this.editarCliente());
