@@ -101,14 +101,24 @@ public class ControladorPanelGestionCliente implements KeyListener, Observador
 	
 	private void editarCliente() 
 	{
-		ClienteDTO clientSelect = this.clientes_en_tabla.get(this.panelCliente.getTablaClientes().getSelectedRow());
+		if(this.panelCliente.getTablaClientes().getSelectedRow()==-1)
+		{
+			JOptionPane.showMessageDialog(null, "¡Seleccione un cliente!");
+			return;
+		}
+		ClienteDTO clientSelect = this.clientes_filtrados.get(this.panelCliente.getTablaClientes().getSelectedRow());
 		ControladorVentanaEditarCliente contro = new ControladorVentanaEditarCliente(this, clientSelect);
 		contro.initialize();
 	}
 	
 	public void eliminarCliente()
 	{
-		ClienteDTO clientSelect = this.clientes_en_tabla.get(this.panelCliente.getTablaClientes().getSelectedRow());
+		if(this.panelCliente.getTablaClientes().getSelectedRow()==-1)
+		{
+			JOptionPane.showMessageDialog(null, "¡Seleccione un cliente!");
+			return;
+		}
+		ClienteDTO clientSelect = this.clientes_filtrados.get(this.panelCliente.getTablaClientes().getSelectedRow());
 		if(clientSelect.getCompras().size()==0)
 		{
 			if(JOptionPane.showConfirmDialog(null,"<html>¿Est\u00E1 seguro que quiere eliminar al cliente?</html>", "Eliminar Cliente",JOptionPane.YES_NO_OPTION)==0) 
@@ -147,6 +157,7 @@ public class ControladorPanelGestionCliente implements KeyListener, Observador
 	public void update() 
 	{
 		this.llenarTabla();
+		this.panelCliente.getTextFiltro().setText("");
 		this.panelCliente.repaint();	
 	}
 
