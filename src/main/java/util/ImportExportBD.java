@@ -3,7 +3,7 @@ package util;
 import javax.swing.JOptionPane;
 
 import persistencia.conexion.Conexion;
-import presentacion.controlador.ControladorLogin;
+import presentacion.controlador.ControladorVentanaLogin;
 import presentacion.vista.VentanaExportBD;
 import presentacion.vista.VentanaImportBD;
 import presentacion.vista.VentanaPrincipal;
@@ -53,7 +53,7 @@ public class ImportExportBD {
 				vista.close();
 				view.close();
 				JOptionPane.showMessageDialog(null, "Importacion Exitosa!!");
-				ControladorLogin controladoLogin=new ControladorLogin();
+				ControladorVentanaLogin controladoLogin=new ControladorVentanaLogin();
 				controladoLogin.initialize();
 			}
 			catch(Exception ex) 

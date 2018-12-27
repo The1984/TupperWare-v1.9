@@ -10,13 +10,13 @@ import presentacion.vista.VentanaImportBD;
 import presentacion.vista.VentanaPrincipal;
 import util.ImportExportBD;
 
-public class ControladorImportBD implements ActionListener{
+public class ControladorVentanaImportBD implements ActionListener{
 
 	private VentanaImportBD ventanaImpBD;
 	private ImportExportBD importExportBD;
 	private VentanaPrincipal view;
 	
-	public ControladorImportBD(VentanaPrincipal vista){
+	public ControladorVentanaImportBD(VentanaPrincipal vista){
 
 		view = vista;
 		importExportBD = new ImportExportBD();

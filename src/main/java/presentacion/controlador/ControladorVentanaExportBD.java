@@ -8,12 +8,12 @@ import javax.swing.JFileChooser;
 import presentacion.vista.VentanaExportBD;
 import util.ImportExportBD;
 
-public class ControladorExportBD implements ActionListener{
+public class ControladorVentanaExportBD implements ActionListener{
 
 	private VentanaExportBD ventanaExpBD;
 	private ImportExportBD importExportBD;
 	
-	public ControladorExportBD(){
+	public ControladorVentanaExportBD(){
 
 		importExportBD = new ImportExportBD();
 		
