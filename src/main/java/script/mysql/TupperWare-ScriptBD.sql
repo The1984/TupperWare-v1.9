@@ -19,7 +19,6 @@ Create Table cliente
     direccion varchar(30),
     celular varchar(30),
     email varchar(30),
-    clienteAldia boolean,
     PRIMARY KEY (idCliente)
 );
       
@@ -43,7 +42,7 @@ Create Table producto
 	idProducto Int NOT NULL AUTO_INCREMENT,
     codigo varchar(30),
     nombre varchar(30),
-    decripcion varchar(100),
+    descripcion varchar(100),
     idTipoDeProducto Int NOT NULL,
 	FOREIGN KEY (idTipoDeProducto) REFERENCES tipoDeProducto (idTipoDeProducto),
     PRIMARY KEY (idProducto)

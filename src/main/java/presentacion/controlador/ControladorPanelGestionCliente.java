@@ -40,9 +40,9 @@ public class ControladorPanelGestionCliente implements KeyListener, Observador
 	
 	private void llenarTabla()
 	{
-		this.panelCliente.getModelClientes().setRowCount(0); //Para vaciar la tabla
-		this.panelCliente.getModelClientes().setColumnCount(0);
-		this.panelCliente.getModelClientes().setColumnIdentifiers(this.panelCliente.getNombreColumnas());
+		this.panelCliente.getModelCliente().setRowCount(0); //Para vaciar la tabla
+		this.panelCliente.getModelCliente().setColumnCount(0);
+		this.panelCliente.getModelCliente().setColumnIdentifiers(this.panelCliente.getNombreColumnasCliente());
 		
 		this.clientes_en_tabla = GestorClientes.getInstance().readAll();
 		for (ClienteDTO cliente : clientes_en_tabla)
@@ -54,15 +54,15 @@ public class ControladorPanelGestionCliente implements KeyListener, Observador
 								cliente.getCelular(),
 								cliente.getEmail()
 							};
-			this.panelCliente.getModelClientes().addRow(fila);
+			this.panelCliente.getModelCliente().addRow(fila);
 		}			
 	}
 
 	private void reiniciarTabla() 
 	{
-		this.panelCliente.getModelClientes().setRowCount(0); // Para vaciar la tabla
-		this.panelCliente.getModelClientes().setColumnCount(0);
-		this.panelCliente.getModelClientes().setColumnIdentifiers(this.panelCliente.getNombreColumnas());
+		this.panelCliente.getModelCliente().setRowCount(0); // Para vaciar la tabla
+		this.panelCliente.getModelCliente().setColumnCount(0);
+		this.panelCliente.getModelCliente().setColumnIdentifiers(this.panelCliente.getNombreColumnasCliente());
 	}
 	
 	public void filtrarTablaTipo(String cadena) 
@@ -89,7 +89,7 @@ public class ControladorPanelGestionCliente implements KeyListener, Observador
 							cliente.getCelular(),
 							cliente.getEmail()
 						};
-					this.panelCliente.getModelClientes().addRow(fila);
+					this.panelCliente.getModelCliente().addRow(fila);
 			}
 		}
 	}
@@ -102,24 +102,24 @@ public class ControladorPanelGestionCliente implements KeyListener, Observador
 	
 	private void editarCliente() 
 	{
-		if(this.panelCliente.getTablaClientes().getSelectedRow()==-1)
+		if(this.panelCliente.getTablaCliente().getSelectedRow()==-1)
 		{
 			JOptionPane.showMessageDialog(null, "¡Seleccione un cliente!");
 			return;
 		}
-		ClienteDTO clientSelect = this.clientes_filtrados.get(this.panelCliente.getTablaClientes().getSelectedRow());
+		ClienteDTO clientSelect = this.clientes_filtrados.get(this.panelCliente.getTablaCliente().getSelectedRow());
 		ControladorVentanaEditarCliente contro = new ControladorVentanaEditarCliente(this, clientSelect);
 		contro.initialize();
 	}
 	
 	public void eliminarCliente()
 	{
-		if(this.panelCliente.getTablaClientes().getSelectedRow()==-1)
+		if(this.panelCliente.getTablaCliente().getSelectedRow()==-1)
 		{
 			JOptionPane.showMessageDialog(null, "¡Seleccione un cliente!");
 			return;
 		}
-		ClienteDTO clientSelect = this.clientes_filtrados.get(this.panelCliente.getTablaClientes().getSelectedRow());
+		ClienteDTO clientSelect = this.clientes_filtrados.get(this.panelCliente.getTablaCliente().getSelectedRow());
 		if(clientSelect.getCompras().size()==0)
 		{
 			if(JOptionPane.showConfirmDialog(null,"<html>¿Est\u00E1 seguro que quiere eliminar al cliente?</html>", "Eliminar Cliente",JOptionPane.YES_NO_OPTION)==0) 
@@ -158,6 +158,7 @@ public class ControladorPanelGestionCliente implements KeyListener, Observador
 	public void update() 
 	{
 		this.llenarTabla();
+		this.clientes_filtrados = GestorClientes.getInstance().readAll();
 		this.panelCliente.getTextFiltro().setText("");
 		this.panelCliente.repaint();	
 	}

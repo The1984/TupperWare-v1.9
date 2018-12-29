@@ -27,7 +27,7 @@ public class VentanaPrincipal
 	private JPanel panelCentral;
 	private JPanel panelNavegacion;
 	private JButton btnGestionCliente;
-	private JButton btnCompra;
+	private JButton btnNegocio;
 	
 	public VentanaPrincipal() 
 	{
@@ -71,8 +71,8 @@ public class VentanaPrincipal
 		btnGestionCliente = new JButton("Clientes");
 		panelNavegacion.add(btnGestionCliente);
 		
-		btnCompra = new JButton("Compra");
-		panelNavegacion.add(btnCompra);
+		btnNegocio = new JButton("Compra");
+		panelNavegacion.add(btnNegocio);
 		
 	}
 
@@ -111,19 +111,9 @@ public class VentanaPrincipal
 		return btnGestionCliente;
 	}
 
-	public void setBtnGestionClientes(JButton btnGestionCliente) 
+	public JButton getBtnNegocio() 
 	{
-		this.btnGestionCliente = btnGestionCliente;
-	}
-	
-	public JButton getBtnCompra() 
-	{
-		return btnCompra;
-	}
-
-	public void setBtnCompra(JButton btnCompra) 
-	{
-		this.btnCompra = btnCompra;
+		return btnNegocio;
 	}
 
 	public void limpiarPanelCentral()

@@ -78,7 +78,6 @@ public class ControladorVentanaAgregarCliente implements SujetoObservable
 		newCliente.setDireccion(this.ventana.getTxtDireccion().getText());
 		newCliente.setCelular(this.ventana.getTxtCelular().getText());
 		newCliente.setEmail(this.ventana.getTxtEmail().getText().toLowerCase());
-		newCliente.setClienteAlDia(true);
 		GestorClientes.getInstance().insert(newCliente);
 		this.ventana.close();
 		this.notificar();
