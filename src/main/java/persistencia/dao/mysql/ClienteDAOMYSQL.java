@@ -14,8 +14,8 @@ public class ClienteDAOMYSQL implements ClienteDAO
 {
 	
 	private static ClienteDAOMYSQL instance;
-	private static final String insert = "INSERT INTO cliente (nombre, apellido, direccion, celular, email, clienteAlDia) VALUES(?, ?, ?, ?, ?, ?)";
-	private static final String update = "UPDATE cliente SET nombre=?, apellido=?, direccion=?, celular=?, email=?, clienteAlDia=? WHERE idCliente=?";
+	private static final String insert = "INSERT INTO cliente (nombre, apellido, direccion, celular, email) VALUES(?, ?, ?, ?, ?)";
+	private static final String update = "UPDATE cliente SET nombre=?, apellido=?, direccion=?, celular=?, email=? WHERE idCliente=?";
 	private static final String delete = "DELETE FROM cliente WHERE idCliente=?";
 	private static final String readAll = "SELECT * FROM cliente";
 	private static final String readForId = "SELECT * FROM cliente WHERE idCliente=?";
@@ -40,7 +40,6 @@ public class ClienteDAOMYSQL implements ClienteDAO
 			statement.setString(3, cliente.getDireccion());
 			statement.setString(4, cliente.getCelular());
 			statement.setString(5, cliente.getEmail());
-			statement.setBoolean(6, cliente.getClienteAlDia());
 			if(statement.executeUpdate() > 0) { return true; }
 		} 
 		catch (SQLException e) 
@@ -63,7 +62,6 @@ public class ClienteDAOMYSQL implements ClienteDAO
 			statement.setString(3, cliente.getDireccion());
 			statement.setString(4, cliente.getCelular());
 			statement.setString(5, cliente.getEmail());
-			statement.setBoolean(6, cliente.getClienteAlDia());
 			statement.setInt(7, cliente.getIdCliente());
 			if(statement.executeUpdate() > 0)
 				return true;
@@ -116,7 +114,6 @@ public class ClienteDAOMYSQL implements ClienteDAO
 				newCliente.setDireccion(resultSet.getString("direccion"));
 				newCliente.setCelular(resultSet.getString("celular"));
 				newCliente.setEmail(resultSet.getString("email"));
-				newCliente.setClienteAlDia(resultSet.getBoolean("clienteAlDIa"));
 				newCliente.setCompras(CompraDAOMYSQL.getInstance().readForIdCliente(resultSet.getInt("idCliente")));
 				clientes.add(newCliente);
 			}
@@ -148,7 +145,6 @@ public class ClienteDAOMYSQL implements ClienteDAO
 				cliente.setDireccion(resultSet.getString("direccion"));
 				cliente.setCelular(resultSet.getString("celular"));
 				cliente.setEmail(resultSet.getString("email"));
-				cliente.setClienteAlDia(resultSet.getBoolean("clienteAlDIa"));
 				cliente.setCompras(CompraDAOMYSQL.getInstance().readForIdCliente(resultSet.getInt("idCliente")));
 			}	
 		} 

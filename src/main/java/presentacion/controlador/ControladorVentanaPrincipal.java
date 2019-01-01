@@ -1,6 +1,6 @@
 package presentacion.controlador;
 
-import presentacion.vista.PanelCompra;
+import presentacion.vista.PanelNegocio;
 import presentacion.vista.PanelGestionCliente;
 import presentacion.vista.VentanaPrincipal;
 
@@ -15,7 +15,7 @@ public class ControladorVentanaPrincipal
 		this.ventanaPrincipal.getBtnImportarBD().addActionListener(e -> this.mostrarVentanaImportar());
 		this.ventanaPrincipal.getBtnExportarBD().addActionListener(e -> this.mostrarVentanaExportar());
 		this.ventanaPrincipal.getBtnGestionClientes().addActionListener(e -> this.mostrarPanelGestionCliente());
-		this.ventanaPrincipal.getBtnCompra().addActionListener(e -> this.mostrarPanelCompra());
+		this.ventanaPrincipal.getBtnNegocio().addActionListener(e -> this.mostrarPanelNegocio());
 	}
 	
 	public void initialize() 
@@ -42,12 +42,12 @@ public class ControladorVentanaPrincipal
 		contro.initialize();
 	}
 	
-	private void mostrarPanelCompra()
+	private void mostrarPanelNegocio()
 	{
 		this.ventanaPrincipal.limpiarPanelCentral();
-		PanelCompra panelCompra = new PanelCompra();
+		PanelNegocio panelCompra = new PanelNegocio();
 		ventanaPrincipal.setearPanelCentral(panelCompra);
-		ControladorPanelCompra contro = new ControladorPanelCompra(panelCompra);
+		ControladorPanelNegocio contro = new ControladorPanelNegocio(panelCompra);
 		contro.initialize();
 	}
 	

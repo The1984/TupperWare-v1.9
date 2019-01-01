@@ -2,7 +2,9 @@ package modelo;
 
 import java.util.List;
 
+import dto.ImagenDeProductoDTO;
 import dto.ProductoDTO;
+import persistencia.dao.mysql.ImagenDeProductoDAOMYSQL;
 import persistencia.dao.mysql.ProductoDAOMYSQL;
 
 public class GestorProductos 
@@ -10,6 +12,7 @@ public class GestorProductos
 	
 	private static GestorProductos instance;
 	private ProductoDAOMYSQL productoDaoSQL;
+	private ImagenDeProductoDAOMYSQL imagenDeProductoDaoSQL;
 	
 	public static GestorProductos getInstance() 
 	{
@@ -21,6 +24,7 @@ public class GestorProductos
 	private GestorProductos() 
 	{
 		this.productoDaoSQL = ProductoDAOMYSQL.getInstance();
+		this.imagenDeProductoDaoSQL = ImagenDeProductoDAOMYSQL.getInstance(); 
 	}
 
 	public void insert(ProductoDTO producto)
@@ -46,6 +50,31 @@ public class GestorProductos
 	public ProductoDTO readForId(int idProducto)
 	{
 		return this.productoDaoSQL.readForId(idProducto);
+	}
+	
+	public int idUltimoInsert()
+	{
+		return this.productoDaoSQL.idUltimoInsert();
+	}
+	
+	public boolean insert (String rutaImagen, int idProducto)
+	{
+		return this.imagenDeProductoDaoSQL.insert(rutaImagen, idProducto);
+	}
+
+	public boolean update (String rutaImagen, int idProducto) 
+	{
+		return this.imagenDeProductoDaoSQL.update(rutaImagen, idProducto);
+	}
+	
+	public boolean delete (int idProducto)
+	{
+		return this.imagenDeProductoDaoSQL.delete(idProducto);
+	}
+	
+	public ImagenDeProductoDTO readForIdProducto (int idProducto)
+	{
+		return this.imagenDeProductoDaoSQL.readForIdProducto(idProducto);
 	}
 	
 }

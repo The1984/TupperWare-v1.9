@@ -37,4 +37,9 @@ public class TipoDeProductoDTO
 		this.porcentajeDeGanancia = porcentajeDeGanancia;
 	}
 	
+    public String toString()
+    {
+        return this.getNombre();
+    }
+	
 }

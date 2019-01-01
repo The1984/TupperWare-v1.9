@@ -12,7 +12,6 @@ public class ClienteDTO
 	private String celular;	
 	private String email;
 	private List<CompraDTO> compras;
-	private Boolean clienteAlDia;
 	
 	public int getIdCliente() 
 	{
@@ -82,16 +81,6 @@ public class ClienteDTO
 	public void setCompras(List<CompraDTO> compras) 
 	{
 		this.compras = compras;
-	}
-
-	public Boolean getClienteAlDia() 
-	{
-		return clienteAlDia;
-	}
-
-	public void setClienteAlDia(Boolean clienteAlDia) 
-	{
-		this.clienteAlDia = clienteAlDia;
 	}
 
 }
