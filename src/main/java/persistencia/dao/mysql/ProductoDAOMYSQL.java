@@ -19,6 +19,7 @@ public class ProductoDAOMYSQL implements ProductoDAO
 	private static final String delete = "DELETE FROM producto WHERE idProducto=?";
 	private static final String readAll = "SELECT * FROM producto";
 	private static final String readForId = "SELECT * FROM producto WHERE idProducto=?";
+	private static final String idUltimoInsert = "SELECT @@IDENTITY as idUltimo";
 	
 	public static ProductoDAOMYSQL getInstance()
 	{
@@ -60,6 +61,7 @@ public class ProductoDAOMYSQL implements ProductoDAO
 			statement.setString(2, producto.getNombre());
 			statement.setString(3, producto.getDescripcion());
 			statement.setInt(4, producto.getTipoDeProducto().getIdTipoDeProducto());
+			statement.setInt(5, producto.getIdProducto());
 			if(statement.executeUpdate() > 0)
 				return true;
 		} 
@@ -147,6 +149,28 @@ public class ProductoDAOMYSQL implements ProductoDAO
 			e.printStackTrace();
 		}
 		return producto;
+	}
+
+	@Override
+	public int idUltimoInsert() 
+	{
+		PreparedStatement statement;
+		ResultSet resultSet;
+		Conexion conexion = Conexion.getConexion();
+		try 
+		{
+			statement = conexion.getSQLConexion().prepareStatement(idUltimoInsert);
+			resultSet = statement.executeQuery();
+			while(resultSet.next())
+			{
+			    return resultSet.getInt("idUltimo");
+			}	
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return 0;
 	}	
 	
 }

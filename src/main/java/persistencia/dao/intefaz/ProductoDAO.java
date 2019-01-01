@@ -17,4 +17,6 @@ public interface ProductoDAO
 
 	public ProductoDTO readForId (int idProducto);
 	
+	public int idUltimoInsert ();
+	
 }

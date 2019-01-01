@@ -21,7 +21,6 @@ public class ControladorPanelGestionCliente implements KeyListener, Observador
 
 	public ControladorPanelGestionCliente(PanelGestionCliente panel)
 	{
-
 		this.panelCliente = panel;
 		this.clientes_en_tabla = null;
 		this.clientes_filtrados = new ArrayList<ClienteDTO>();
@@ -65,7 +64,7 @@ public class ControladorPanelGestionCliente implements KeyListener, Observador
 		this.panelCliente.getModelCliente().setColumnIdentifiers(this.panelCliente.getNombreColumnasCliente());
 	}
 	
-	public void filtrarTablaTipo(String cadena) 
+	public void filtrarTabla(String cadena) 
 	{
 		reiniciarTabla();
 		
@@ -80,16 +79,16 @@ public class ControladorPanelGestionCliente implements KeyListener, Observador
 							   cliente.getEmail().toUpperCase();
 			if (getNombre.indexOf(cadena.toUpperCase()) != -1) 
 			{
-					clientes_filtrados.add(cliente);
-					Object[] fila = 
-						{ 
-							cliente.getNombre(),
-							cliente.getApellido(),
-							cliente.getDireccion(),
-							cliente.getCelular(),
-							cliente.getEmail()
-						};
-					this.panelCliente.getModelCliente().addRow(fila);
+				clientes_filtrados.add(cliente);
+				Object[] fila = 
+					{ 
+						cliente.getNombre(),
+						cliente.getApellido(),
+						cliente.getDireccion(),
+						cliente.getCelular(),
+						cliente.getEmail()
+					};
+				this.panelCliente.getModelCliente().addRow(fila);
 			}
 		}
 	}
@@ -145,7 +144,7 @@ public class ControladorPanelGestionCliente implements KeyListener, Observador
 	public void keyReleased(KeyEvent arg0) 
 	{
 		String cadena = this.panelCliente.getTextFiltro().getText();
-		this.filtrarTablaTipo(cadena);	
+		this.filtrarTabla(cadena);	
 	}
 
 	@Override

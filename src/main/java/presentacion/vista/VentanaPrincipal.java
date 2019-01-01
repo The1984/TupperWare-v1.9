@@ -71,7 +71,7 @@ public class VentanaPrincipal
 		btnGestionCliente = new JButton("Clientes");
 		panelNavegacion.add(btnGestionCliente);
 		
-		btnNegocio = new JButton("Compra");
+		btnNegocio = new JButton("Negocio");
 		panelNavegacion.add(btnNegocio);
 		
 	}

@@ -21,13 +21,17 @@ public class PanelNegocio extends JPanel
 
 	private static final long serialVersionUID = -2307018905071256486L;
 	
-	private JTable tableProducto;
+	private JTable tablaProducto;
 	private DefaultTableModel modelProducto;
 	private String[] nombreColumnasProducto = { "Codigo","Nombre","Descripcion","Tipo"};
-	private JTable tablePromocion;
+	private JTable tablaPromocion;
 	private DefaultTableModel modelPromocion;
 	private String[] nombreColumnasPromocion = { "Nombre","Descripcion","Productos"};
-	private JTextField textFiltroProducto;
+	private JTextField textFiltro;
+	
+	private JButton btnAgregarProducto;
+	private JButton btnEditarProducto;
+	private JButton btnEliminarProducto;
 	
 	public PanelNegocio() 
 	{
@@ -41,8 +45,8 @@ public class PanelNegocio extends JPanel
 		
 		JPanel panelProducto = new JPanel();
 		
-		textFiltroProducto = new JTextField();
-		textFiltroProducto.setColumns(10);
+		textFiltro = new JTextField();
+		textFiltro.setColumns(10);
 		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
@@ -55,14 +59,14 @@ public class PanelNegocio extends JPanel
 						.addComponent(scrollPane_Promocion, GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(51)
-							.addComponent(textFiltroProducto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(textFiltro, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(18)
-					.addComponent(textFiltroProducto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addComponent(textFiltro, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(scrollPane_Producto, GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.RELATED)
@@ -73,13 +77,13 @@ public class PanelNegocio extends JPanel
 		);
 		panelProducto.setLayout(new GridLayout(1, 0, 0, 0));
 		
-		JButton btnAgregarProducto = new JButton("Agregar");
+		btnAgregarProducto = new JButton("Agregar");
 		panelProducto.add(btnAgregarProducto);
 		
-		JButton EditarProducto = new JButton("Editar");
-		panelProducto.add(EditarProducto);
+		btnEditarProducto = new JButton("Editar");
+		panelProducto.add(btnEditarProducto);
 		
-		JButton btnEliminarProducto = new JButton("Eliminar");
+		btnEliminarProducto = new JButton("Eliminar");
 		panelProducto.add(btnEliminarProducto);
 		
 		modelProducto = new DefaultTableModel(null, nombreColumnasProducto) 
@@ -90,8 +94,8 @@ public class PanelNegocio extends JPanel
 				return false;
 			}
 		};
-		tableProducto = new JTable(modelProducto);
-		scrollPane_Producto.setViewportView(tableProducto);
+		tablaProducto = new JTable(modelProducto);
+		scrollPane_Producto.setViewportView(tablaProducto);
 
 		modelPromocion = new DefaultTableModel(null, nombreColumnasPromocion) 
 		{
@@ -101,20 +105,25 @@ public class PanelNegocio extends JPanel
 				return false;
 			}
 		};
-		tablePromocion = new JTable(modelPromocion);
-		scrollPane_Promocion.setViewportView(tablePromocion);
+		tablaPromocion = new JTable(modelPromocion);
+		scrollPane_Promocion.setViewportView(tablaPromocion);
 		
 		setLayout(groupLayout);
+	}
+	
+	public JTextField getTextFiltro() 
+	{
+		return textFiltro;
 	}
 
 	public JTable getTableProducto() 
 	{
-		return tableProducto;
+		return tablaProducto;
 	}
 
 	public void setTableProducto(JTable tableProducto) 
 	{
-		this.tableProducto = tableProducto;
+		this.tablaProducto = tableProducto;
 	}
 
 	public DefaultTableModel getModelProducto() 
@@ -137,14 +146,14 @@ public class PanelNegocio extends JPanel
 		this.nombreColumnasProducto = nombreColumnasProducto;
 	}
 
-	public JTable getTablePromocion() 
+	public JTable getTablaPromocion() 
 	{
-		return tablePromocion;
+		return tablaPromocion;
 	}
 
-	public void setTablePromocion(JTable tablePromocion) 
+	public void setTablaPromocion(JTable tablaPromocion) 
 	{
-		this.tablePromocion = tablePromocion;
+		this.tablaPromocion = tablaPromocion;
 	}
 
 	public DefaultTableModel getModelPromocion() 
@@ -166,4 +175,20 @@ public class PanelNegocio extends JPanel
 	{
 		this.nombreColumnasPromocion = nombreColumnasPromocion;
 	}
+	
+	public JButton getBtnAgregarProducto() 
+	{
+		return btnAgregarProducto;
+	}
+	
+	public JButton getBtnEditarProducto() 
+	{
+		return btnEditarProducto;
+	}
+	
+	public JButton getBtnEliminarProducto() 
+	{
+		return btnEliminarProducto;
+	}
+
 }

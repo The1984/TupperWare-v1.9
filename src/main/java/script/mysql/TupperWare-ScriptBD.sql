@@ -48,6 +48,15 @@ Create Table producto
     PRIMARY KEY (idProducto)
 );
 
+Create Table imagenDeProducto
+(
+	idImagenDeProducto Int NOT NULL AUTO_INCREMENT,
+    imagen blob,
+    idProducto Int NOT NULL,
+	FOREIGN KEY (idProducto) REFERENCES Producto (idProducto),
+	PRIMARY KEY (idImagenDeProducto)
+);
+
 Create Table campaña
 (
 	idCampaña Int NOT NULL AUTO_INCREMENT,
@@ -148,5 +157,10 @@ INSERT INTO estadoDeCompra (nombre)
 VALUES("Pagado"),
 	  ("Mora"),
       ("Entregado");
+
+INSERT INTO tipoDeProducto (nombre, porcentajeDeGanancia)
+VALUES("Tupperware", 33),
+	  ("Homeware", 15),
+      ("Fullercosmetics", 25);
 
 -- ----------------------------------------------------------------------------------------------------------
