@@ -62,7 +62,7 @@ public class ClienteDAOMYSQL implements ClienteDAO
 			statement.setString(3, cliente.getDireccion());
 			statement.setString(4, cliente.getCelular());
 			statement.setString(5, cliente.getEmail());
-			statement.setInt(7, cliente.getIdCliente());
+			statement.setInt(6, cliente.getIdCliente());
 			if(statement.executeUpdate() > 0)
 				return true;
 		} 
