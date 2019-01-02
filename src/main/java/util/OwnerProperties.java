@@ -33,7 +33,6 @@ public class OwnerProperties
 		} 
 		catch (IOException e) 
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return this.props.getProperty("Nombre");
@@ -47,7 +46,6 @@ public class OwnerProperties
 		} 
 		catch (IOException e) 
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		this.props.put("Nombre", nombre);
@@ -57,7 +55,6 @@ public class OwnerProperties
 		} 
 		catch (IOException e) 
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -70,7 +67,6 @@ public class OwnerProperties
 		} 
 		catch (IOException e) 
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return this.props.getProperty("Apellido");
@@ -84,7 +80,6 @@ public class OwnerProperties
 		} 
 		catch (IOException e) 
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		this.props.put("Apellido", apellido);
@@ -94,7 +89,6 @@ public class OwnerProperties
 		} 
 		catch (IOException e) 
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -107,7 +101,6 @@ public class OwnerProperties
 		} 
 		catch (IOException e) 
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return this.props.getProperty("Email");
@@ -121,7 +114,6 @@ public class OwnerProperties
 		} 
 		catch (IOException e) 
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		this.props.put("Email", email);
@@ -129,8 +121,8 @@ public class OwnerProperties
 		{
 			props.store(new FileOutputStream(new File(FILE_PATH)), "");
 		} 
-		catch (IOException e) {
-			// TODO Auto-generated catch block
+		catch (IOException e) 
+		{
 			e.printStackTrace();
 		}
 	}
@@ -143,7 +135,6 @@ public class OwnerProperties
 		} 
 		catch (IOException e) 
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return this.props.getProperty("Pass");
@@ -157,7 +148,6 @@ public class OwnerProperties
 		} 
 		catch (IOException e) 
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		this.props.put("Pass", pass);
@@ -167,7 +157,6 @@ public class OwnerProperties
 		} 
 		catch (IOException e) 
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

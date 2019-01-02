@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 public class Conexion 
 {
+	
 	public static Conexion instancia;
 	private Connection connection;
 	private String user="root";
@@ -16,7 +17,7 @@ public class Conexion
 	{
 		try
 		{
-			Class.forName("com.mysql.jdbc.Driver"); // quitar si no es necesario
+			Class.forName("com.mysql.jdbc.Driver");
 			this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+this.getBd(), this.getUser(), this.getPass());
 			System.out.println("Conexion exitosa");
 		}

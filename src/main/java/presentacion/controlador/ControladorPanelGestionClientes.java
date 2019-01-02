@@ -10,16 +10,16 @@ import javax.swing.JOptionPane;
 import dto.ClienteDTO;
 import modelo.GestorClientes;
 import observer.Observador;
-import presentacion.vista.PanelGestionCliente;
+import presentacion.vista.PanelGestionClientes;
 
-public class ControladorPanelGestionCliente implements KeyListener, Observador
+public class ControladorPanelGestionClientes implements KeyListener, Observador
 {
 
 	private List<ClienteDTO> clientes_en_tabla;
 	private List<ClienteDTO> clientes_filtrados;
-	private PanelGestionCliente panelCliente;
+	private PanelGestionClientes panelCliente;
 
-	public ControladorPanelGestionCliente(PanelGestionCliente panel)
+	public ControladorPanelGestionClientes(PanelGestionClientes panel)
 	{
 		this.panelCliente = panel;
 		this.clientes_en_tabla = null;
@@ -39,9 +39,7 @@ public class ControladorPanelGestionCliente implements KeyListener, Observador
 	
 	private void llenarTabla()
 	{
-		this.panelCliente.getModelCliente().setRowCount(0); //Para vaciar la tabla
-		this.panelCliente.getModelCliente().setColumnCount(0);
-		this.panelCliente.getModelCliente().setColumnIdentifiers(this.panelCliente.getNombreColumnasCliente());
+		this.reiniciarTabla();
 		
 		this.clientes_en_tabla = GestorClientes.getInstance().readAll();
 		for (ClienteDTO cliente : clientes_en_tabla)

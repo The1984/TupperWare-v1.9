@@ -18,7 +18,7 @@ public class ControladorVentanaAgregarCliente implements SujetoObservable
 	private VentanaAgregarCliente ventana;
 	private ArrayList<Observador> observadores;
 	
-	public ControladorVentanaAgregarCliente(ControladorPanelGestionCliente control)
+	public ControladorVentanaAgregarCliente(ControladorPanelGestionClientes control)
 	{
 		ventana = new VentanaAgregarCliente();
 		ventana.getBtnAceptar().addActionListener(e -> this.registrarCliente());

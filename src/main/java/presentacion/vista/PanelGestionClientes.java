@@ -15,7 +15,7 @@ import javax.swing.JButton;
 import java.awt.GridLayout;
 import javax.swing.JTextField;
 
-public class PanelGestionCliente extends JPanel 
+public class PanelGestionClientes extends JPanel 
 {
 
 	private static final long serialVersionUID = -2645130709335183446L;
@@ -29,7 +29,7 @@ public class PanelGestionCliente extends JPanel
 	private JButton btnEditar;
 	private JButton btnEliminar;
 	
-	public PanelGestionCliente() 
+	public PanelGestionClientes() 
 	{
 		setBackground(Color.ORANGE);
 		
@@ -89,8 +89,7 @@ public class PanelGestionCliente extends JPanel
 		
 		tablaCliente = new JTable(modelCliente);
 		scrollPane_cliente.setViewportView(tablaCliente);
-		setLayout(groupLayout);
-		
+		setLayout(groupLayout);	
 	}
 	
 	public JTable getTablaCliente() 

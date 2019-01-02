@@ -2,11 +2,10 @@ package util;
 
 import java.awt.Color;
 
-public class EstilosYColores {
+public class EstilosYColores 
+{
 
 	private static EstilosYColores instancia;
-	
-	//Estilos Ventanas
 	private Color selectTable;
 	private Color backgroundButtonDelete;
 	private Color foregroundButtonDelete;
@@ -41,43 +40,53 @@ public class EstilosYColores {
 		return instancia;
 	}
 	
-	public Color getSelectTable() {
+	public Color getSelectTable() 
+	{
 		return selectTable;
 	}
 	
-	public Color getBackgroundButtonDelete() {
+	public Color getBackgroundButtonDelete() 
+	{
 		return backgroundButtonDelete;
 	}
 
-	public Color getForegroundButtonDelete() {
+	public Color getForegroundButtonDelete() 
+	{
 		return foregroundButtonDelete;
 	}
 
-	public Color getBackgroundButtonCreate() {
+	public Color getBackgroundButtonCreate() 
+	{
 		return backgroundButtonCreate;
 	}
 
-	public Color getForegroundButtonCreate() {
+	public Color getForegroundButtonCreate() 
+	{
 		return foregroundButtonCreate;
 	}
 
-	public Color getBackgroundVentanaStandard() {
+	public Color getBackgroundVentanaStandard() 
+	{
 		return backgroundVentanaStandard;
 	}
 
-	public Color getBackgroundButtonStandard() {
+	public Color getBackgroundButtonStandard() 
+	{
 		return backgroundButtonStandard;
 	}
 
-	public Color getForegroundButtonStandard() {
+	public Color getForegroundButtonStandard() 
+	{
 		return foregroundButtonStandard;
 	}
 
-	public Color getBackgroundSheet() {
+	public Color getBackgroundSheet() 
+	{
 		return backgroundSheet;
 	}
 
-	public Color getBackgroundRecado() {
+	public Color getBackgroundRecado() 
+	{
 		return backgroundRecado;
 	}
 

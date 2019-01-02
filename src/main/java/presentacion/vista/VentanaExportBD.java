@@ -7,7 +7,8 @@ import util.EstilosYColores;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-public class VentanaExportBD {
+public class VentanaExportBD 
+{
 
 	private JFrame frame;
 	private JTextField textField;
@@ -15,19 +16,9 @@ public class VentanaExportBD {
 	private JButton btnExport;
 	private EstilosYColores style = EstilosYColores.getInstance();
 
-	/**
-	 * Create the application.
-	 */
-	public VentanaExportBD() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
+	public VentanaExportBD()  
+	{
 		frame = new JFrame();
-		
 		frame.setTitle("Exportar BD");
 		frame.setResizable(false);
 		frame.setSize(425, 186);
@@ -49,37 +40,47 @@ public class VentanaExportBD {
 		btnExport.setBounds(10, 98, 400, 31);
 		btnExport.setBackground(style.getBackgroundButtonStandard());
 		btnExport.setForeground(style.getForegroundButtonStandard());
-		frame.getContentPane().add(btnExport);
 		
-		frame.setVisible(true);
+		frame.getContentPane().add(btnExport);
 	}
 	
-
-	public JTextField getTextField() {
+	public JTextField getTextField() 
+	{
 		return textField;
 	}
 
-	public void setTextField(JTextField textField) {
+	public void setTextField(JTextField textField) 
+	{
 		this.textField = textField;
 	}
 
-	public JButton getBtnSelectFolder() {
+	public JButton getBtnSelectFolder() 
+	{
 		return btnSelectFolder;
 	}
 
-	public void setBtnSelectFolder(JButton btnSelectFolder) {
+	public void setBtnSelectFolder(JButton btnSelectFolder) 
+	{
 		this.btnSelectFolder = btnSelectFolder;
 	}
 
-	public JButton getBtnExport() {
+	public JButton getBtnExport() 
+	{
 		return btnExport;
 	}
 
-	public void setBtnExport(JButton btnExport) {
+	public void setBtnExport(JButton btnExport) 
+	{
 		this.btnExport = btnExport;
 	}
 	
-	public void close() {
+	public void show()
+	{
+		this.frame.setVisible(true);
+	}
+	
+	public void close() 
+	{
 		this.frame.dispose();
 	}
 	

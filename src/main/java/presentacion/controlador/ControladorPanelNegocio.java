@@ -38,9 +38,7 @@ public class ControladorPanelNegocio implements KeyListener, Observador
 	
 	private void llenarTablaProducto()
 	{
-		this.panelNegocio.getModelProducto().setRowCount(0); //Para vaciar la tabla
-		this.panelNegocio.getModelProducto().setColumnCount(0);
-		this.panelNegocio.getModelProducto().setColumnIdentifiers(this.panelNegocio.getNombreColumnasProducto());
+		this.reiniciarTabla();
 		
 		this.productos_en_tabla = GestorProductos.getInstance().readAll();
 		for (ProductoDTO producto : productos_en_tabla)

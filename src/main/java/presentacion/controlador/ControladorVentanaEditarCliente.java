@@ -19,7 +19,7 @@ public class ControladorVentanaEditarCliente implements SujetoObservable
 	private ArrayList<Observador> observadores;
 	private ClienteDTO cliente_a_editar;
 	
-	public ControladorVentanaEditarCliente(ControladorPanelGestionCliente control, ClienteDTO cliente)
+	public ControladorVentanaEditarCliente(ControladorPanelGestionClientes control, ClienteDTO cliente)
 	{
 		ventana = new VentanaEditarCliente();
 		ventana.getBtnAceptar().addActionListener(e -> this.EditarCliente());

@@ -82,7 +82,6 @@ public class VentanaEditarCliente
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.setBounds(23, 245, 221, 23);
 		frame.getContentPane().add(btnAceptar);
-
 	}
 
 	public JTextField getTxtNombre() 

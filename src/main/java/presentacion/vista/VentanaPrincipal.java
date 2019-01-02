@@ -20,14 +20,16 @@ public class VentanaPrincipal
 {
 
 	private JFrame frame;
-
 	private JMenu mnBD;
 	private JMenuItem btnExportarBD;
 	private JMenuItem btnImportarBD;
 	private JPanel panelCentral;
 	private JPanel panelNavegacion;
-	private JButton btnGestionCliente;
+	private JButton btnGestionClientes;
 	private JButton btnNegocio;
+	private JButton btnGestionCampañas;
+	private JButton btnCorreo;
+	private JButton btnConfiguraciones;
 	
 	public VentanaPrincipal() 
 	{
@@ -66,14 +68,22 @@ public class VentanaPrincipal
 		
 		panelNavegacion = new JPanel();
 		frame.getContentPane().add(panelNavegacion, BorderLayout.NORTH);
-		panelNavegacion.setLayout(new GridLayout(0, 2, 0, 0));
+		panelNavegacion.setLayout(new GridLayout(0, 5, 0, 0));
 		
-		btnGestionCliente = new JButton("Clientes");
-		panelNavegacion.add(btnGestionCliente);
+		btnGestionClientes = new JButton("Clientes");
+		panelNavegacion.add(btnGestionClientes);
 		
 		btnNegocio = new JButton("Negocio");
 		panelNavegacion.add(btnNegocio);
 		
+		btnGestionCampañas = new JButton("Campa\u00F1as");
+		panelNavegacion.add(btnGestionCampañas);
+		
+		btnCorreo = new JButton("Correo");
+		panelNavegacion.add(btnCorreo);
+		
+		btnConfiguraciones = new JButton("Configuraciones");
+		panelNavegacion.add(btnConfiguraciones);	
 	}
 
 	public AbstractButton getBtnExportarBD() 
@@ -108,14 +118,29 @@ public class VentanaPrincipal
 
 	public JButton getBtnGestionClientes() 
 	{
-		return btnGestionCliente;
+		return btnGestionClientes;
 	}
 
 	public JButton getBtnNegocio() 
 	{
 		return btnNegocio;
 	}
+	
+	public JButton getBtnGestionCampañas() 
+	{
+		return btnGestionCampañas;
+	}
 
+	public JButton getBtnCorreo() 
+	{
+		return btnCorreo;
+	}
+
+	public JButton getBtnConfiguraciones() 
+	{
+		return btnConfiguraciones;
+	}
+	
 	public void limpiarPanelCentral()
 	{
 		this.panelCentral.removeAll();
@@ -138,5 +163,4 @@ public class VentanaPrincipal
 	{
 		frame.dispose();
 	}
-	
 }
