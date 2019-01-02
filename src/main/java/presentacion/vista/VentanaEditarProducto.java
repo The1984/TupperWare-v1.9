@@ -90,7 +90,6 @@ public class VentanaEditarProducto
 	    txtrDescripcion = new JTextArea();
 	    scrollPane.setViewportView(txtrDescripcion);
 	    this.getLblImagen().repaint();
-
 	}
 
 	public JTextField getTxtCodigo() 
@@ -108,7 +107,8 @@ public class VentanaEditarProducto
 		return txtrDescripcion;
 	}
 	
-	public JComboBox<TipoDeProductoDTO> getComboBoxTipoDeProducto() {
+	public JComboBox<TipoDeProductoDTO> getComboBoxTipoDeProducto() 
+	{
 		return comboBoxTipoDeProducto;
 	}
 

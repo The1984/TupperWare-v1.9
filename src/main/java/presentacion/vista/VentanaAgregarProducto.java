@@ -95,7 +95,6 @@ public class VentanaAgregarProducto
 	    lblDescripcion.setBounds(23, 97, 78, 14);
 	    frame.getContentPane().add(lblDescripcion);
 	    this.getLblImagen().repaint();
-
 	}
 
 	public JTextField getTxtCodigo() 

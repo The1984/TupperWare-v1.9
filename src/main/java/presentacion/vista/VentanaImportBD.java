@@ -7,7 +7,8 @@ import util.EstilosYColores;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-public class VentanaImportBD {
+public class VentanaImportBD 
+{
 
 	private JFrame frame;
 	private JTextField textField;
@@ -15,19 +16,9 @@ public class VentanaImportBD {
 	private JButton btnImport;
 	private EstilosYColores style = EstilosYColores.getInstance();
 
-	/**
-	 * Create the application.
-	 */
-	public VentanaImportBD() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		frame = new JFrame();
-		
+	public VentanaImportBD()  
+	{
+		frame = new JFrame();	
 		frame.setTitle("Importar BD");
 		frame.setResizable(false);
 		frame.setSize(425, 186);
@@ -50,38 +41,47 @@ public class VentanaImportBD {
 		btnImport.setBackground(style.getBackgroundButtonStandard());
 		btnImport.setForeground(style.getForegroundButtonStandard());
 		frame.getContentPane().add(btnImport);
-		
-		frame.setVisible(true);
 	}
 	
 
-	public JTextField getTextField() {
+	public JTextField getTextField() 
+	{
 		return textField;
 	}
 
-	public void setTextField(JTextField textField) {
+	public void setTextField(JTextField textField) 
+	{
 		this.textField = textField;
 	}
 
-	public JButton getBtnSelectFile() {
+	public JButton getBtnSelectFile() 
+	{
 		return btnSelectFile;
 	}
 
-	public void setBtnSelectFile(JButton btnSelectFile) {
+	public void setBtnSelectFile(JButton btnSelectFile) 
+	{
 		this.btnSelectFile = btnSelectFile;
 	}
 
-	public JButton getBtnImport() {
+	public JButton getBtnImport() 
+	{
 		return btnImport;
 	}
 
-	public void setBtnImport(JButton btnImport) {
+	public void setBtnImport(JButton btnImport) 
+	{
 		this.btnImport = btnImport;
 	}
 
-	public void close() {
+	public void show()
+	{
+		this.frame.setVisible(true);
+	}
+	
+	public void close() 
+	{
 		this.frame.dispose();
 	}
-
 	
 }

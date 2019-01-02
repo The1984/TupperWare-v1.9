@@ -8,7 +8,8 @@ import presentacion.vista.VentanaExportBD;
 import presentacion.vista.VentanaImportBD;
 import presentacion.vista.VentanaPrincipal;
 
-public class ImportExportBD {
+public class ImportExportBD 
+{
 
 	Conexion Connection = Conexion.getConexion();
 	
