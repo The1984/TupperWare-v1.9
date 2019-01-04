@@ -5,6 +5,7 @@ import persistencia.conexion.Conexion;
 import presentacion.vista.PanelGestionCampañas;
 import presentacion.vista.PanelGestionClientes;
 import presentacion.vista.VentanaPrincipal;
+import presentacion.vista.VistaPresentacion;
 
 public class ControladorVentanaPrincipal 
 {
@@ -24,6 +25,8 @@ public class ControladorVentanaPrincipal
 	
 	public void initialize() 
 	{
+		this.ventanaPrincipal.limpiarPanelCentral();
+		this.ventanaPrincipal.setearPanelCentral(new VistaPresentacion());
 		this.ventanaPrincipal.show();
 	}
 
@@ -41,7 +44,8 @@ public class ControladorVentanaPrincipal
 	{
 		this.ventanaPrincipal.limpiarPanelCentral();
 		PanelGestionClientes panelCliente = new PanelGestionClientes();
-		ventanaPrincipal.setearPanelCentral(panelCliente);		
+		this.ventanaPrincipal.setearPanelCentral(panelCliente);		
+		this.ventanaPrincipal.show();
 		ControladorPanelGestionClientes contro = new ControladorPanelGestionClientes(panelCliente);
 		contro.initialize();
 	}
@@ -50,7 +54,8 @@ public class ControladorVentanaPrincipal
 	{
 		this.ventanaPrincipal.limpiarPanelCentral();
 		PanelNegocio panelCompra = new PanelNegocio();
-		ventanaPrincipal.setearPanelCentral(panelCompra);
+		this.ventanaPrincipal.setearPanelCentral(panelCompra);
+		this.ventanaPrincipal.show();
 		ControladorPanelNegocio contro = new ControladorPanelNegocio(panelCompra);
 		contro.initialize();
 	}
@@ -59,7 +64,8 @@ public class ControladorVentanaPrincipal
 	{
 		this.ventanaPrincipal.limpiarPanelCentral();
 		PanelGestionCampañas panelCampaña = new PanelGestionCampañas();
-		ventanaPrincipal.setearPanelCentral(panelCampaña);		
+		this.ventanaPrincipal.setearPanelCentral(panelCampaña);
+		this.ventanaPrincipal.show();
 		ControladorPanelGestionCampañas contro = new ControladorPanelGestionCampañas(panelCampaña);
 		contro.initialize();
 	}

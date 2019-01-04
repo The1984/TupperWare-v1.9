@@ -117,19 +117,19 @@ public class ControladorPanelGestionClientes implements KeyListener, Observador
 			return;
 		}
 		ClienteDTO clientSelect = this.clientes_filtrados.get(this.panelCliente.getTablaCliente().getSelectedRow());
-		if(clientSelect.getCompras().size()==0)
-		{
-			if(JOptionPane.showConfirmDialog(null,"<html>¿Est\u00E1 seguro que quiere eliminar al cliente?</html>", "Eliminar Cliente",JOptionPane.YES_NO_OPTION)==0) 
-			{
-				GestorClientes.getInstance().delete(clientSelect);
-				this.update();
-			}
-		}
-		else
-		{
-			JOptionPane.showMessageDialog(null, "Este cliente posee comprar no puede eliminarse");
-			return;			
-		}
+//		if(clientSelect.getCompras().size()==0)
+//		{
+//			if(JOptionPane.showConfirmDialog(null,"<html>¿Est\u00E1 seguro que quiere eliminar al cliente?</html>", "Eliminar Cliente",JOptionPane.YES_NO_OPTION)==0) 
+//			{
+//				GestorClientes.getInstance().delete(clientSelect);
+//				this.update();
+//			}
+//		}
+//		else
+//		{
+//			JOptionPane.showMessageDialog(null, "Este cliente posee comprar no puede eliminarse");
+//			return;			
+//		}
 	}
 	
 	@Override

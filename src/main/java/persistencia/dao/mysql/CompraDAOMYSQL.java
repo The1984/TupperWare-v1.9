@@ -14,7 +14,7 @@ public class CompraDAOMYSQL implements CompraDAO
 {
 
 	private static CompraDAOMYSQL instance;
-	private static final String insert = "INSERT INTO compra (pagina, precio, unidades, montoPagado, porcentajeDeGanancia, idCliente, idProducto, idCompraPromocion, idCampaña, idEstadoDeCompra) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	private static final String insert = "INSERT INTO compra (pagina, precio, unidades, montoPagado, porcentajeDeGanancia, idCliente, idProducto, idCompraPromocion, idCampaña, idEstadoDeCompra) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	private static final String update = "UPDATE compra SET pagina=?, precio=?, unidades=?, montoPagado=?, porcentajeDeGanancia=?, idEstadoDeCompra=? WHERE idCompra=?";
 	private static final String delete = "DELETE FROM compra WHERE idCompra=?";
 	private static final String readAll = "SELECT * FROM compra";
@@ -43,8 +43,22 @@ public class CompraDAOMYSQL implements CompraDAO
 			statement.setInt(4, compra.getMontoPagado());
 			statement.setInt(5, compra.getPorcentajeDeGanancia());
 			statement.setInt(6, compra.getCliente().getIdCliente());
-			statement.setInt(7, compra.getProducto().getIdProducto());
-			statement.setInt(8, compra.getCompraPromocion().getIdCompraPromocion());
+			if(compra.getProducto() != null) 
+			{ 
+				statement.setInt(7, compra.getProducto().getIdProducto());
+			}
+			else 
+			{ 
+				statement.setObject(7, null);
+			}
+			if(compra.getCompraPromocion() != null) 
+			{ 
+				statement.setInt(8, compra.getCompraPromocion().getIdCompraPromocion()); 
+			}
+			else 
+			{ 
+				statement.setObject(8, null);
+			}
 			statement.setInt(9, compra.getCampaña().getIdCampaña());
 			statement.setInt(10, compra.getEstadoDeCompra().getIdEstadoDeCompra());
 			if(statement.executeUpdate() > 0) { return true; }
@@ -126,9 +140,6 @@ public class CompraDAOMYSQL implements CompraDAO
 				compra.setCampaña(CampañaDAOMYSQL.getInstance().readForId(resultSet.getInt("idCompaña")));
 				compra.setEstadoDeCompra(EstadoDeCompraDAOMYSQL.getInstance().readForId(resultSet.getInt("idEstadoDeCompra")));
 				compra.setProducto(ProductoDAOMYSQL.getInstance().readForId(resultSet.getInt("idProducto")));
-				//--------------------
-				// Faltan los Objetos
-				//--------------------
 				compras.add(compra);
 			}
 		} 
@@ -164,9 +175,6 @@ public class CompraDAOMYSQL implements CompraDAO
 				compra.setCampaña(CampañaDAOMYSQL.getInstance().readForId(resultSet.getInt("idCompaña")));
 				compra.setEstadoDeCompra(EstadoDeCompraDAOMYSQL.getInstance().readForId(resultSet.getInt("idEstadoDeCompra")));
 				compra.setProducto(ProductoDAOMYSQL.getInstance().readForId(resultSet.getInt("idProducto")));
-				//--------------------
-				// Faltan los Objetos
-				//--------------------
 				return compra;
 			}	
 		} 
@@ -199,12 +207,9 @@ public class CompraDAOMYSQL implements CompraDAO
 				compra.setMontoPagado(resultSet.getInt("montoPagado"));
 				compra.setPorcentajeDeGanancia(resultSet.getInt("porcentajeDeGanancia"));
 				compra.setCliente(ClienteDAOMYSQL.getInstance().readForId(resultSet.getInt("idCliente")));
-				compra.setCampaña(CampañaDAOMYSQL.getInstance().readForId(resultSet.getInt("idCompaña")));
+				compra.setCampaña(CampañaDAOMYSQL.getInstance().readForId(resultSet.getInt("idCampaña")));
 				compra.setEstadoDeCompra(EstadoDeCompraDAOMYSQL.getInstance().readForId(resultSet.getInt("idEstadoDeCompra")));
 				compra.setProducto(ProductoDAOMYSQL.getInstance().readForId(resultSet.getInt("idProducto")));
-				//--------------------
-				// Faltan los Objetos
-				//--------------------
 				compraDeCampaña.add(compra);
 			}	
 		} 
@@ -240,9 +245,6 @@ public class CompraDAOMYSQL implements CompraDAO
 				compra.setCampaña(CampañaDAOMYSQL.getInstance().readForId(resultSet.getInt("idCompaña")));
 				compra.setEstadoDeCompra(EstadoDeCompraDAOMYSQL.getInstance().readForId(resultSet.getInt("idEstadoDeCompra")));
 				compra.setProducto(ProductoDAOMYSQL.getInstance().readForId(resultSet.getInt("idProducto")));
-				//--------------------
-				// Faltan los Objetos
-				//--------------------
 				compraDeCliente.add(compra);
 			}	
 		} 

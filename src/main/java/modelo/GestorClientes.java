@@ -43,9 +43,9 @@ public class GestorClientes
 		return this.clienteDaoSQL.readAll();
 	}
 	
-	public void readForId(int idCliente)
+	public ClienteDTO readForId(int idCliente)
 	{
-		this.clienteDaoSQL.readForId(idCliente);
+		return this.clienteDaoSQL.readForId(idCliente);
 	}
 	
 }

@@ -2,6 +2,8 @@ package presentacion.controlador;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +12,7 @@ import modelo.GestorProductos;
 import observer.Observador;
 import presentacion.vista.PanelNegocio;
 
-public class ControladorPanelNegocio implements KeyListener, Observador
+public class ControladorPanelNegocio implements KeyListener, MouseListener, Observador
 {
 
 	private List<ProductoDTO> productos_en_tabla;
@@ -27,6 +29,8 @@ public class ControladorPanelNegocio implements KeyListener, Observador
 		this.panelNegocio.getTextFiltro().addKeyListener(this);
 		this.panelNegocio.getBtnAgregarProducto().addActionListener(e -> this.agregarProducto());
 		this.panelNegocio.getBtnEditarProducto().addActionListener(e -> this.editarProducto());
+		this.panelNegocio.getTablaProducto().addMouseListener(this);
+		
 	}
 	
 	public void initialize()
@@ -99,7 +103,7 @@ public class ControladorPanelNegocio implements KeyListener, Observador
 
 	private void editarProducto()
 	{
-		ProductoDTO productSelect = this.productos_filtrados.get(this.panelNegocio.getTableProducto().getSelectedRow());
+		ProductoDTO productSelect = this.productos_filtrados.get(this.panelNegocio.getTablaProducto().getSelectedRow());
 		ControladorVentanaEditarProducto contro = new ControladorVentanaEditarProducto(this, productSelect);
 		contro.initialize();
 	}
@@ -122,7 +126,42 @@ public class ControladorPanelNegocio implements KeyListener, Observador
 	{
 		// TODO Auto-generated method stub	
 	}
-	
+
+	@Override
+	public void mouseClicked(MouseEvent e) 
+	{
+		if(e.getClickCount()==2)
+		{
+			ProductoDTO productSelect = this.productos_filtrados.get(this.panelNegocio.getTablaProducto().getSelectedRow());
+			ControladorVentanaVerProducto contro = new ControladorVentanaVerProducto(productSelect);
+			contro.initialize();
+		}
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) 
+	{
+		// TODO Auto-generated method stub	
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) 
+	{
+		// TODO Auto-generated method stub	
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) 
+	{
+		// TODO Auto-generated method stub	
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) 
+	{
+		// TODO Auto-generated method stub	
+	}
+
 	@Override
 	public void update() 
 	{
@@ -131,5 +170,5 @@ public class ControladorPanelNegocio implements KeyListener, Observador
 		this.panelNegocio.getTextFiltro().setText("");
 		this.panelNegocio.repaint();	
 	}
-
+	
 }
