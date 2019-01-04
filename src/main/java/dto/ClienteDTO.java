@@ -1,7 +1,5 @@
 package dto;
 
-import java.util.List;
-
 public class ClienteDTO 
 {
 
@@ -11,7 +9,6 @@ public class ClienteDTO
 	private String direccion;
 	private String celular;	
 	private String email;
-	private List<CompraDTO> compras;
 	
 	public int getIdCliente() 
 	{
@@ -73,14 +70,4 @@ public class ClienteDTO
 		this.email = email;
 	}
 	
-	public List<CompraDTO> getCompras() 
-	{
-		return compras;
-	}
-
-	public void setCompras(List<CompraDTO> compras) 
-	{
-		this.compras = compras;
-	}
-
 }

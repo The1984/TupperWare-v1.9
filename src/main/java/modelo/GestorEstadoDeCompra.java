@@ -43,9 +43,9 @@ public class GestorEstadoDeCompra
 		return this.estadoDeCompraDaoSQL.readAll();
 	}
 	
-	public void readForId(int idEstadoDeCompra)
+	public EstadoDeCompraDTO readForId(int idEstadoDeCompra)
 	{
-		this.estadoDeCompraDaoSQL.readForId(idEstadoDeCompra);
+		return this.estadoDeCompraDaoSQL.readForId(idEstadoDeCompra);
 	}
 	
 }

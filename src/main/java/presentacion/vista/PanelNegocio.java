@@ -116,14 +116,14 @@ public class PanelNegocio extends JPanel
 		return textFiltro;
 	}
 
-	public JTable getTableProducto() 
+	public JTable getTablaProducto() 
 	{
 		return tablaProducto;
 	}
 
-	public void setTableProducto(JTable tableProducto) 
+	public void setTablaProducto(JTable tablaProducto) 
 	{
-		this.tablaProducto = tableProducto;
+		this.tablaProducto = tablaProducto;
 	}
 
 	public DefaultTableModel getModelProducto() 

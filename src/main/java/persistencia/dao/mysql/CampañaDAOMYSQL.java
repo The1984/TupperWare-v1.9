@@ -141,7 +141,7 @@ public class CampañaDAOMYSQL implements CampañaDAO
 				campaña.setNumero(resultSet.getString("numero"));
 				campaña.setAño(resultSet.getString("año"));
 				campaña.setCierre(resultSet.getDate("cierre"));
-				campaña.setCompras(CompraDAOMYSQL.getInstance().readForIdCampaña(resultSet.getInt("idCampaña")));
+				campaña.setCompras(null);
 				campaña.setPremios(PremioDAOMYSQL.getInstance().readForIdCampaña(resultSet.getInt("idCampaña")));
 			}	
 		} 

@@ -101,19 +101,9 @@ public class VentanaPrincipal
 		return panelCentral;
 	}
 
-	public void setPanelCentral(JPanel panelCentral) 
-	{
-		this.panelCentral = panelCentral;
-	}
-
 	public JPanel getPanelNavegacion() 
 	{
 		return panelNavegacion;
-	}
-
-	public void setPanelNavegacion(JPanel panelNavegacion) 
-	{
-		this.panelNavegacion = panelNavegacion;
 	}
 
 	public JButton getBtnGestionClientes() 
@@ -151,7 +141,6 @@ public class VentanaPrincipal
 	public void setearPanelCentral(JPanel panel)
 	{
 		this.panelCentral.add(panel);
-		this.show();
 	}
 	
 	public void show() 
