@@ -1,14 +1,17 @@
 package presentacion.vista;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-
-import java.awt.Color;
-import java.awt.Toolkit;
-
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
+
+import java.awt.Toolkit;
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.Color;
 
 public class VentanaLogin 
 {
@@ -20,24 +23,38 @@ public class VentanaLogin
 	public VentanaLogin() 
 	{
 		frame = new JFrame();
-		frame.getContentPane().setBackground(Color.GRAY);
 		frame.setTitle("TupperWare");
-		frame.setSize(276, 300);
+		frame.setSize(260, 280);
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
 		frame.getContentPane().setLayout(null);
 		
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaLogin.class.getResource("/Imagenes/iconVentana.png")));
 		
-		WelcomeLabel = new JLabel("");
+		WelcomeLabel = new JLabel();
 		WelcomeLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		WelcomeLabel.setBounds(10, 163, 250, 14);
+		WelcomeLabel.setBounds(10, 163, 234, 14);
 		frame.getContentPane().add(WelcomeLabel);
 
 		password = new JPasswordField();
+		password.setForeground(Color.BLACK);
 		password.setHorizontalAlignment(SwingConstants.CENTER);
-		password.setBounds(10, 204, 250, 20);
+		password.setBounds(37, 205, 180, 20);
 		frame.getContentPane().add(password);
+		
+		JLabel lblTupperware = new JLabel("TupperWare");
+		lblTupperware.setForeground(Color.ORANGE);
+		lblTupperware.setFont(new Font("Source Sans Pro Black", Font.PLAIN, 28));
+		lblTupperware.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTupperware.setBounds(16, 46, 220, 32);
+		frame.getContentPane().add(lblTupperware);
+		
+		JLabel lblSubrayado = new JLabel();
+		lblSubrayado.setBounds(36,81,180,7);
+		ImageIcon icon = new ImageIcon(this.getClass().getResource("/Imagenes/Subrayado.jpg"));
+		Icon img=new ImageIcon(icon.getImage().getScaledInstance(lblSubrayado.getWidth(), lblSubrayado.getHeight(), Image.SCALE_SMOOTH));
+		lblSubrayado.setIcon(img);
+		frame.getContentPane().add(lblSubrayado);
 	}
 
 	public JLabel getWelcomeLabel() 
@@ -59,5 +76,4 @@ public class VentanaLogin
 	{
 		frame.dispose();
 	}
-	
 }

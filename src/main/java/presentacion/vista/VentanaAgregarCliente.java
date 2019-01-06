@@ -3,7 +3,6 @@ package presentacion.vista;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JTextField;
-import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
@@ -22,8 +21,7 @@ public class VentanaAgregarCliente
 	{
 		frame = new JDialog();
 		frame.setTitle("Agregar Cliente");
-		frame.getContentPane().setBackground(Color.GRAY);
-		frame.setBounds(100, 100, 281, 318);
+		frame.setSize(281, 317);
 		frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		frame.setModal(true);
 		frame.getContentPane().setLayout(null);
@@ -43,19 +41,19 @@ public class VentanaAgregarCliente
 		
 		txtCelular = new JTextField();
 		txtCelular.setHorizontalAlignment(SwingConstants.CENTER);
-		txtCelular.setBounds(119, 159, 125, 20);
+		txtCelular.setBounds(119, 153, 125, 20);
 		frame.getContentPane().add(txtCelular);
 		txtCelular.setColumns(10);
 		
 		txtDireccion = new JTextField();
 		txtDireccion.setHorizontalAlignment(SwingConstants.CENTER);
-		txtDireccion.setBounds(119, 113, 125, 20);
+		txtDireccion.setBounds(119, 111, 125, 20);
 		frame.getContentPane().add(txtDireccion);
 		txtDireccion.setColumns(10);
 		
 		txtEmail = new JTextField();
 		txtEmail.setHorizontalAlignment(SwingConstants.CENTER);
-		txtEmail.setBounds(119, 203, 125, 20);
+		txtEmail.setBounds(119, 195, 125, 20);
 		frame.getContentPane().add(txtEmail);
 		txtEmail.setColumns(10);
 		
@@ -68,19 +66,19 @@ public class VentanaAgregarCliente
 		frame.getContentPane().add(lblApellido);
 		
 		JLabel lblDireccion = new JLabel("Direccion");
-		lblDireccion.setBounds(23, 116, 91, 14);
+		lblDireccion.setBounds(23, 114, 91, 14);
 		frame.getContentPane().add(lblDireccion);
 		
 		JLabel lblCelular = new JLabel("Celular");
-		lblCelular.setBounds(23, 162, 91, 14);
+		lblCelular.setBounds(23, 156, 91, 14);
 		frame.getContentPane().add(lblCelular);
 		
 		JLabel lblEmail = new JLabel("Email");
-		lblEmail.setBounds(23, 206, 91, 14);
+		lblEmail.setBounds(23, 198, 91, 14);
 		frame.getContentPane().add(lblEmail);
 		
 		btnAceptar = new JButton("Aceptar");
-		btnAceptar.setBounds(23, 245, 221, 23);
+		btnAceptar.setBounds(23, 244, 221, 23);
 		frame.getContentPane().add(btnAceptar);
 	}
 

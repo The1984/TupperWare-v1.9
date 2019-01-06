@@ -26,5 +26,11 @@
       <artifactId>jcalendar</artifactId>
       <version>1.4</version>
     </dependency>
+    <!-- JTattoo -->
+    <dependency>
+      <groupId>com.jtattoo</groupId>
+      <artifactId>JTattoo</artifactId>
+      <version>1.6.11</version>
+    </dependency>
   </dependencies>
 </project>

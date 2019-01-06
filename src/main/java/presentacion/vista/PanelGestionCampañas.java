@@ -2,16 +2,17 @@ package presentacion.vista;
 
 import javax.swing.JPanel;
 import javax.swing.JTable;
-
-import java.awt.Color;
-
+import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import javax.swing.JButton;
+
+import java.awt.Color;
 import java.awt.GridLayout;
 
 public class PanelGestionCampañas extends JPanel 
@@ -29,7 +30,7 @@ public class PanelGestionCampañas extends JPanel
 	
 	public PanelGestionCampañas() 
 	{
-		setBackground(Color.ORANGE);
+		this.setBackground(new Color(89,15,11));
 		
 		JScrollPane scrollPane_campaña = new JScrollPane();
 		scrollPane_campaña.setBorder(new TitledBorder(null, "Campañas", TitledBorder.CENTER, TitledBorder.TOP, null, null));
@@ -56,14 +57,19 @@ public class PanelGestionCampañas extends JPanel
 					.addContainerGap())
 		);
 		panel.setLayout(new GridLayout(1, 0, 0, 0));
+
+		Border borderButton = BorderFactory.createLineBorder(Color.black, 3);
 		
 		btnAgregar = new JButton("Agregar");
+		btnAgregar.setBorder(borderButton);
 		panel.add(btnAgregar);
 		
 		btnEditar = new JButton("Editar");
+		btnEditar.setBorder(borderButton);
 		panel.add(btnEditar);
 		
 		btnEliminar = new JButton("Eliminar");
+		btnEliminar.setBorder(borderButton);
 		panel.add(btnEliminar);
 		
 		modelCampaña = new DefaultTableModel(null, nombreColumnasCampaña) 
@@ -124,5 +130,5 @@ public class PanelGestionCampañas extends JPanel
 	{
 		return btnEliminar;
 	}
-	
+    
 }

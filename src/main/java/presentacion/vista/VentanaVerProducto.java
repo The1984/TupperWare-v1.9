@@ -10,12 +10,12 @@ import java.awt.Color;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.SwingConstants;
 
 public class VentanaVerProducto
 {
 
 	private JDialog frame;
-	private JLabel lblNombre;
 	private JButton btnComprar;
 	private JLabel lblImagen;
 	private JScrollPane scrollPane;
@@ -24,41 +24,40 @@ public class VentanaVerProducto
 	public VentanaVerProducto() 
 	{
 		frame = new JDialog();
-		frame.setTitle("Ver Producto");
-		frame.getContentPane().setBackground(Color.GRAY);
-		frame.setBounds(100, 100, 281, 454);
+		frame.setBounds(100, 100, 281, 421);
 		frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		frame.setModal(true);
 		frame.getContentPane().setLayout(null);
 		frame.setLocationRelativeTo(null);
 		
-		lblNombre = new JLabel();
-		lblNombre.setBounds(23, 21, 221, 14);
-		frame.getContentPane().add(lblNombre);
-		
 		btnComprar = new JButton("Comprar");
-		btnComprar.setBounds(23, 381, 221, 23);
+		btnComprar.setBounds(23, 348, 221, 23);
 		frame.getContentPane().add(btnComprar);
 		
 		lblImagen = new JLabel("");
 		Border border = BorderFactory.createLineBorder(Color.BLUE, 3);
 		lblImagen.setBorder(border);
-		lblImagen.setBounds(23, 138, 221, 221);
+		lblImagen.setBounds(23, 109, 221, 221);
 		frame.getContentPane().add(lblImagen);
 		
 	    scrollPane = new JScrollPane();
-	    scrollPane.setBounds(23, 52, 221, 63);
+	    scrollPane.setBounds(23, 23, 221, 63);
 	    frame.getContentPane().add(scrollPane);
 	    
 	    txtrDescripcion = new JTextArea();
-	    scrollPane.setViewportView(txtrDescripcion);
+	    txtrDescripcion.setBackground(Color.DARK_GRAY);
 	    txtrDescripcion.setEditable(false);
+	    scrollPane.setViewportView(txtrDescripcion);
+	    
+	    JLabel lblDescripcion = new JLabel("Descripcion");
+	    lblDescripcion.setHorizontalAlignment(SwingConstants.CENTER);
+	    scrollPane.setColumnHeaderView(lblDescripcion);
 	    this.getLblImagen().repaint();
 	}
 	
-	public JLabel getLblNombre() 
+	public JDialog getFrame() 
 	{
-		return lblNombre;
+		return frame;
 	}
 
 	public JTextArea getTxtrDescripcion() 

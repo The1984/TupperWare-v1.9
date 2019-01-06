@@ -1,12 +1,20 @@
 package presentacion.vista;
 
+import java.awt.Color;
+import java.awt.Image;
+
+import javax.swing.BorderFactory;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JTable;
 
-import java.awt.Color;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
+import javax.swing.JLabel;
 
 public class VentanaSeleccionarCliente
 {
@@ -17,24 +25,34 @@ public class VentanaSeleccionarCliente
 	private DefaultTableModel modelCliente;
 	private String[] nombreColumnasCliente = { "Nombre","Apellido","Celular","E-mail"};
 	private JTable tablaCliente;
+	private JLabel lblLupa;
 		
 	public VentanaSeleccionarCliente() 
 	{
 		frame = new JDialog();
 		frame.setTitle("Seleccionar Cliente");
-		frame.getContentPane().setBackground(Color.GRAY);
-		frame.setBounds(100, 100, 353, 324);
+		frame.setBounds(100, 100, 353, 290);
 		frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		frame.setModal(true);
 		frame.getContentPane().setLayout(null);
+
+		lblLupa = new JLabel("");
+		lblLupa.setBounds(10, 11, 20, 20);
+		ImageIcon icon = new ImageIcon(this.getClass().getResource("/Imagenes/Lupa.png"));
+		Icon img=new ImageIcon(icon.getImage().getScaledInstance(lblLupa.getWidth(), lblLupa.getHeight(), Image.SCALE_SMOOTH));
+		lblLupa.setIcon(img);
+		frame.getContentPane().add(lblLupa);
 		
 		txtFiltro = new JTextField();
-		txtFiltro.setBounds(39, 11, 86, 20);
+		txtFiltro.setBounds(39, 11, 288, 20);
+		Border border = BorderFactory.createLineBorder(new Color(0,135,191), 1);
+		txtFiltro.setBorder(border);
+		txtFiltro.setHorizontalAlignment(SwingConstants.CENTER);
 		frame.getContentPane().add(txtFiltro);
 		txtFiltro.setColumns(10);
 		
 		JScrollPane scrollPane_cliente = new JScrollPane();
-		scrollPane_cliente.setBounds(10, 52, 317, 222);
+		scrollPane_cliente.setBounds(10, 42, 317, 198);
 		frame.getContentPane().add(scrollPane_cliente);
 		
 		modelCliente = new DefaultTableModel(null, nombreColumnasCliente) 
