@@ -1,9 +1,9 @@
 package presentacion.vista;
 
 import javax.swing.AbstractButton;
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 
-import java.awt.Color;
 import java.awt.Toolkit;
 
 import javax.swing.JMenu;
@@ -11,9 +11,13 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
+import java.awt.Color;
+
 import javax.swing.JButton;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.border.Border;
+
 import java.awt.GridLayout;
 
 public class VentanaPrincipal 
@@ -39,6 +43,7 @@ public class VentanaPrincipal
 		frame.setTitle("TupperWare");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		frame.setResizable(false);
 		
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
@@ -52,7 +57,6 @@ public class VentanaPrincipal
 		mnBD.setVisible(true);
 		
 		panelCentral = new JPanel();
-		panelCentral.setBackground(Color.DARK_GRAY);
 		frame.getContentPane().add(panelCentral, BorderLayout.CENTER);
 		
 		GroupLayout gl_panelCentral = new GroupLayout(panelCentral);
@@ -70,19 +74,31 @@ public class VentanaPrincipal
 		frame.getContentPane().add(panelNavegacion, BorderLayout.NORTH);
 		panelNavegacion.setLayout(new GridLayout(0, 5, 0, 0));
 		
+		Border borderButton = BorderFactory.createLineBorder(Color.black, 1);
+		
 		btnGestionClientes = new JButton("Clientes");
+		btnGestionClientes.setBackground(new Color (11,64,51));
+		btnGestionClientes.setBorder(borderButton);
 		panelNavegacion.add(btnGestionClientes);
 		
 		btnNegocio = new JButton("Negocio");
+		btnNegocio.setBackground(new Color (130,26,35));
+		btnNegocio.setBorder(borderButton);
 		panelNavegacion.add(btnNegocio);
 		
 		btnGestionCampañas = new JButton("Campa\u00F1as");
+		btnGestionCampañas.setBackground(new Color (202,34,23));
+		btnGestionCampañas.setBorder(borderButton);
 		panelNavegacion.add(btnGestionCampañas);
 		
 		btnCorreo = new JButton("Correo");
+		btnCorreo.setBackground(new Color (186,48,2));
+		btnCorreo.setBorder(borderButton);
 		panelNavegacion.add(btnCorreo);
 		
 		btnConfiguraciones = new JButton("Configuraciones");
+		btnConfiguraciones.setBackground(new Color (188,108,9));
+		btnConfiguraciones.setBorder(borderButton);
 		panelNavegacion.add(btnConfiguraciones);	
 	}
 

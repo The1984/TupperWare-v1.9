@@ -2,7 +2,6 @@ package presentacion.vista;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import java.awt.Color;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JLabel;
@@ -30,7 +29,6 @@ public class VentanaComprarProducto
 	{
 		frame = new JDialog();
 		frame.setTitle("Comprar Producto");
-		frame.getContentPane().setBackground(Color.GRAY);
 		frame.setBounds(100, 100, 281, 366);
 		frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		frame.setModal(true);
@@ -43,46 +41,46 @@ public class VentanaComprarProducto
 		
 		spinnerUnidades = new JSpinner();
 		spinnerUnidades.setModel(new SpinnerNumberModel(1, 1, 25, 1));
-		spinnerUnidades.setBounds(108, 246, 136, 20);
+		spinnerUnidades.setBounds(108, 247, 136, 20);
 		frame.getContentPane().add(spinnerUnidades);
 		
 		JLabel lblUnidades = new JLabel("Unidades");
-		lblUnidades.setBounds(23, 249, 84, 14);
+		lblUnidades.setBounds(23, 250, 84, 14);
 		frame.getContentPane().add(lblUnidades);
 		
 		JLabel lblPagina = new JLabel("Pagina");
-		lblPagina.setBounds(24, 116, 84, 14);
+		lblPagina.setBounds(23, 115, 84, 14);
 		frame.getContentPane().add(lblPagina);
 		
 		txtPagina = new JTextField();
 		txtPagina.setHorizontalAlignment(SwingConstants.CENTER);
-		txtPagina.setBounds(108, 113, 136, 20);
+		txtPagina.setBounds(108, 112, 136, 20);
 		frame.getContentPane().add(txtPagina);
 		txtPagina.setColumns(10);
 		
 		txtPrecio = new JTextField();
 		txtPrecio.setHorizontalAlignment(SwingConstants.CENTER);
-		txtPrecio.setBounds(108, 158, 136, 20);
+		txtPrecio.setBounds(108, 157, 136, 20);
 		frame.getContentPane().add(txtPrecio);
 		txtPrecio.setColumns(10);
 		
 		JLabel lblPrecio = new JLabel("Precio");
-		lblPrecio.setBounds(23, 161, 84, 14);
+		lblPrecio.setBounds(23, 160, 84, 14);
 		frame.getContentPane().add(lblPrecio);
 		
 		JLabel lblPag = new JLabel("Pag\u00F3");
-		lblPag.setBounds(23, 203, 85, 14);
+		lblPag.setBounds(22, 205, 85, 14);
 		frame.getContentPane().add(lblPag);
 		
 		txtPago = new JTextField();
 		txtPago.setText("0");
 		txtPago.setHorizontalAlignment(SwingConstants.CENTER);
-		txtPago.setBounds(134, 200, 110, 20);
+		txtPago.setBounds(134, 202, 110, 20);
 		frame.getContentPane().add(txtPago);
 		txtPago.setColumns(10);
 		
 		chckbxPago = new JCheckBox("");
-		chckbxPago.setBounds(108, 200, 20, 20);
+		chckbxPago.setBounds(108, 202, 20, 20);
 		frame.getContentPane().add(chckbxPago);
 		
 		lblProducto = new JLabel("Producto");
@@ -90,13 +88,13 @@ public class VentanaComprarProducto
 		frame.getContentPane().add(lblProducto);
 		
 		lblCliente = new JLabel("Cliente");
-		lblCliente.setBounds(23, 71, 84, 14);
+		lblCliente.setBounds(23, 70, 84, 14);
 		frame.getContentPane().add(lblCliente);
 		
 		txtNameCliente = new JTextField();
 		txtNameCliente.setEditable(false);
 		txtNameCliente.setHorizontalAlignment(SwingConstants.CENTER);
-		txtNameCliente.setBounds(108, 68, 107, 20);
+		txtNameCliente.setBounds(108, 67, 107, 20);
 		frame.getContentPane().add(txtNameCliente);
 		txtNameCliente.setColumns(10);
 		
@@ -108,7 +106,7 @@ public class VentanaComprarProducto
 		txtNameProducto.setColumns(10);
 		
 		btnSelectCliente = new JButton("...");
-		btnSelectCliente.setBounds(215, 68, 29, 20);
+		btnSelectCliente.setBounds(215, 67, 29, 20);
 		frame.getContentPane().add(btnSelectCliente);
 	}
 

@@ -2,18 +2,25 @@ package presentacion.vista;
 
 import javax.swing.JPanel;
 import javax.swing.JTable;
-
-import java.awt.Color;
-
+import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import javax.swing.JButton;
-import java.awt.GridLayout;
 import javax.swing.JTextField;
+
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.Image;
+
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 public class PanelGestionClientes extends JPanel 
 {
@@ -28,54 +35,68 @@ public class PanelGestionClientes extends JPanel
 	private JButton btnAgregar;
 	private JButton btnEditar;
 	private JButton btnEliminar;
-	
+    
 	public PanelGestionClientes() 
 	{
-		setBackground(Color.ORANGE);
-		
+		this.setBackground(new Color(5,35,27));
 		JScrollPane scrollPane_cliente = new JScrollPane();
 		scrollPane_cliente.setBorder(new TitledBorder(null, "Clientes", TitledBorder.CENTER, TitledBorder.TOP, null, null));
 		
 		textFiltro = new JTextField();
+		Border border = BorderFactory.createLineBorder(new Color(0,135,191), 1);
+		textFiltro.setBorder(border);
+		textFiltro.setHorizontalAlignment(SwingConstants.CENTER);
 		textFiltro.setColumns(10);
 		
 		panel = new JPanel();
+		
+		JLabel lblLupa = new JLabel();
+		lblLupa.setSize(25,25);
+		ImageIcon icon = new ImageIcon(this.getClass().getResource("/Imagenes/Lupa.png"));
+		Icon img=new ImageIcon(icon.getImage().getScaledInstance(lblLupa.getWidth(), lblLupa.getHeight(), Image.SCALE_SMOOTH));
+		lblLupa.setIcon(img);
 		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(scrollPane_cliente, GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+						.addComponent(panel, GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap()
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(scrollPane_cliente, GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
-								.addComponent(panel, GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(52)
-							.addComponent(textFiltro, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(lblLupa)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(textFiltro, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(20)
-					.addComponent(textFiltro, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(textFiltro)
+						.addComponent(lblLupa, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(scrollPane_cliente, GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+					.addComponent(scrollPane_cliente, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
 		);
 		panel.setLayout(new GridLayout(1, 0, 0, 0));
+
+		Border borderButton = BorderFactory.createLineBorder(Color.black, 3);
 		
 		btnAgregar = new JButton("Agregar");
+		btnAgregar.setBorder(borderButton);
 		panel.add(btnAgregar);
 		
 		btnEditar = new JButton("Editar");
+		btnEditar.setBorder(borderButton);
 		panel.add(btnEditar);
 		
 		btnEliminar = new JButton("Eliminar");
+		btnEliminar.setBorder(borderButton);
 		panel.add(btnEliminar);
 		
 		modelCliente = new DefaultTableModel(null, nombreColumnasCliente) 
@@ -146,5 +167,4 @@ public class PanelGestionClientes extends JPanel
 	{
 		return btnEliminar;
 	}
-	
 }

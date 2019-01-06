@@ -1,20 +1,26 @@
 package presentacion.vista;
 
 import javax.swing.JPanel;
-
-import java.awt.Color;
-
+import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
-
-import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.Image;
+
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 public class PanelNegocio extends JPanel 
 {
@@ -28,14 +34,13 @@ public class PanelNegocio extends JPanel
 	private DefaultTableModel modelPromocion;
 	private String[] nombreColumnasPromocion = { "Nombre","Descripcion","Productos"};
 	private JTextField textFiltro;
-	
 	private JButton btnAgregarProducto;
 	private JButton btnEditarProducto;
 	private JButton btnEliminarProducto;
 	
 	public PanelNegocio() 
 	{
-		setBackground(Color.ORANGE);
+		this.setBackground(new Color(71,14,18));
 		
 		JScrollPane scrollPane_Producto = new JScrollPane();
 		scrollPane_Producto.setBorder(new TitledBorder(null, "Productos", TitledBorder.CENTER, TitledBorder.TOP, null, null));
@@ -46,7 +51,16 @@ public class PanelNegocio extends JPanel
 		JPanel panelProducto = new JPanel();
 		
 		textFiltro = new JTextField();
+		Border border = BorderFactory.createLineBorder(new Color(0,135,191), 1);
+		textFiltro.setBorder(border);
+		textFiltro.setHorizontalAlignment(SwingConstants.CENTER);
 		textFiltro.setColumns(10);
+		
+		JLabel lblLupa = new JLabel();
+		lblLupa.setSize(25,25);
+		ImageIcon icon = new ImageIcon(this.getClass().getResource("/Imagenes/Lupa.png"));
+		Icon img=new ImageIcon(icon.getImage().getScaledInstance(lblLupa.getWidth(), lblLupa.getHeight(), Image.SCALE_SMOOTH));
+		lblLupa.setIcon(img);
 		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
@@ -54,36 +68,44 @@ public class PanelNegocio extends JPanel
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(scrollPane_Producto, GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
-						.addComponent(panelProducto, GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
-						.addComponent(scrollPane_Promocion, GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
+						.addComponent(scrollPane_Producto, GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+						.addComponent(panelProducto, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+						.addComponent(scrollPane_Promocion, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(51)
+							.addComponent(lblLupa)
+							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(textFiltro, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(18)
-					.addComponent(textFiltro, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(scrollPane_Producto, GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+					.addContainerGap()
+					.addComponent(scrollPane_Promocion, GroupLayout.PREFERRED_SIZE, 72, GroupLayout.PREFERRED_SIZE)
+					.addGap(11)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(textFiltro)
+						.addComponent(lblLupa, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addGap(11)
+					.addComponent(scrollPane_Producto, GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(panelProducto, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(scrollPane_Promocion, GroupLayout.PREFERRED_SIZE, 78, GroupLayout.PREFERRED_SIZE)
+					.addComponent(panelProducto, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
 		);
 		panelProducto.setLayout(new GridLayout(1, 0, 0, 0));
 		
+		Border borderButton = BorderFactory.createLineBorder(Color.black, 3);
+		
 		btnAgregarProducto = new JButton("Agregar");
+		btnAgregarProducto.setBorder(borderButton);
 		panelProducto.add(btnAgregarProducto);
 		
 		btnEditarProducto = new JButton("Editar");
+		btnEditarProducto.setBorder(borderButton);
 		panelProducto.add(btnEditarProducto);
 		
 		btnEliminarProducto = new JButton("Eliminar");
+		btnEliminarProducto.setBorder(borderButton);
 		panelProducto.add(btnEliminarProducto);
 		
 		modelProducto = new DefaultTableModel(null, nombreColumnasProducto) 
@@ -190,5 +212,5 @@ public class PanelNegocio extends JPanel
 	{
 		return btnEliminarProducto;
 	}
-
+    
 }

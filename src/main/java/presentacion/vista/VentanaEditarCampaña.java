@@ -2,7 +2,6 @@ package presentacion.vista;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import java.awt.Color;
 import javax.swing.JLabel;
 import com.toedter.calendar.JYearChooser;
 import com.toedter.calendar.JDateChooser;
@@ -24,8 +23,7 @@ public class VentanaEditarCampaña
 	public VentanaEditarCampaña() 
 	{
 		frame = new JDialog();
-		frame.setTitle("Agregar Campaña");
-		frame.getContentPane().setBackground(Color.GRAY);
+		frame.setTitle("Editar Campaña");
 		frame.setBounds(100, 100, 281, 188);
 		frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		frame.setModal(true);
@@ -52,8 +50,8 @@ public class VentanaEditarCampaña
 		frame.getContentPane().add(añoChooser);
 
 		numeroSpinner = new JSpinner();
-		numeroSpinner.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		numeroSpinner.setModel(new SpinnerNumberModel(0, 0, 25, 1));
+		numeroSpinner.setFont(new Font("Tahoma", Font.BOLD, 11));
+		numeroSpinner.setModel(new SpinnerNumberModel(1, 1, 25, 1));
 		numeroSpinner.setBounds(205, 27, 39, 20);
 		frame.getContentPane().add(numeroSpinner);
 		

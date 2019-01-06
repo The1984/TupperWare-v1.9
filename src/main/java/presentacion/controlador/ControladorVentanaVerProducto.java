@@ -21,8 +21,7 @@ public class ControladorVentanaVerProducto
 	{
 		this.product = producto;
 		ventana = new VentanaVerProducto();
-		
-		this.ventana.getLblNombre().setText(this.product.getNombre());
+		this.ventana.getFrame().setTitle(this.product.getNombre());
 		this.ventana.getTxtrDescripcion().setText(this.product.getDescripcion());
 		ImagenDeProductoDTO imagen = GestorProductos.getInstance().readForIdProducto(this.product.getIdProducto());
 	    Icon icono = new ImageIcon(imagen.getImagen().getScaledInstance(this.ventana.getLblImagen().getWidth(), this.ventana.getLblImagen().getHeight(), Image.SCALE_DEFAULT));

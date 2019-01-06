@@ -35,8 +35,7 @@ public class VentanaAgregarProducto
 	{
 		frame = new JDialog();
 		frame.setTitle("Agregar Producto");
-		frame.getContentPane().setBackground(Color.GRAY);
-		frame.setBounds(100, 100, 281, 541);
+		frame.setSize(281, 541);
 		frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		frame.setModal(true);
 		frame.getContentPane().setLayout(null);
@@ -70,11 +69,11 @@ public class VentanaAgregarProducto
 		comboBoxTipoDeProducto.setBounds(119, 205, 125, 20);
 		frame.getContentPane().add(comboBoxTipoDeProducto);
 		
-		JLabel lblTipodeproducto = new JLabel("Tipo de Producto");
-		lblTipodeproducto.setBounds(23, 208, 91, 14);
+		JLabel lblTipodeproducto = new JLabel("Tipo de Prod.");
+		lblTipodeproducto.setBounds(23, 208, 97, 14);
 		frame.getContentPane().add(lblTipodeproducto);
 		
-		lblImagen = new JLabel("");
+		lblImagen = new JLabel();
 		Border border = BorderFactory.createLineBorder(Color.BLUE, 3);
 		lblImagen.setBorder(border);
 		lblImagen.setBounds(23, 236, 221, 221);
@@ -85,15 +84,15 @@ public class VentanaAgregarProducto
 	    this.getLblImagen().setIcon(icono);
 	    
 	    scrollPane = new JScrollPane();
-	    scrollPane.setBounds(23, 123, 221, 63);
+	    scrollPane.setBounds(23, 111, 221, 75);
 	    frame.getContentPane().add(scrollPane);
 	    
 	    txtrDescripcion = new JTextArea();
 	    scrollPane.setViewportView(txtrDescripcion);
 	    
 	    JLabel lblDescripcion = new JLabel("Descripcion");
-	    lblDescripcion.setBounds(23, 97, 78, 14);
-	    frame.getContentPane().add(lblDescripcion);
+	    lblDescripcion.setHorizontalAlignment(SwingConstants.CENTER);
+	    scrollPane.setColumnHeaderView(lblDescripcion);
 	    this.getLblImagen().repaint();
 	}
 

@@ -1,45 +1,44 @@
 package presentacion.vista;
 
 import javax.swing.JTextField;
-
-import util.EstilosYColores;
-
 import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
+
+import java.awt.Color;
 
 public class VentanaExportBD 
 {
 
-	private JFrame frame;
+	private JDialog frame;
 	private JTextField textField;
 	private JButton btnSelectFolder;
 	private JButton btnExport;
-	private EstilosYColores style = EstilosYColores.getInstance();
 
 	public VentanaExportBD()  
 	{
-		frame = new JFrame();
+		frame = new JDialog();
 		frame.setTitle("Exportar BD");
 		frame.setResizable(false);
-		frame.setSize(425, 186);
-		frame.getContentPane().setBackground(style.getBackgroundVentanaStandard());
+		frame.setSize(425, 160);
+		frame.getContentPane().setBackground(Color.lightGray);
+		frame.setModal(true);
 	    frame.setLocationRelativeTo(null);
 		frame.getContentPane().setLayout(null);
 		
 		textField = new JTextField();
-		textField.setBounds(10, 52, 230, 22);
+		textField.setBounds(10, 30, 230, 22);
 		textField.setEditable(false);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		btnSelectFolder = new JButton("Seleccionar destino");
-		btnSelectFolder.setBounds(250, 52, 160, 23);
+		btnSelectFolder.setBounds(250, 30, 160, 23);
 		frame.getContentPane().add(btnSelectFolder);
 		
 		btnExport = new JButton("Exportar");
-		btnExport.setBounds(10, 98, 400, 31);
-		btnExport.setBackground(style.getBackgroundButtonStandard());
-		btnExport.setForeground(style.getForegroundButtonStandard());
+		btnExport.setBounds(10, 79, 400, 31);
+		btnExport.setBackground(Color.darkGray);
+		btnExport.setForeground(Color.white);
 		
 		frame.getContentPane().add(btnExport);
 	}
