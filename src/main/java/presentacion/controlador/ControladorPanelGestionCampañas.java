@@ -1,29 +1,37 @@
 package presentacion.controlador;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
 import javax.swing.JOptionPane;
 
 import dto.CampañaDTO;
 import modelo.GestorCampaña;
 import observer.Observador;
 import presentacion.vista.PanelGestionCampañas;
+import presentacion.vista.PanelGestionCompras;
+import presentacion.vista.VentanaPrincipal;
 
-public class ControladorPanelGestionCampañas implements Observador
+public class ControladorPanelGestionCampañas implements MouseListener, Observador
 {
 
 	private List<CampañaDTO> campañas_en_tabla;
 	private PanelGestionCampañas panelCampaña;
-
-	public ControladorPanelGestionCampañas(PanelGestionCampañas panel)
+	private VentanaPrincipal ventana;
+	
+	public ControladorPanelGestionCampañas(PanelGestionCampañas panel, VentanaPrincipal ventana)
 	{
+		this.ventana = ventana;
 		this.panelCampaña = panel;
 		this.campañas_en_tabla = null;
 		this.panelCampaña.getBtnAgregar().addActionListener(e -> this.agregarCampaña());
 		this.panelCampaña.getBtnEditar().addActionListener(e -> this.editarCampaña());
 		this.panelCampaña.getBtnEliminar().addActionListener(e -> this.eliminarCampaña());
+		this.panelCampaña.getBtnPromociones().addActionListener(e -> this.promocionesABM());
+		this.panelCampaña.getBtnPremios().addActionListener(e -> this.premiosABM());
+		this.panelCampaña.getTablaCampaña().addMouseListener(this);
 	}
 	
 	public void initialize()
@@ -94,11 +102,60 @@ public class ControladorPanelGestionCampañas implements Observador
 
 	}
 	
+	public void promocionesABM()
+	{
+		
+	}
+	
+	public void premiosABM()
+	{
+		
+	}
+	
 	@Override
 	public void update() 
 	{
 		this.llenarTabla();
 		this.panelCampaña.repaint();
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) 
+	{
+		if(e.getClickCount()==2)
+		{
+			this.ventana.limpiarPanelCentral();
+			CampañaDTO campañaSelect = this.campañas_en_tabla.get(this.panelCampaña.getTablaCampaña().getSelectedRow());
+			PanelGestionCompras panelCompra = new PanelGestionCompras(); 
+			this.ventana.setearPanelCentral(panelCompra);
+			this.ventana.show();
+			ControladorPanelGestionCompras contro = new ControladorPanelGestionCompras(panelCompra, campañaSelect);
+			contro.initialize();
+		}
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) 
+	{
+		// TODO Auto-generated method stub	
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) 
+	{
+		// TODO Auto-generated method stub	
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) 
+	{
+		// TODO Auto-generated method stub	
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) 
+	{
+		// TODO Auto-generated method stub
 	}
 
 }

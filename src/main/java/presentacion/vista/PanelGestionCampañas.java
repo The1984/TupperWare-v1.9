@@ -27,6 +27,8 @@ public class PanelGestionCampañas extends JPanel
 	private JButton btnAgregar;
 	private JButton btnEditar;
 	private JButton btnEliminar;
+	private JButton btnPromociones;
+	private JButton btnPremios;
 	
 	public PanelGestionCampañas() 
 	{
@@ -71,6 +73,14 @@ public class PanelGestionCampañas extends JPanel
 		btnEliminar = new JButton("Eliminar");
 		btnEliminar.setBorder(borderButton);
 		panel.add(btnEliminar);
+
+		btnPromociones = new JButton("Promociones");
+		btnPromociones.setBorder(borderButton);
+		panel.add(btnPromociones);
+		
+		btnPremios = new JButton("Premios");
+		btnPremios.setBorder(borderButton);
+		panel.add(btnPremios);
 		
 		modelCampaña = new DefaultTableModel(null, nombreColumnasCampaña) 
 			{
@@ -129,6 +139,16 @@ public class PanelGestionCampañas extends JPanel
 	public JButton getBtnEliminar() 
 	{
 		return btnEliminar;
+	}
+	
+	public JButton getBtnPromociones() 
+	{
+		return btnPromociones;
+	}
+
+	public JButton getBtnPremios() 
+	{
+		return btnPremios;
 	}
     
 }

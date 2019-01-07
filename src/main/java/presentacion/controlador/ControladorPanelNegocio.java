@@ -15,14 +15,12 @@ import presentacion.vista.PanelNegocio;
 public class ControladorPanelNegocio implements KeyListener, MouseListener, Observador
 {
 
-	private List<ProductoDTO> productos_en_tabla;
 	private List<ProductoDTO> productos_filtrados;
 	private PanelNegocio panelNegocio;
 	
 	public ControladorPanelNegocio(PanelNegocio panel)
 	{
 		this.panelNegocio = panel;
-		this.productos_en_tabla = null;
 		this.productos_filtrados = new ArrayList<ProductoDTO>();
 		this.productos_filtrados = GestorProductos.getInstance().readAll();
 
@@ -30,7 +28,6 @@ public class ControladorPanelNegocio implements KeyListener, MouseListener, Obse
 		this.panelNegocio.getBtnAgregarProducto().addActionListener(e -> this.agregarProducto());
 		this.panelNegocio.getBtnEditarProducto().addActionListener(e -> this.editarProducto());
 		this.panelNegocio.getTablaProducto().addMouseListener(this);
-		
 	}
 	
 	public void initialize()
@@ -44,8 +41,7 @@ public class ControladorPanelNegocio implements KeyListener, MouseListener, Obse
 	{
 		this.reiniciarTabla();
 		
-		this.productos_en_tabla = GestorProductos.getInstance().readAll();
-		for (ProductoDTO producto : productos_en_tabla)
+		for (ProductoDTO producto : GestorProductos.getInstance().readAll())
 		{
 			Object[] fila = {
 								producto.getCodigo(),
@@ -53,6 +49,7 @@ public class ControladorPanelNegocio implements KeyListener, MouseListener, Obse
 								producto.getDescripcion(),
 								producto.getTipoDeProducto().getNombre()
 							};
+			this.productos_filtrados.add(producto);
 			this.panelNegocio.getModelProducto().addRow(fila);
 		}			
 	}
@@ -70,7 +67,7 @@ public class ControladorPanelNegocio implements KeyListener, MouseListener, Obse
 		
 		productos_filtrados.clear();
 		
-		for (ProductoDTO producto : productos_en_tabla) 
+		for (ProductoDTO producto : GestorProductos.getInstance().readAll())
 		{
 			String getNombre = producto.getCodigo().toUpperCase()+
 							   producto.getNombre().toUpperCase()+

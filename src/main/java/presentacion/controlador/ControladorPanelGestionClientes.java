@@ -15,14 +15,12 @@ import presentacion.vista.PanelGestionClientes;
 public class ControladorPanelGestionClientes implements KeyListener, Observador
 {
 
-	private List<ClienteDTO> clientes_en_tabla;
 	private List<ClienteDTO> clientes_filtrados;
 	private PanelGestionClientes panelCliente;
 
 	public ControladorPanelGestionClientes(PanelGestionClientes panel)
 	{
 		this.panelCliente = panel;
-		this.clientes_en_tabla = null;
 		this.clientes_filtrados = new ArrayList<ClienteDTO>();
 		this.clientes_filtrados = GestorClientes.getInstance().readAll();
 		this.panelCliente.getTextFiltro().addKeyListener(this);
@@ -41,8 +39,7 @@ public class ControladorPanelGestionClientes implements KeyListener, Observador
 	{
 		this.reiniciarTabla();
 		
-		this.clientes_en_tabla = GestorClientes.getInstance().readAll();
-		for (ClienteDTO cliente : clientes_en_tabla)
+		for (ClienteDTO cliente : GestorClientes.getInstance().readAll())
 		{
 			Object[] fila = {
 								cliente.getNombre(),
@@ -68,7 +65,7 @@ public class ControladorPanelGestionClientes implements KeyListener, Observador
 		
 		clientes_filtrados.clear();
 		
-		for (ClienteDTO cliente : clientes_en_tabla) 
+		for (ClienteDTO cliente : GestorClientes.getInstance().readAll())
 		{
 			String getNombre = cliente.getNombre().toUpperCase()+
 							   cliente.getApellido().toUpperCase()+
