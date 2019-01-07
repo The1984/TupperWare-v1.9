@@ -66,7 +66,7 @@ public class ControladorVentanaPrincipal
 		PanelGestionCampañas panelCampaña = new PanelGestionCampañas();
 		this.ventanaPrincipal.setearPanelCentral(panelCampaña);
 		this.ventanaPrincipal.show();
-		ControladorPanelGestionCampañas contro = new ControladorPanelGestionCampañas(panelCampaña);
+		ControladorPanelGestionCampañas contro = new ControladorPanelGestionCampañas(panelCampaña, this.ventanaPrincipal);
 		contro.initialize();
 	}
 	

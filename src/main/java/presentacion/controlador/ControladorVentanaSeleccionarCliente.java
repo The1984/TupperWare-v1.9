@@ -13,18 +13,16 @@ import presentacion.vista.VentanaSeleccionarCliente;
 
 public class ControladorVentanaSeleccionarCliente implements KeyListener, MouseListener
 {
+	
 	private ControladorVentanaComprarProducto controlador;
 	private VentanaSeleccionarCliente ventana;
-	private List<ClienteDTO> clientes_en_tabla;
 	private List<ClienteDTO> clientes_filtrados;
 	
 	public ControladorVentanaSeleccionarCliente(ControladorVentanaComprarProducto control)
 	{
 		this.ventana = new VentanaSeleccionarCliente();
 		this.controlador = control;
-		this.clientes_en_tabla = null;
 		this.clientes_filtrados = new ArrayList<ClienteDTO>();
-		this.clientes_filtrados = GestorClientes.getInstance().readAll();
 		this.ventana.getTxtFiltro().addKeyListener(this);
 		this.ventana.getTablaCliente().addMouseListener(this);
 	}
@@ -40,8 +38,7 @@ public class ControladorVentanaSeleccionarCliente implements KeyListener, MouseL
 	{
 		this.reiniciarTabla();
 		
-		this.clientes_en_tabla = GestorClientes.getInstance().readAll();
-		for (ClienteDTO cliente : clientes_en_tabla)
+		for (ClienteDTO cliente : GestorClientes.getInstance().readAll())
 		{
 			Object[] fila = {
 								cliente.getNombre(),
@@ -49,6 +46,7 @@ public class ControladorVentanaSeleccionarCliente implements KeyListener, MouseL
 								cliente.getCelular(),
 								cliente.getEmail()
 							};
+			this.clientes_filtrados.add(cliente);
 			this.ventana.getModelCliente().addRow(fila);
 		}			
 	}
@@ -66,7 +64,7 @@ public class ControladorVentanaSeleccionarCliente implements KeyListener, MouseL
 		
 		clientes_filtrados.clear();
 		
-		for (ClienteDTO cliente : clientes_en_tabla) 
+		for (ClienteDTO cliente : GestorClientes.getInstance().readAll())
 		{
 			String getNombre = cliente.getNombre().toUpperCase()+
 							   cliente.getApellido().toUpperCase()+
