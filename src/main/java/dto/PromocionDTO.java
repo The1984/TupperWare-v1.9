@@ -6,7 +6,7 @@ public class PromocionDTO
 {
 
 	private int idPromocion;
-	private String titulo;
+	private String nombre;
 	private String descripcion;
 	private List<ProductoDTO> productos;
 	private CampañaDTO campaña;
@@ -21,12 +21,14 @@ public class PromocionDTO
 		this.idPromocion = idPromocion;
 	}
 	
-	public String getTitulo() {
-		return titulo;
+	public String getNombre() 
+	{
+		return nombre;
 	}
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+	public void setNombre(String nombre) 
+	{
+		this.nombre = nombre;
 	}
 	
 	public String getDescripcion() 

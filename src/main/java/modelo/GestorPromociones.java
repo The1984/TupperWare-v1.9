@@ -54,9 +54,14 @@ public class GestorPromociones
 		return this.promocionDaoSQL.readForId(idPromocion);
 	}
 	
-	public PromocionDTO readForCampañaTitulo(int idCampaña, String titulo)
+	public PromocionDTO readForCampañaNombre(int idCampaña, String nombre)
 	{
-		return this.promocionDaoSQL.readForCampañaTitulo(idCampaña, titulo);
+		return this.promocionDaoSQL.readForCampañaNombre(idCampaña, nombre);
+	}
+	
+	public int idUltimoInsert()
+	{
+		return this.promocionDaoSQL.idUltimoInsert();
 	}
 	
 	public void insert(PromocionProductoDTO promocionProducto)
