@@ -114,4 +114,5 @@ public class VentanaSeleccionarCliente
 	{
 		frame.dispose();
 	}
+	
 }

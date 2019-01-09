@@ -106,7 +106,7 @@ public class ControladorPanelGestionClientes implements KeyListener, Observador
 		contro.initialize();
 	}
 	
-	public void eliminarCliente()
+	private void eliminarCliente()
 	{
 		if(this.panelCliente.getTablaCliente().getSelectedRow()==-1)
 		{

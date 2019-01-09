@@ -109,7 +109,9 @@ public class ControladorPanelGestionCampañas implements MouseListener, Observado
 	
 	public void premiosABM()
 	{
-		
+		CampañaDTO campañaSelect = this.campañas_en_tabla.get(this.panelCampaña.getTablaCampaña().getSelectedRow());
+		ControladorVentanaPremiosABM contro = new ControladorVentanaPremiosABM( campañaSelect );
+		contro.initialize();
 	}
 	
 	@Override
