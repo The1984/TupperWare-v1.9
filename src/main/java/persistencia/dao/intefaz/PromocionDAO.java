@@ -18,6 +18,8 @@ public interface PromocionDAO
 	
 	public PromocionDTO readForId (int idPromocion);
 
-	public PromocionDTO readForCampañaTitulo (int idCampaña, String titulo);
+	public PromocionDTO readForCampañaNombre (int idCampaña, String titulo);
+	
+	public int idUltimoInsert();
 	
 }

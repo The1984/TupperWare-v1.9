@@ -15,12 +15,13 @@ public class PromocionDAOMYSQL implements PromocionDAO
 {
 	
 	private static PromocionDAOMYSQL instance;
-	private static final String insert = "INSERT INTO promocion (titulo, descripcion, idCampaña) VALUES(?, ?, ?)";
-	private static final String update = "UPDATE promocion SET titulo=?, descripcion=?, idCampaña=? WHERE idPromocion=?";
+	private static final String insert = "INSERT INTO promocion (nombre, descripcion, idCampaña) VALUES(?, ?, ?)";
+	private static final String update = "UPDATE promocion SET nombre=?, descripcion=? WHERE idPromocion=?";
 	private static final String delete = "DELETE FROM promocion WHERE idPromocion=?";
 	private static final String readAll = "SELECT * FROM promocion WHERE idCampaña=?";
 	private static final String readForId = "SELECT * FROM promocion WHERE idPromocion=?";
-	private static final String readForCampañaTitulo = "SELECT * FROM promocion WHERE idCampaña=? and titulo=?";
+	private static final String readForCampañaTitulo = "SELECT * FROM promocion WHERE idCampaña=? and nombre=?";
+	private static final String idUltimoInsert = "SELECT @@IDENTITY as idUltimo";
 	
 	public static PromocionDAOMYSQL getInstance()
 	{
@@ -37,7 +38,7 @@ public class PromocionDAOMYSQL implements PromocionDAO
 		try 
 		{	
 			statement = conexion.getSQLConexion().prepareStatement(insert);
-			statement.setString(1, promocion.getTitulo());
+			statement.setString(1, promocion.getNombre());
 			statement.setString(2, promocion.getDescripcion());
 			statement.setInt(3, promocion.getCampaña().getIdCampaña());
 			if(statement.executeUpdate() > 0) { return true; }
@@ -57,8 +58,9 @@ public class PromocionDAOMYSQL implements PromocionDAO
 		try 
 		{
 			statement = conexion.getSQLConexion().prepareStatement(update);
-			statement.setString(1, promocion.getTitulo());
+			statement.setString(1, promocion.getNombre());
 			statement.setString(2, promocion.getDescripcion());
+			statement.setInt(3, promocion.getIdPromocion());
 			if(statement.executeUpdate() > 0)
 				return true;
 		} 
@@ -106,7 +108,7 @@ public class PromocionDAOMYSQL implements PromocionDAO
 			{
 				PromocionDTO promocion = new PromocionDTO();
 				promocion.setIdPromocion(resultSet.getInt("idPromocion"));
-				promocion.setTitulo(resultSet.getString("titulo"));
+				promocion.setNombre(resultSet.getString("nombre"));
 				promocion.setDescripcion(resultSet.getString("descripcion"));
 				promocion.setCampaña(CampañaDAOMYSQL.getInstance().readForId(resultSet.getInt("idCampaña")));
 				promocion.setProductos(PromocionProductoDAOMYSQL.getInstance().readProductos(resultSet.getInt("idPromocion")));
@@ -135,7 +137,7 @@ public class PromocionDAOMYSQL implements PromocionDAO
 			while(resultSet.next())
 			{
 				promocion.setIdPromocion(resultSet.getInt("idPromocion"));
-				promocion.setTitulo(resultSet.getString("titulo"));
+				promocion.setNombre(resultSet.getString("nombre"));
 				promocion.setDescripcion(resultSet.getString("descripcion"));
 				promocion.setCampaña(CampañaDAOMYSQL.getInstance().readForId(resultSet.getInt("idCampaña")));
 				promocion.setProductos(PromocionProductoDAOMYSQL.getInstance().readProductos(resultSet.getInt("idPromocion")));
@@ -149,7 +151,7 @@ public class PromocionDAOMYSQL implements PromocionDAO
 	}
 
 	@Override
-	public PromocionDTO readForCampañaTitulo(int idCampaña, String titulo) 
+	public PromocionDTO readForCampañaNombre(int idCampaña, String nombre) 
 	{
 		PreparedStatement statement;
 		ResultSet resultSet;
@@ -159,12 +161,12 @@ public class PromocionDAOMYSQL implements PromocionDAO
 		{
 			statement = conexion.getSQLConexion().prepareStatement(readForCampañaTitulo);
 			statement.setInt(1, idCampaña);
-			statement.setString(2, titulo);			
+			statement.setString(2, nombre);			
 			resultSet = statement.executeQuery();
 			while(resultSet.next())
 			{
 				promocion.setIdPromocion(resultSet.getInt("idPromocion"));
-				promocion.setTitulo(resultSet.getString("titulo"));
+				promocion.setNombre(resultSet.getString("nombre"));
 				promocion.setDescripcion(resultSet.getString("descripcion"));
 				promocion.setCampaña(CampañaDAOMYSQL.getInstance().readForId(resultSet.getInt("idCampaña")));
 				promocion.setProductos(PromocionProductoDAOMYSQL.getInstance().readProductos(resultSet.getInt("idPromocion")));
@@ -175,6 +177,28 @@ public class PromocionDAOMYSQL implements PromocionDAO
 			e.printStackTrace();
 		}
 		return promocion;
-	}
+	}	
+
+	@Override
+	public int idUltimoInsert() 
+	{
+		PreparedStatement statement;
+		ResultSet resultSet;
+		Conexion conexion = Conexion.getConexion();
+		try 
+		{
+			statement = conexion.getSQLConexion().prepareStatement(idUltimoInsert);
+			resultSet = statement.executeQuery();
+			while(resultSet.next())
+			{
+			    return resultSet.getInt("idUltimo");
+			}	
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return 0;
+	}	
 	
 }

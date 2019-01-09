@@ -167,4 +167,5 @@ public class PanelGestionClientes extends JPanel
 	{
 		return btnEliminar;
 	}
+	
 }

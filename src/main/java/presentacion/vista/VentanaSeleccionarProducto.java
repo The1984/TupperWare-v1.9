@@ -16,21 +16,21 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 
-public class VentanaSeleccionarCliente
+public class VentanaSeleccionarProducto
 {
 
 	private JDialog frame;
 	private JTextField txtFiltro;
 	
-	private DefaultTableModel modelCliente;
-	private String[] nombreColumnasCliente = { "Nombre","Apellido","Celular","E-mail"};
-	private JTable tablaCliente;
+	private DefaultTableModel modelProducto;
+	private String[] nombreColumnasProducto = { "Codigo","Nombre","Tipo"};
+	private JTable tablaProducto;
 	private JLabel lblLupa;
 		
-	public VentanaSeleccionarCliente() 
+	public VentanaSeleccionarProducto() 
 	{
 		frame = new JDialog();
-		frame.setTitle("Seleccionar Cliente");
+		frame.setTitle("Seleccionar Producto");
 		frame.setBounds(100, 100, 353, 290);
 		frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		frame.setModal(true);
@@ -51,11 +51,11 @@ public class VentanaSeleccionarCliente
 		frame.getContentPane().add(txtFiltro);
 		txtFiltro.setColumns(10);
 		
-		JScrollPane scrollPane_cliente = new JScrollPane();
-		scrollPane_cliente.setBounds(10, 42, 317, 198);
-		frame.getContentPane().add(scrollPane_cliente);
+		JScrollPane scrollPane_producto = new JScrollPane();
+		scrollPane_producto.setBounds(10, 42, 317, 198);
+		frame.getContentPane().add(scrollPane_producto);
 		
-		modelCliente = new DefaultTableModel(null, nombreColumnasCliente) 
+		modelProducto = new DefaultTableModel(null, nombreColumnasProducto) 
 		{
 			private static final long serialVersionUID = 1L;	
 			public boolean isCellEditable(int row, int column) 
@@ -64,40 +64,40 @@ public class VentanaSeleccionarCliente
 			}
 		};
 	
-		tablaCliente = new JTable(modelCliente);
-		scrollPane_cliente.setViewportView(tablaCliente);
+		tablaProducto = new JTable(modelProducto);
+		scrollPane_producto.setViewportView(tablaProducto);
 		
 		frame.setLocationRelativeTo(null);
 	}
 
-	public DefaultTableModel getModelCliente() 
+	public DefaultTableModel getModelProducto() 
 	{
-		return modelCliente;
+		return modelProducto;
 	}
 
-	public void setModelCliente(DefaultTableModel modelCliente) 
+	public void setModelProducto(DefaultTableModel modelProducto) 
 	{
-		this.modelCliente = modelCliente;
+		this.modelProducto = modelProducto;
 	}
 
-	public String[] getNombreColumnasCliente() 
+	public String[] getNombreColumnasProducto()
 	{
-		return nombreColumnasCliente;
+		return nombreColumnasProducto;
 	}
 
-	public void setNombreColumnasCliente(String[] nombreColumnasCliente) 
+	public void setNombreColumnasProducto(String[] nombreColumnasProducto) 
 	{
-		this.nombreColumnasCliente = nombreColumnasCliente;
+		this.nombreColumnasProducto = nombreColumnasProducto;
 	}
 
-	public JTable getTablaCliente() 
+	public JTable getTablaProducto() 
 	{
-		return tablaCliente;
+		return tablaProducto;
 	}
 
-	public void setTablaCliente(JTable tablaCliente) 
+	public void setTablaProducto(JTable tablaProducto) 
 	{
-		this.tablaCliente = tablaCliente;
+		this.tablaProducto = tablaProducto;
 	}
 
 	public JTextField getTxtFiltro() 
