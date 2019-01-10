@@ -113,6 +113,7 @@ public class CampañaDAOMYSQL implements CampañaDAO
 				campaña.setCierre(resultSet.getDate("cierre"));
 				campaña.setCompras(CompraDAOMYSQL.getInstance().readForIdCampaña(resultSet.getInt("idCampaña")));
 				campaña.setPremios(PremioDAOMYSQL.getInstance().readForIdCampaña(resultSet.getInt("idCampaña")));
+				campaña.setPromociones(PromocionDAOMYSQL.getInstance().readForCampaña(campaña));
 				campañas.add(campaña);
 			}
 		} 
@@ -143,6 +144,7 @@ public class CampañaDAOMYSQL implements CampañaDAO
 				campaña.setCierre(resultSet.getDate("cierre"));
 				campaña.setCompras(null);
 				campaña.setPremios(PremioDAOMYSQL.getInstance().readForIdCampaña(resultSet.getInt("idCampaña")));
+				campaña.setPromociones(PromocionDAOMYSQL.getInstance().readForCampaña(campaña));
 			}	
 		} 
 		catch (SQLException e) 

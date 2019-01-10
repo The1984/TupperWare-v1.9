@@ -34,7 +34,7 @@ public class CompraPromocionProductoDAOMYSQL implements CompraPromocionProductoD
 		try 
 		{	
 			statement = conexion.getSQLConexion().prepareStatement(insert);
-			statement.setInt(1, compraPromocionProducto.getIdCompraPromocionProducto());
+			statement.setInt(1, compraPromocionProducto.getIdCompraPromocion());
 			statement.setInt(2, compraPromocionProducto.getIdProducto());
 			if(statement.executeUpdate() > 0) { return true; }
 		} 

@@ -29,7 +29,7 @@ public class VentanaEditarPromocion
 	{
 		frame = new JDialog();
 		frame.setTitle("Editar Promocion");
-		frame.setSize(281, 373);
+		frame.setSize(281, 360);
 		frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		frame.setModal(true);
 		frame.getContentPane().setLayout(null);
@@ -76,15 +76,15 @@ public class VentanaEditarPromocion
 	    scrollPaneProductos.setViewportView(tablaProducto);
 	    
 	    btnAgregar = new JButton("Agregar");
-	    btnAgregar.setBounds(23, 263, 110, 23);
+	    btnAgregar.setBounds(23, 250, 110, 23);
 	    frame.getContentPane().add(btnAgregar);
 	    
 	    btnEliminar = new JButton("Eliminar");
-	    btnEliminar.setBounds(134, 263, 110, 23);
+	    btnEliminar.setBounds(134, 250, 110, 23);
 	    frame.getContentPane().add(btnEliminar);
 
 		btnAceptar = new JButton("Aceptar");
-		btnAceptar.setBounds(23, 300, 221, 23);
+		btnAceptar.setBounds(23, 287, 221, 23);
 		frame.getContentPane().add(btnAceptar);
 	}
 

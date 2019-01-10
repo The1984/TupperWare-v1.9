@@ -12,6 +12,7 @@ public class CampañaDTO
 	private Date cierre;
 	private List<CompraDTO> compras;
 	private List<PremioDTO> premios;
+	private List<PromocionDTO> promociones;
 
 	public int getIdCampaña() 
 	{
@@ -73,4 +74,14 @@ public class CampañaDTO
 		this.premios = premios;
 	}
 
+	public List<PromocionDTO> getPromociones() 
+	{
+		return promociones;
+	}
+
+	public void setPromociones(List<PromocionDTO> promociones) 
+	{
+		this.promociones = promociones;
+	}
+	
 }

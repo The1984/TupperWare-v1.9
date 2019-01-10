@@ -5,8 +5,9 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import dto.CampañaDTO;
+import dto.CampaÃ±aDTO;
 import dto.CompraDTO;
+import dto.ProductoDTO;
 import observer.Observador;
 import presentacion.vista.PanelGestionCompras;
 
@@ -14,14 +15,14 @@ public class ControladorPanelGestionCompras implements KeyListener, Observador
 {
 
 	private List<CompraDTO> compras_filtradas;
-	private CampañaDTO campañaSelect;
+	private CampaÃ±aDTO campaÃ±aSelect;
 	private PanelGestionCompras panelCompras;
 
-	public ControladorPanelGestionCompras(PanelGestionCompras panel, CampañaDTO campaña)
+	public ControladorPanelGestionCompras(PanelGestionCompras panel, CampaÃ±aDTO campaÃ±a)
 	{
-		this.campañaSelect = campaña;
+		this.campaÃ±aSelect = campaÃ±a;
 		this.panelCompras = panel;
-		this.panelCompras.getLblCampaña().setText("Campaña:  "+this.campañaSelect.getAño()+" - N°"+this.campañaSelect.getNumero());
+		this.panelCompras.getLblCampaÃ±a().setText("CampaÃ±a:  "+this.campaÃ±aSelect.getAÃ±o()+" - NÂ°"+this.campaÃ±aSelect.getNumero());
 		this.compras_filtradas = new ArrayList<CompraDTO>();
 		this.panelCompras.getTextFiltro().addKeyListener(this);
 		this.panelCompras.getBtnEditar().addActionListener(e -> this.editarCompra());
@@ -38,11 +39,11 @@ public class ControladorPanelGestionCompras implements KeyListener, Observador
 	{
 		reiniciarTabla();
 		
-		for (CompraDTO compra : this.campañaSelect.getCompras())
+		for (CompraDTO compra : this.campaÃ±aSelect.getCompras())
 		{
 			Object[] fila = {
 								compra.getCliente().getNombre()+" "+compra.getCliente().getApellido(),
-								compra.getProducto().getNombre(),
+								this.listarProductos(compra),
 								compra.getUnidades(),
 								compra.getPrecio(),
 								(compra.getPrecio()*compra.getUnidades())-compra.getMontoPagado(),
@@ -53,6 +54,31 @@ public class ControladorPanelGestionCompras implements KeyListener, Observador
 		}
 	}
 
+	private String listarProductos(CompraDTO compra)
+	{
+		String list = "";
+		if(compra.getProducto().getNombre()!=null)
+		{
+			list = list + compra.getProducto().getNombre();
+		}
+		if(compra.getCompraPromocion().getProductos()!=null)
+		{
+			for(ProductoDTO producto : compra.getCompraPromocion().getProductos())
+			{
+				list = list + producto.getNombre();
+				if(!producto.equals(compra.getCompraPromocion().getProductos().get(compra.getCompraPromocion().getProductos().size()-1)))
+				{
+					list = list + " / ";
+				}
+				else
+				{
+					list = list + "  - (â™¦)";
+				}
+			}
+		}
+		return list;
+	}
+	
 	private void reiniciarTabla() 
 	{
 		this.panelCompras.getModelCompra().setRowCount(0); // Para vaciar la tabla
@@ -66,10 +92,10 @@ public class ControladorPanelGestionCompras implements KeyListener, Observador
 		
 		this.compras_filtradas.clear();
 		
-		for (CompraDTO compra : this.campañaSelect.getCompras()) 
+		for (CompraDTO compra : this.campaÃ±aSelect.getCompras()) 
 		{
 			String getNombre = compra.getCliente().getNombre().toUpperCase()+" "+compra.getCliente().getApellido().toUpperCase()+
-							   compra.getProducto().getNombre().toUpperCase()+
+							   listarProductos(compra).toUpperCase()+
 							   compra.getEstadoDeCompra().getNombre().toUpperCase();
 			if (getNombre.indexOf(cadena.toUpperCase()) != -1) 
 			{
@@ -77,7 +103,7 @@ public class ControladorPanelGestionCompras implements KeyListener, Observador
 				Object[] fila = 
 					{ 
 						compra.getCliente().getNombre()+" "+compra.getCliente().getApellido(),
-						compra.getProducto().getNombre(),
+						this.listarProductos(compra),
 						compra.getUnidades(),
 						compra.getPrecio(),
 						(compra.getPrecio()*compra.getUnidades())-compra.getMontoPagado(),

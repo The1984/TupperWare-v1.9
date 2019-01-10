@@ -140,6 +140,7 @@ public class CompraDAOMYSQL implements CompraDAO
 				compra.setCampaña(CampañaDAOMYSQL.getInstance().readForId(resultSet.getInt("idCompaña")));
 				compra.setEstadoDeCompra(EstadoDeCompraDAOMYSQL.getInstance().readForId(resultSet.getInt("idEstadoDeCompra")));
 				compra.setProducto(ProductoDAOMYSQL.getInstance().readForId(resultSet.getInt("idProducto")));
+				compra.setCompraPromocion(CompraPromocionDAOMYSQL.getInstance().readForId(resultSet.getInt("idCompraPromocion")));
 				compras.add(compra);
 			}
 		} 
@@ -175,6 +176,7 @@ public class CompraDAOMYSQL implements CompraDAO
 				compra.setCampaña(CampañaDAOMYSQL.getInstance().readForId(resultSet.getInt("idCompaña")));
 				compra.setEstadoDeCompra(EstadoDeCompraDAOMYSQL.getInstance().readForId(resultSet.getInt("idEstadoDeCompra")));
 				compra.setProducto(ProductoDAOMYSQL.getInstance().readForId(resultSet.getInt("idProducto")));
+				compra.setCompraPromocion(CompraPromocionDAOMYSQL.getInstance().readForId(resultSet.getInt("idCompraPromocion")));
 				return compra;
 			}	
 		} 
@@ -210,6 +212,7 @@ public class CompraDAOMYSQL implements CompraDAO
 				compra.setCampaña(CampañaDAOMYSQL.getInstance().readForId(resultSet.getInt("idCampaña")));
 				compra.setEstadoDeCompra(EstadoDeCompraDAOMYSQL.getInstance().readForId(resultSet.getInt("idEstadoDeCompra")));
 				compra.setProducto(ProductoDAOMYSQL.getInstance().readForId(resultSet.getInt("idProducto")));
+				compra.setCompraPromocion(CompraPromocionDAOMYSQL.getInstance().readForId(resultSet.getInt("idCompraPromocion")));
 				compraDeCampaña.add(compra);
 			}	
 		} 
@@ -245,6 +248,7 @@ public class CompraDAOMYSQL implements CompraDAO
 				compra.setCampaña(CampañaDAOMYSQL.getInstance().readForId(resultSet.getInt("idCompaña")));
 				compra.setEstadoDeCompra(EstadoDeCompraDAOMYSQL.getInstance().readForId(resultSet.getInt("idEstadoDeCompra")));
 				compra.setProducto(ProductoDAOMYSQL.getInstance().readForId(resultSet.getInt("idProducto")));
+				compra.setCompraPromocion(CompraPromocionDAOMYSQL.getInstance().readForId(resultSet.getInt("idCompraPromocion")));
 				compraDeCliente.add(compra);
 			}	
 		} 

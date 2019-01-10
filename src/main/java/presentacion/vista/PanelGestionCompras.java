@@ -108,7 +108,6 @@ public class PanelGestionCompras extends JPanel
 		btnCrearReporte.setBorder(borderButton);
 		panel.add(btnCrearReporte);
 		
-		
 		modelCompra = new DefaultTableModel(null, nombreColumnasCompra) 
 			{
 				private static final long serialVersionUID = 1L;	
