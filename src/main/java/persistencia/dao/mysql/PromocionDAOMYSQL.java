@@ -110,7 +110,7 @@ public class PromocionDAOMYSQL implements PromocionDAO
 				promocion.setIdPromocion(resultSet.getInt("idPromocion"));
 				promocion.setNombre(resultSet.getString("nombre"));
 				promocion.setDescripcion(resultSet.getString("descripcion"));
-				promocion.setCampaña(CampañaDAOMYSQL.getInstance().readForId(resultSet.getInt("idCampaña")));
+				promocion.setCampaña(null);
 				promocion.setProductos(PromocionProductoDAOMYSQL.getInstance().readProductos(resultSet.getInt("idPromocion")));
 				promociones.add(promocion);
 			}

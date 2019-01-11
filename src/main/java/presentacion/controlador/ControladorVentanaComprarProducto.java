@@ -40,7 +40,7 @@ public class ControladorVentanaComprarProducto
 	
 	public void seleccionarCliente()
 	{
-		ControladorVentanaSeleccionarCliente contro = new ControladorVentanaSeleccionarCliente(this);
+		ControladorVentanaSeleccionarClienteCompraProducto contro = new ControladorVentanaSeleccionarClienteCompraProducto(this);
 		contro.initialize();
 	}
 	
@@ -73,7 +73,8 @@ public class ControladorVentanaComprarProducto
 		newCompra.setPrecio(Integer.parseInt(this.ventana.getTxtPrecio().getText()));
 		newCompra.setMontoPagado(Integer.parseInt(this.ventana.getTxtPago().getText()));
 		newCompra.setUnidades(Integer.parseInt(this.ventana.getSpinnerUnidades().getValue().toString()));
-		if(Integer.parseInt(this.ventana.getTxtPrecio().getText())==Integer.parseInt(this.ventana.getTxtPago().getText()))
+		if(Integer.parseInt(this.ventana.getTxtPrecio().getText())*Integer.parseInt(this.ventana.getSpinnerUnidades().getValue().toString())
+				==Integer.parseInt(this.ventana.getTxtPago().getText()))
 		{
 			newCompra.setEstadoDeCompra(GestorEstadoDeCompra.getInstance().readForId(1));
 		}

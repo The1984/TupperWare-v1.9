@@ -11,14 +11,14 @@ import dto.ClienteDTO;
 import modelo.GestorClientes;
 import presentacion.vista.VentanaSeleccionarCliente;
 
-public class ControladorVentanaSeleccionarCliente implements KeyListener, MouseListener
+public class ControladorVentanaSeleccionarClienteCompraPromocion implements KeyListener, MouseListener
 {
 	
-	private ControladorVentanaComprarProducto controlador;
+	private ControladorVentanaComprarPromocion controlador;
 	private VentanaSeleccionarCliente ventana;
 	private List<ClienteDTO> clientes_filtrados;
 	
-	public ControladorVentanaSeleccionarCliente(ControladorVentanaComprarProducto control)
+	public ControladorVentanaSeleccionarClienteCompraPromocion(ControladorVentanaComprarPromocion control)
 	{
 		this.ventana = new VentanaSeleccionarCliente();
 		this.controlador = control;
