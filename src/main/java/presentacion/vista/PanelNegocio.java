@@ -143,19 +143,9 @@ public class PanelNegocio extends JPanel
 		return tablaProducto;
 	}
 
-	public void setTablaProducto(JTable tablaProducto) 
-	{
-		this.tablaProducto = tablaProducto;
-	}
-
 	public DefaultTableModel getModelProducto() 
 	{
 		return modelProducto;
-	}
-
-	public void setModelProducto(DefaultTableModel modelProducto) 
-	{
-		this.modelProducto = modelProducto;
 	}
 
 	public String[] getNombreColumnasProducto() 
@@ -163,19 +153,9 @@ public class PanelNegocio extends JPanel
 		return nombreColumnasProducto;
 	}
 
-	public void setNombreColumnasProducto(String[] nombreColumnasProducto) 
-	{
-		this.nombreColumnasProducto = nombreColumnasProducto;
-	}
-
 	public JTable getTablaPromocion() 
 	{
 		return tablaPromocion;
-	}
-
-	public void setTablaPromocion(JTable tablaPromocion) 
-	{
-		this.tablaPromocion = tablaPromocion;
 	}
 
 	public DefaultTableModel getModelPromocion() 
@@ -183,19 +163,9 @@ public class PanelNegocio extends JPanel
 		return modelPromocion;
 	}
 
-	public void setModelPromocion(DefaultTableModel modelPromocion) 
-	{
-		this.modelPromocion = modelPromocion;
-	}
-
 	public String[] getNombreColumnasPromocion() 
 	{
 		return nombreColumnasPromocion;
-	}
-
-	public void setNombreColumnasPromocion(String[] nombreColumnasPromocion) 
-	{
-		this.nombreColumnasPromocion = nombreColumnasPromocion;
 	}
 	
 	public JButton getBtnAgregarProducto() 

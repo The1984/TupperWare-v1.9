@@ -34,7 +34,7 @@ public class VentanaVerProducto
 		btnComprar.setBounds(23, 348, 221, 23);
 		frame.getContentPane().add(btnComprar);
 		
-		lblImagen = new JLabel("");
+		lblImagen = new JLabel();
 		Border border = BorderFactory.createLineBorder(Color.BLUE, 3);
 		lblImagen.setBorder(border);
 		lblImagen.setBounds(23, 109, 221, 221);

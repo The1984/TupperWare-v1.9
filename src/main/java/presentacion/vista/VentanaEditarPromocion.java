@@ -45,7 +45,6 @@ public class VentanaEditarPromocion
 		lblNombre.setBounds(23, 30, 91, 14);
 		frame.getContentPane().add(lblNombre);
 		
-		
 		JScrollPane scrollPaneDescripcion = new JScrollPane();
 	    scrollPaneDescripcion.setBounds(23, 69, 221, 65);
 	    frame.getContentPane().add(scrollPaneDescripcion);
@@ -61,7 +60,6 @@ public class VentanaEditarPromocion
 	    scrollPaneProductos.setBounds(23, 145, 221, 107);
 	    scrollPaneProductos.setBorder(new TitledBorder(null, "Productos", TitledBorder.CENTER, TitledBorder.TOP, null, null));
 	    frame.getContentPane().add(scrollPaneProductos);
-	    
 
 		modelProducto = new DefaultTableModel(null, nombreColumnasProducto) 
 			{

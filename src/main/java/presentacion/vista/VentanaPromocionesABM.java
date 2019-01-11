@@ -66,29 +66,14 @@ public class VentanaPromocionesABM
 		return modelPromocion;
 	}
 
-	public void setModelPromocion(DefaultTableModel modelPromocion) 
-	{
-		this.modelPromocion = modelPromocion;
-	}
-
 	public String[] getNombreColumnasPromocion()
 	{
 		return nombreColumnasPromocion;
 	}
 
-	public void setNombreColumnasPromocion(String[] nombreColumnasPromocion) 
-	{
-		this.nombreColumnasPromocion = nombreColumnasPromocion;
-	}
-
 	public JTable getTablaPromocion()
 	{
 		return tablaPromocion;
-	}
-
-	public void setTablaPromocion(JTable tablaPromocion) 
-	{
-		this.tablaPromocion = tablaPromocion;
 	}
 
 	public JButton getBtnAgregar() 

@@ -21,7 +21,6 @@ public class VentanaSeleccionarProducto
 
 	private JDialog frame;
 	private JTextField txtFiltro;
-	
 	private DefaultTableModel modelProducto;
 	private String[] nombreColumnasProducto = { "Codigo","Nombre","Tipo"};
 	private JTable tablaProducto;
@@ -75,29 +74,14 @@ public class VentanaSeleccionarProducto
 		return modelProducto;
 	}
 
-	public void setModelProducto(DefaultTableModel modelProducto) 
-	{
-		this.modelProducto = modelProducto;
-	}
-
 	public String[] getNombreColumnasProducto()
 	{
 		return nombreColumnasProducto;
 	}
 
-	public void setNombreColumnasProducto(String[] nombreColumnasProducto) 
-	{
-		this.nombreColumnasProducto = nombreColumnasProducto;
-	}
-
 	public JTable getTablaProducto() 
 	{
 		return tablaProducto;
-	}
-
-	public void setTablaProducto(JTable tablaProducto) 
-	{
-		this.tablaProducto = tablaProducto;
 	}
 
 	public JTextField getTxtFiltro() 

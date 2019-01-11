@@ -18,7 +18,6 @@ public class VentanaComprarPromocion
 {
 
 	private JDialog frame;
-	private JTextField txtNombre;	
 	private JTextArea txtrDescripcion;
 	private JTable tablaProducto;
 	private DefaultTableModel modelProducto;
@@ -35,27 +34,14 @@ public class VentanaComprarPromocion
 	public VentanaComprarPromocion() 
 	{
 		frame = new JDialog();
-		frame.setTitle("Comprar Promocion");
-		frame.setSize(281, 592);
+		frame.setSize(281, 532);
 		frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		frame.setModal(true);
 		frame.getContentPane().setLayout(null);
 		frame.setLocationRelativeTo(null);
 		
-		txtNombre = new JTextField();
-		txtNombre.setEditable(false);
-		txtNombre.setHorizontalAlignment(SwingConstants.CENTER);
-		txtNombre.setBounds(119, 27, 125, 20);
-		frame.getContentPane().add(txtNombre);
-		txtNombre.setColumns(10);
-		
-		JLabel lblNombre = new JLabel("Nombre");
-		lblNombre.setBounds(23, 30, 91, 14);
-		frame.getContentPane().add(lblNombre);
-		
-		
 		JScrollPane scrollPaneDescripcion = new JScrollPane();
-	    scrollPaneDescripcion.setBounds(23, 69, 221, 65);
+	    scrollPaneDescripcion.setBounds(23, 11, 221, 65);
 	    frame.getContentPane().add(scrollPaneDescripcion);
 	    
 	    JLabel lblDescripcion = new JLabel("Descripcion");
@@ -67,7 +53,7 @@ public class VentanaComprarPromocion
 	    scrollPaneDescripcion.setViewportView(txtrDescripcion);
 	    
 	    JScrollPane scrollPaneProductos = new JScrollPane();
-	    scrollPaneProductos.setBounds(23, 145, 221, 107);
+	    scrollPaneProductos.setBounds(23, 87, 221, 107);
 	    scrollPaneProductos.setBorder(new TitledBorder(null, "Productos", TitledBorder.CENTER, TitledBorder.TOP, null, null));
 	    frame.getContentPane().add(scrollPaneProductos);
 	    
@@ -84,74 +70,69 @@ public class VentanaComprarPromocion
 	    scrollPaneProductos.setViewportView(tablaProducto);
 	    
 	    btnEliminar = new JButton("Eliminar");
-	    btnEliminar.setBounds(23, 250, 221, 23);
+	    btnEliminar.setBounds(23, 192, 221, 23);
 	    frame.getContentPane().add(btnEliminar);
 
 		btnComprar = new JButton("Comprar");
-		btnComprar.setBounds(23, 519, 221, 23);
+		btnComprar.setBounds(23, 459, 221, 23);
 		frame.getContentPane().add(btnComprar);
 		
 		JLabel label = new JLabel("Pagina");
-		label.setBounds(23, 346, 84, 14);
+		label.setBounds(23, 288, 84, 14);
 		frame.getContentPane().add(label);
 		
 		textFieldPagina = new JTextField();
 		textFieldPagina.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldPagina.setColumns(10);
-		textFieldPagina.setBounds(108, 343, 136, 20);
+		textFieldPagina.setBounds(108, 285, 136, 20);
 		frame.getContentPane().add(textFieldPagina);
 		
 		textFieldPrecio = new JTextField();
 		textFieldPrecio.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldPrecio.setColumns(10);
-		textFieldPrecio.setBounds(108, 388, 136, 20);
+		textFieldPrecio.setBounds(108, 330, 136, 20);
 		frame.getContentPane().add(textFieldPrecio);
 		
 		JLabel labelPrecio = new JLabel("Precio");
-		labelPrecio.setBounds(23, 391, 84, 14);
+		labelPrecio.setBounds(23, 333, 84, 14);
 		frame.getContentPane().add(labelPrecio);
 		
 		JLabel labelPago = new JLabel("Pag\u00F3");
-		labelPago.setBounds(22, 436, 85, 14);
+		labelPago.setBounds(22, 378, 85, 14);
 		frame.getContentPane().add(labelPago);
 
 		textFieldPago = new JTextField();
 		textFieldPago.setText("0");
 		textFieldPago.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldPago.setColumns(10);
-		textFieldPago.setBounds(108, 433, 136, 20);
+		textFieldPago.setBounds(108, 375, 136, 20);
 		frame.getContentPane().add(textFieldPago);
 		
 		JLabel labelUnidades = new JLabel("Unidades");
-		labelUnidades.setBounds(23, 481, 84, 14);
+		labelUnidades.setBounds(23, 423, 84, 14);
 		frame.getContentPane().add(labelUnidades);
 		
 		spinnerUnidades = new JSpinner();
 		spinnerUnidades.setModel(new SpinnerNumberModel(1, 1, 25, 1));
-		spinnerUnidades.setBounds(108, 478, 136, 20);
+		spinnerUnidades.setBounds(108, 420, 136, 20);
 		frame.getContentPane().add(spinnerUnidades);
 		
 		JLabel labelCliente = new JLabel("Cliente");
-		labelCliente.setBounds(23, 301, 84, 14);
+		labelCliente.setBounds(23, 243, 84, 14);
 		frame.getContentPane().add(labelCliente);
 		
 		textFieldCliente = new JTextField();
 		textFieldCliente.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldCliente.setEditable(false);
 		textFieldCliente.setColumns(10);
-		textFieldCliente.setBounds(108, 298, 107, 20);
+		textFieldCliente.setBounds(108, 240, 107, 20);
 		frame.getContentPane().add(textFieldCliente);
 		
 		BtnSelectCliente = new JButton("...");
-		BtnSelectCliente.setBounds(215, 298, 29, 20);
+		BtnSelectCliente.setBounds(215, 240, 29, 20);
 		frame.getContentPane().add(BtnSelectCliente);
 	}
 
-	public JTextField getTxtNombre() 
-	{
-		return txtNombre;
-	}
-	
 	public JTextArea getTxtrDescripcion() 
 	{
 		return txtrDescripcion;
@@ -216,7 +197,6 @@ public class VentanaComprarPromocion
 	{
 		return frame;
 	}
-
 	
 	public void show() 
 	{

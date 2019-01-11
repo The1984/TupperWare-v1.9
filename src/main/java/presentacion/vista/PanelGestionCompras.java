@@ -132,19 +132,9 @@ public class PanelGestionCompras extends JPanel
 		return tablaCompra;
 	}
 
-	public void setTablaCompra(JTable tablaCompra) 
-	{
-		this.tablaCompra = tablaCompra;
-	}
-
 	public DefaultTableModel getModelCompra() 
 	{
 		return modelCompra;
-	}
-
-	public void setModelCompra(DefaultTableModel modelCompra) 
-	{
-		this.modelCompra = modelCompra;
 	}
 
 	public String[] getNombreColumnasCompra() 
@@ -152,19 +142,9 @@ public class PanelGestionCompras extends JPanel
 		return nombreColumnasCompra;
 	}
 
-	public void setNombreColumnasCompra(String[] nombreColumnasCompra) 
-	{
-		this.nombreColumnasCompra = nombreColumnasCompra;
-	}
-	
 	public JTextField getTextFiltro() 
 	{
 		return textFiltro;
-	}
-
-	public void setTextFiltro(JTextField textFiltro) 
-	{
-		this.textFiltro = textFiltro;
 	}
 
 	public JButton getBtnEditar() 
@@ -181,4 +161,5 @@ public class PanelGestionCompras extends JPanel
 	{
 		return btnCrearReporte;
 	}
+	
 }

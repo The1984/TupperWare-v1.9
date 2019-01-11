@@ -45,7 +45,6 @@ public class VentanaAgregarPromocion
 		lblNombre.setBounds(23, 30, 91, 14);
 		frame.getContentPane().add(lblNombre);
 		
-		
 		JScrollPane scrollPaneDescripcion = new JScrollPane();
 	    scrollPaneDescripcion.setBounds(23, 69, 221, 65);
 	    frame.getContentPane().add(scrollPaneDescripcion);

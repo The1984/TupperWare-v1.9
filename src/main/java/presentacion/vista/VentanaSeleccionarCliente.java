@@ -21,7 +21,6 @@ public class VentanaSeleccionarCliente
 
 	private JDialog frame;
 	private JTextField txtFiltro;
-	
 	private DefaultTableModel modelCliente;
 	private String[] nombreColumnasCliente = { "Nombre","Apellido","Celular","E-mail"};
 	private JTable tablaCliente;
@@ -75,29 +74,14 @@ public class VentanaSeleccionarCliente
 		return modelCliente;
 	}
 
-	public void setModelCliente(DefaultTableModel modelCliente) 
-	{
-		this.modelCliente = modelCliente;
-	}
-
 	public String[] getNombreColumnasCliente() 
 	{
 		return nombreColumnasCliente;
 	}
 
-	public void setNombreColumnasCliente(String[] nombreColumnasCliente) 
-	{
-		this.nombreColumnasCliente = nombreColumnasCliente;
-	}
-
 	public JTable getTablaCliente() 
 	{
 		return tablaCliente;
-	}
-
-	public void setTablaCliente(JTable tablaCliente) 
-	{
-		this.tablaCliente = tablaCliente;
 	}
 
 	public JTextField getTxtFiltro() 

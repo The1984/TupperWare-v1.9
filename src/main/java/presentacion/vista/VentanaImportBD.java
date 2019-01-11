@@ -41,7 +41,6 @@ public class VentanaImportBD
 		btnImport.setForeground(Color.white);
 		frame.getContentPane().add(btnImport);
 	}
-	
 
 	public JTextField getTextField() 
 	{

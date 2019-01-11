@@ -118,39 +118,19 @@ public class PanelGestionClientes extends JPanel
 		return tablaCliente;
 	}
 
-	public void setTablaCliente(JTable tablaCliente) 
-	{
-		this.tablaCliente = tablaCliente;
-	}
-
 	public DefaultTableModel getModelCliente() 
 	{
 		return modelCliente;
-	}
-
-	public void setModelCliente(DefaultTableModel modelCliente) 
-	{
-		this.modelCliente = modelCliente;
 	}
 
 	public String[] getNombreColumnasCliente() 
 	{
 		return nombreColumnasCliente;
 	}
-
-	public void setNombreColumnasCliente(String[] nombreColumnasCliente) 
-	{
-		this.nombreColumnasCliente = nombreColumnasCliente;
-	}
 	
 	public JTextField getTextFiltro() 
 	{
 		return textFiltro;
-	}
-
-	public void setTextFiltro(JTextField textFiltro) 
-	{
-		this.textFiltro = textFiltro;
 	}
 
 	public JButton getBtnAgregar() 

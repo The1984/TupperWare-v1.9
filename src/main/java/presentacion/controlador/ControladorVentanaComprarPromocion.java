@@ -28,7 +28,7 @@ public class ControladorVentanaComprarPromocion
 	{
 		this.ventana = new VentanaComprarPromocion();
 		this.promocion = promo;
-		this.ventana.getTxtNombre().setText(this.promocion.getNombre());
+		this.ventana.getFrame().setTitle(this.promocion.getNombre());
 		this.ventana.getTxtrDescripcion().setText(this.promocion.getDescripcion());
 		this.ventana.getBtnEliminar().addActionListener(e -> this.eliminarProducto());
 		this.ventana.getBtnSelectCliente().addActionListener(e -> this.seleccionarCliente());
@@ -42,7 +42,6 @@ public class ControladorVentanaComprarPromocion
 		this.llenarTabla();
 		this.ventana.show();
 	}
-	
 
 	private void setearListaProductos()
 	{
@@ -51,7 +50,6 @@ public class ControladorVentanaComprarPromocion
 			this.listaDeProductos.add(product);
 		}
 	}
-	
 	
 	public void llenarTabla()
 	{

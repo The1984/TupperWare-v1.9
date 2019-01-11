@@ -101,29 +101,14 @@ public class PanelGestionCampañas extends JPanel
 		return tablaCampaña;
 	}
 
-	public void setTablaCampaña(JTable tablaCampaña) 
-	{
-		this.tablaCampaña = tablaCampaña;
-	}
-
 	public DefaultTableModel getModelCampaña() 
 	{
 		return modelCampaña;
 	}
 
-	public void setModelCampaña(DefaultTableModel modelCampaña) 
-	{
-		this.modelCampaña = modelCampaña;
-	}
-
 	public String[] getNombreColumnasCampaña() 
 	{
 		return nombreColumnasCampaña;
-	}
-
-	public void setNombreColumnasCampaña(String[] nombreColumnasCampaña) 
-	{
-		this.nombreColumnasCampaña = nombreColumnasCampaña;
 	}
 	
 	public JButton getBtnAgregar() 
