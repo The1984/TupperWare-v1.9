@@ -32,7 +32,7 @@ public class PanelNegocio extends JPanel
 	private String[] nombreColumnasProducto = { "Codigo","Nombre","Descripcion","Tipo"};
 	private JTable tablaPromocion;
 	private DefaultTableModel modelPromocion;
-	private String[] nombreColumnasPromocion = { "Nombre","Descripcion","Productos"};
+	private String[] nombreColumnasPromocion = { "Nombre","Descripcion","Productos","Pagina","Precio"};
 	private JTextField textFiltro;
 	private JButton btnAgregarProducto;
 	private JButton btnEditarProducto;

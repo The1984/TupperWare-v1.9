@@ -85,6 +85,8 @@ public class ControladorVentanaAgregarPromocion implements SujetoObservable
 	{	
 		this.newPromocion.setNombre(this.ventana.getTxtNombre().getText());
 		this.newPromocion.setDescripcion(this.ventana.getTxtrDescripcion().getText());
+		this.newPromocion.setPagina(this.ventana.getTxtPagina().getText());
+		this.newPromocion.setPrecio(Integer.parseInt(this.ventana.getTxtPrecio().getText()));
 		this.newPromocion.setCampaña(this.campaña);
 		GestorPromociones.getInstance().insert(newPromocion);
 

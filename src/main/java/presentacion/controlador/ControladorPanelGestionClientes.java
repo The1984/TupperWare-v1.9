@@ -2,6 +2,8 @@ package presentacion.controlador;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +14,7 @@ import modelo.GestorClientes;
 import observer.Observador;
 import presentacion.vista.PanelGestionClientes;
 
-public class ControladorPanelGestionClientes implements KeyListener, Observador
+public class ControladorPanelGestionClientes implements KeyListener, MouseListener, Observador
 {
 
 	private List<ClienteDTO> clientes_filtrados;
@@ -27,6 +29,9 @@ public class ControladorPanelGestionClientes implements KeyListener, Observador
 		this.panelCliente.getBtnAgregar().addActionListener(e -> this.agregarCliente());
 		this.panelCliente.getBtnEditar().addActionListener(e -> this.editarCliente());
 		this.panelCliente.getBtnEliminar().addActionListener(e -> this.eliminarCliente());
+		this.panelCliente.getTablaCliente().addMouseListener(this);
+		this.panelCliente.getBtnEditar().setEnabled(false);
+		this.panelCliente.getBtnEliminar().setEnabled(false);
 	}
 	
 	public void initialize()
@@ -146,6 +151,45 @@ public class ControladorPanelGestionClientes implements KeyListener, Observador
 	public void keyTyped(KeyEvent arg0) 
 	{
 		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) 
+	{
+		if(this.panelCliente.getTablaCliente().getSelectedRow() != -1)
+		{
+			this.panelCliente.getBtnEditar().setEnabled(true);
+			this.panelCliente.getBtnEliminar().setEnabled(true);
+		}
+		else
+		{
+			this.panelCliente.getBtnEditar().setEnabled(false);
+			this.panelCliente.getBtnEliminar().setEnabled(false);
+		}
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) 
+	{
+		// TODO Auto-generated method stub	
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) 
+	{
+		// TODO Auto-generated method stub	
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) 
+	{
+		// TODO Auto-generated method stub	
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) 
+	{
+		// TODO Auto-generated method stub		
 	}
 
 	@Override

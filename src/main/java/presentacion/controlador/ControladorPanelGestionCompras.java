@@ -2,6 +2,8 @@ package presentacion.controlador;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +13,7 @@ import dto.ProductoDTO;
 import observer.Observador;
 import presentacion.vista.PanelGestionCompras;
 
-public class ControladorPanelGestionCompras implements KeyListener, Observador
+public class ControladorPanelGestionCompras implements KeyListener, MouseListener, Observador
 {
 
 	private List<CompraDTO> compras_filtradas;
@@ -27,6 +29,9 @@ public class ControladorPanelGestionCompras implements KeyListener, Observador
 		this.panelCompras.getTextFiltro().addKeyListener(this);
 		this.panelCompras.getBtnEditar().addActionListener(e -> this.editarCompra());
 		this.panelCompras.getBtnEliminar().addActionListener(e -> this.eliminarCompra());
+		this.panelCompras.getTablaCompra().addMouseListener(this);
+		this.panelCompras.getBtnEditar().setEnabled(false);
+		this.panelCompras.getBtnEliminar().setEnabled(false);
 	}
 	
 	public void initialize()
@@ -144,11 +149,50 @@ public class ControladorPanelGestionCompras implements KeyListener, Observador
 	}
 
 	@Override
+	public void mouseClicked(MouseEvent arg0) 
+	{
+		if(this.panelCompras.getTablaCompra().getSelectedRow() != -1)
+		{
+			this.panelCompras.getBtnEditar().setEnabled(true);
+			this.panelCompras.getBtnEliminar().setEnabled(true);
+		}
+		else
+		{
+			this.panelCompras.getBtnEditar().setEnabled(false);
+			this.panelCompras.getBtnEliminar().setEnabled(false);
+		}
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) 
+	{
+		// TODO Auto-generated method stub	
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) 
+	{
+		// TODO Auto-generated method stub	
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) 
+	{
+		// TODO Auto-generated method stub	
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) 
+	{
+		// TODO Auto-generated method stub	
+	}
+	
+	@Override
 	public void update() 
 	{
 		this.llenarTabla();
 		this.panelCompras.getTextFiltro().setText("");
 		this.panelCompras.repaint();
 	}
-	
+
 }

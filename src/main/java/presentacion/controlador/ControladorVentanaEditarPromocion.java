@@ -26,6 +26,8 @@ public class ControladorVentanaEditarPromocion implements SujetoObservable
 		this.promocion = promocion;
 		this.ventana.getTxtNombre().setText(this.promocion.getNombre());
 		this.ventana.getTxtrDescripcion().setText(this.promocion.getDescripcion());
+		this.ventana.getTxtPagina().setText(this.promocion.getPagina());
+		this.ventana.getTxtPrecio().setText(Integer.toString(this.promocion.getPrecio()));
 		this.listProductAntes = new ArrayList<ProductoDTO>();
 		this.listProductDespues = new ArrayList<ProductoDTO>();
 		this.setearListaProductos();
@@ -96,6 +98,8 @@ public class ControladorVentanaEditarPromocion implements SujetoObservable
 	{	
 		this.promocion.setNombre(this.ventana.getTxtNombre().getText());
 		this.promocion.setDescripcion(this.ventana.getTxtrDescripcion().getText());
+		this.promocion.setPagina(this.ventana.getTxtPagina().getText());
+		this.promocion.setPrecio(Integer.parseInt(this.ventana.getTxtPrecio().getText()));
 		GestorPromociones.getInstance().update(promocion);
 		
 		for (ProductoDTO product : this.listProductAntes)
