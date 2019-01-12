@@ -2,6 +2,8 @@ package presentacion.controlador;
 
 import presentacion.vista.VentanaComprarProducto;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.List;
 
 import dto.CampañaDTO;
@@ -12,7 +14,7 @@ import modelo.GestorCampaña;
 import modelo.GestorCompra;
 import modelo.GestorEstadoDeCompra;
 
-public class ControladorVentanaComprarProducto
+public class ControladorVentanaComprarProducto implements MouseListener
 {
 
 	private VentanaComprarProducto ventana;
@@ -26,6 +28,7 @@ public class ControladorVentanaComprarProducto
 		this.setearTextProducto(this.product);
 		this.ventana.getBtnSelectCliente().addActionListener(e -> this.seleccionarCliente());
 		this.ventana.getBtnAceptar().addActionListener(e -> this.comprarProducto());
+		this.ventana.getChckbxPago().addMouseListener(this);
 	}
 	
 	public void initialize()
@@ -85,6 +88,46 @@ public class ControladorVentanaComprarProducto
 		newCompra.setCompraPromocion(null);
 		GestorCompra.getInstance().insert(newCompra);
 		this.ventana.close();
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent arg0) 
+	{
+		if(this.ventana.getChckbxPago().isSelected())
+		{
+			int montoTotal = Integer.parseInt(this.ventana.getTxtPrecio().getText()) * Integer.parseInt(this.ventana.getSpinnerUnidades().getValue().toString());
+			this.ventana.getTxtPago().setText(String.valueOf(montoTotal));
+			this.ventana.getTxtPago().setEnabled(false);
+		}
+		else
+		{
+			this.ventana.getTxtPago().setText("0");
+			this.ventana.getTxtPago().setEnabled(true);
+		}	
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) 
+	{
+		// TODO Auto-generated method stub	
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) 
+	{
+		// TODO Auto-generated method stub	
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) 
+	{
+		// TODO Auto-generated method stub	
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) 
+	{
+		// TODO Auto-generated method stub	
 	}
 	
 }

@@ -2,6 +2,8 @@ package presentacion.controlador;
 
 import presentacion.vista.VentanaComprarPromocion;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +18,7 @@ import modelo.GestorCampaña;
 import modelo.GestorCompra;
 import modelo.GestorEstadoDeCompra;
 
-public class ControladorVentanaComprarPromocion
+public class ControladorVentanaComprarPromocion implements MouseListener
 {
 
 	private VentanaComprarPromocion ventana;
@@ -30,10 +32,15 @@ public class ControladorVentanaComprarPromocion
 		this.promocion = promo;
 		this.ventana.getFrame().setTitle(this.promocion.getNombre());
 		this.ventana.getTxtrDescripcion().setText(this.promocion.getDescripcion());
+		this.ventana.getTxtPagina().setText(this.promocion.getPagina());
+		this.ventana.getTxtPrecio().setText(Integer.toString(this.promocion.getPrecio()));
 		this.ventana.getBtnEliminar().addActionListener(e -> this.eliminarProducto());
 		this.ventana.getBtnSelectCliente().addActionListener(e -> this.seleccionarCliente());
 		this.ventana.getBtnComprar().addActionListener(e -> this.comprarPromocion());
+		this.ventana.getCheckbxPago().addMouseListener(this);
 		this.listaDeProductos = new ArrayList<ProductoDTO>();
+		this.ventana.getTxtPagina().setEnabled(false);
+		this.ventana.getTxtPrecio().setEnabled(false);
 		this.setearListaProductos();
 	}
 	
@@ -94,7 +101,7 @@ public class ControladorVentanaComprarPromocion
 	
 	public void setearTextCliente()
 	{
-		this.ventana.getTextFieldCliente().setText(this.client.getNombre()+" "+this.client.getApellido());
+		this.ventana.getTxtCliente().setText(this.client.getNombre()+" "+this.client.getApellido());
 	}
 	
 	public void comprarPromocion()
@@ -110,13 +117,13 @@ public class ControladorVentanaComprarPromocion
 		CompraDTO newCompra = new CompraDTO();
 		newCompra.setCampaña(campañaMasReciente);
 		newCompra.setCliente(this.client);
-		newCompra.setPagina(this.ventana.getTextFieldPagina().getText());
+		newCompra.setPagina(this.ventana.getTxtPagina().getText());
 		newCompra.setPorcentajeDeGanancia(this.listaDeProductos.get(0).getTipoDeProducto().getPorcentajeDeGanancia());
-		newCompra.setPrecio(Integer.parseInt(this.ventana.getTextFieldPrecio().getText()));
-		newCompra.setMontoPagado(Integer.parseInt(this.ventana.getTextFieldPago().getText()));
+		newCompra.setPrecio(Integer.parseInt(this.ventana.getTxtPrecio().getText()));
+		newCompra.setMontoPagado(Integer.parseInt(this.ventana.getTxtPago().getText()));
 		newCompra.setUnidades(Integer.parseInt(this.ventana.getSpinnerUnidades().getValue().toString()));
-		if(Integer.parseInt(this.ventana.getTextFieldPrecio().getText())*Integer.parseInt(this.ventana.getSpinnerUnidades().getValue().toString())
-							==Integer.parseInt(this.ventana.getTextFieldPago().getText()))
+		if(Integer.parseInt(this.ventana.getTxtPrecio().getText())*Integer.parseInt(this.ventana.getSpinnerUnidades().getValue().toString())
+							==Integer.parseInt(this.ventana.getTxtPago().getText()))
 		{
 			newCompra.setEstadoDeCompra(GestorEstadoDeCompra.getInstance().readForId(1));
 		}
@@ -144,6 +151,46 @@ public class ControladorVentanaComprarPromocion
 		GestorCompra.getInstance().insert(newCompra);
 		
 		this.ventana.close();
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent arg0) 
+	{
+		if(this.ventana.getCheckbxPago().isSelected())
+		{
+			int montoTotal = Integer.parseInt(this.ventana.getTxtPrecio().getText()) * Integer.parseInt(this.ventana.getSpinnerUnidades().getValue().toString());
+			this.ventana.getTxtPago().setText(String.valueOf(montoTotal));
+			this.ventana.getTxtPago().setEnabled(false);
+		}
+		else
+		{
+			this.ventana.getTxtPago().setText("0");
+			this.ventana.getTxtPago().setEnabled(true);
+		}	
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) 
+	{
+		// TODO Auto-generated method stub	
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) 
+	{
+		// TODO Auto-generated method stub	
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) 
+	{
+		// TODO Auto-generated method stub	
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) 
+	{
+		// TODO Auto-generated method stub	
 	}
 	
 }

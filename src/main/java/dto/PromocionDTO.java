@@ -8,6 +8,8 @@ public class PromocionDTO
 	private int idPromocion;
 	private String nombre;
 	private String descripcion;
+	private String pagina;
+	private int precio;
 	private List<ProductoDTO> productos;
 	private CampañaDTO campaña;
 
@@ -41,6 +43,26 @@ public class PromocionDTO
 		this.descripcion = descripcion;
 	}
 	
+	public String getPagina() 
+	{
+		return pagina;
+	}
+	
+	public void setPagina(String pagina) 
+	{
+		this.pagina = pagina;
+	}
+	
+	public int getPrecio() 
+	{
+		return precio;
+	}
+
+	public void setPrecio(int precio) 
+	{
+		this.precio = precio;
+	}
+	
 	public List<ProductoDTO> getProductos() 
 	{
 		return productos;
@@ -55,7 +77,8 @@ public class PromocionDTO
 		return campaña;
 	}
 
-	public void setCampaña(CampañaDTO campaña) {
+	public void setCampaña(CampañaDTO campaña) 
+	{
 		this.campaña = campaña;
 	}
 

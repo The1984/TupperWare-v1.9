@@ -96,6 +96,8 @@ Create Table promocion
     nombre varchar(30),
     descripcion varchar(100),
     idCampaña Int NOT NULL,
+    pagina varchar(30),
+    precio Int NOT NULL,
     FOREIGN KEY (idCampaña) REFERENCES campaña (idCampaña),
     PRIMARY KEY (idPromocion)
 );
@@ -131,7 +133,7 @@ Create Table compraPromocionProducto
 Create Table compra
 (
 	idCompra Int NOT NULL AUTO_INCREMENT,
-    pagina varchar(5),
+    pagina varchar(30),
     precio Int NOT NULL,
     unidades Int NOT NULL,
     montoPagado Int NOT NULL,

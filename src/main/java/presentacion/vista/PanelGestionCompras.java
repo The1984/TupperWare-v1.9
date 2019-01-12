@@ -96,6 +96,10 @@ public class PanelGestionCompras extends JPanel
 
 		Border borderButton = BorderFactory.createLineBorder(Color.black, 3);
 		
+		btnCrearReporte = new JButton("Crear Reporte");
+		btnCrearReporte.setBorder(borderButton);
+		panel.add(btnCrearReporte);
+		
 		btnEditar = new JButton("Editar");
 		btnEditar.setBorder(borderButton);
 		panel.add(btnEditar);
@@ -103,10 +107,6 @@ public class PanelGestionCompras extends JPanel
 		btnEliminar = new JButton("Eliminar");
 		btnEliminar.setBorder(borderButton);
 		panel.add(btnEliminar);
-		
-		btnCrearReporte = new JButton("Crear Reporte");
-		btnCrearReporte.setBorder(borderButton);
-		panel.add(btnCrearReporte);
 		
 		modelCompra = new DefaultTableModel(null, nombreColumnasCompra) 
 			{

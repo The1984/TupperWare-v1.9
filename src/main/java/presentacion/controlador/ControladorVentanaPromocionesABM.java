@@ -30,6 +30,8 @@ public class ControladorVentanaPromocionesABM implements MouseListener, Observad
 		this.ventana.getBtnAgregar().addActionListener(e -> this.agregarPromocion());
 		this.ventana.getBtnEditar().addActionListener(e -> this.editarPromocion());
 		this.ventana.getBtnEliminar().addActionListener(e -> this.eliminarPromocion());
+		this.ventana.getBtnEditar().setEnabled(false);
+		this.ventana.getBtnEliminar().setEnabled(false);
 	}
 	
 	public void initialize()
@@ -75,7 +77,9 @@ public class ControladorVentanaPromocionesABM implements MouseListener, Observad
 			Object[] fila = {
 								promocion.getNombre(),
 								promocion.getDescripcion(),
-								listarProductos(promocion.getProductos())
+								listarProductos(promocion.getProductos()),
+								promocion.getPagina(),
+								Integer.toString(promocion.getPrecio())
 							};
 			this.ventana.getModelPromocion().addRow(fila);
 		}			
@@ -114,6 +118,17 @@ public class ControladorVentanaPromocionesABM implements MouseListener, Observad
 			ventana.getTextArea().setText(premioSelect.getDescripcion());
 			ventana.getTextFieldUnidades().setText(Integer.toString(premioSelect.getUnidadesMinimas()));
 			ventana.show();
+		}
+		
+		if(this.ventana.getTablaPromocion().getSelectedRow() != -1)
+		{
+			this.ventana.getBtnEditar().setEnabled(true);
+			this.ventana.getBtnEliminar().setEnabled(true);
+		}
+		else
+		{
+			this.ventana.getBtnEditar().setEnabled(false);
+			this.ventana.getBtnEliminar().setEnabled(false);
 		}
 	}
 

@@ -13,6 +13,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTable;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.JCheckBox;
 
 public class VentanaComprarPromocion
 {
@@ -22,11 +23,12 @@ public class VentanaComprarPromocion
 	private JTable tablaProducto;
 	private DefaultTableModel modelProducto;
 	private String[] nombreColumnasProducto = { "Codigo","Nombre", "Tipo"};
-	private JTextField textFieldPagina;
-	private JTextField textFieldPrecio;
-	private JTextField textFieldPago;
-	private JTextField textFieldCliente;	
+	private JTextField txtPagina;
+	private JTextField txtPrecio;
+	private JTextField txtPago;
+	private JTextField txtCliente;	
 	private JSpinner spinnerUnidades;
+	private JCheckBox checkbxPago;
 	private JButton btnEliminar;
 	private JButton btnComprar;
 	private JButton BtnSelectCliente;
@@ -81,56 +83,60 @@ public class VentanaComprarPromocion
 		label.setBounds(23, 288, 84, 14);
 		frame.getContentPane().add(label);
 		
-		textFieldPagina = new JTextField();
-		textFieldPagina.setHorizontalAlignment(SwingConstants.CENTER);
-		textFieldPagina.setColumns(10);
-		textFieldPagina.setBounds(108, 285, 136, 20);
-		frame.getContentPane().add(textFieldPagina);
+		txtPagina = new JTextField();
+		txtPagina.setHorizontalAlignment(SwingConstants.CENTER);
+		txtPagina.setColumns(10);
+		txtPagina.setBounds(108, 285, 136, 20);
+		frame.getContentPane().add(txtPagina);
 		
-		textFieldPrecio = new JTextField();
-		textFieldPrecio.setHorizontalAlignment(SwingConstants.CENTER);
-		textFieldPrecio.setColumns(10);
-		textFieldPrecio.setBounds(108, 330, 136, 20);
-		frame.getContentPane().add(textFieldPrecio);
+		txtPrecio = new JTextField();
+		txtPrecio.setHorizontalAlignment(SwingConstants.CENTER);
+		txtPrecio.setColumns(10);
+		txtPrecio.setBounds(108, 330, 136, 20);
+		frame.getContentPane().add(txtPrecio);
 		
 		JLabel labelPrecio = new JLabel("Precio");
 		labelPrecio.setBounds(23, 333, 84, 14);
 		frame.getContentPane().add(labelPrecio);
 		
 		JLabel labelPago = new JLabel("Pag\u00F3");
-		labelPago.setBounds(22, 378, 85, 14);
+		labelPago.setBounds(22, 423, 85, 14);
 		frame.getContentPane().add(labelPago);
 
-		textFieldPago = new JTextField();
-		textFieldPago.setText("0");
-		textFieldPago.setHorizontalAlignment(SwingConstants.CENTER);
-		textFieldPago.setColumns(10);
-		textFieldPago.setBounds(108, 375, 136, 20);
-		frame.getContentPane().add(textFieldPago);
+		txtPago = new JTextField();
+		txtPago.setText("0");
+		txtPago.setHorizontalAlignment(SwingConstants.CENTER);
+		txtPago.setColumns(10);
+		txtPago.setBounds(134, 420, 110, 20);
+		frame.getContentPane().add(txtPago);
 		
 		JLabel labelUnidades = new JLabel("Unidades");
-		labelUnidades.setBounds(23, 423, 84, 14);
+		labelUnidades.setBounds(23, 378, 84, 14);
 		frame.getContentPane().add(labelUnidades);
 		
 		spinnerUnidades = new JSpinner();
 		spinnerUnidades.setModel(new SpinnerNumberModel(1, 1, 25, 1));
-		spinnerUnidades.setBounds(108, 420, 136, 20);
+		spinnerUnidades.setBounds(108, 375, 136, 20);
 		frame.getContentPane().add(spinnerUnidades);
 		
 		JLabel labelCliente = new JLabel("Cliente");
 		labelCliente.setBounds(23, 243, 84, 14);
 		frame.getContentPane().add(labelCliente);
 		
-		textFieldCliente = new JTextField();
-		textFieldCliente.setHorizontalAlignment(SwingConstants.CENTER);
-		textFieldCliente.setEditable(false);
-		textFieldCliente.setColumns(10);
-		textFieldCliente.setBounds(108, 240, 107, 20);
-		frame.getContentPane().add(textFieldCliente);
+		txtCliente = new JTextField();
+		txtCliente.setHorizontalAlignment(SwingConstants.CENTER);
+		txtCliente.setEditable(false);
+		txtCliente.setColumns(10);
+		txtCliente.setBounds(108, 240, 107, 20);
+		frame.getContentPane().add(txtCliente);
 		
 		BtnSelectCliente = new JButton("...");
 		BtnSelectCliente.setBounds(215, 240, 29, 20);
 		frame.getContentPane().add(BtnSelectCliente);
+		
+		checkbxPago = new JCheckBox();
+		checkbxPago.setBounds(108, 420, 20, 20);
+		frame.getContentPane().add(checkbxPago);
 	}
 
 	public JTextArea getTxtrDescripcion() 
@@ -153,24 +159,29 @@ public class VentanaComprarPromocion
 		return nombreColumnasProducto;
 	}
 	
-	public JTextField getTextFieldPagina() 
+	public JTextField getTxtPagina() 
 	{
-		return textFieldPagina;
+		return txtPagina;
 	}
 
-	public JTextField getTextFieldPrecio() 
+	public JTextField getTxtPrecio() 
 	{
-		return textFieldPrecio;
+		return txtPrecio;
 	}
 
-	public JTextField getTextFieldPago() 
+	public JTextField getTxtPago() 
 	{
-		return textFieldPago;
+		return txtPago;
 	}
 
-	public JTextField getTextFieldCliente() 
+	public JCheckBox getCheckbxPago() 
 	{
-		return textFieldCliente;
+		return checkbxPago;
+	}
+
+	public JTextField getTxtCliente() 
+	{
+		return txtCliente;
 	}
 
 	public JSpinner getSpinnerUnidades() 
@@ -207,5 +218,4 @@ public class VentanaComprarPromocion
 	{
 		frame.dispose();
 	}
-	
 }

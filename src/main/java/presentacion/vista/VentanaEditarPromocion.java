@@ -21,6 +21,8 @@ public class VentanaEditarPromocion
 	private JTable tablaProducto;
 	private DefaultTableModel modelProducto;
 	private String[] nombreColumnasProducto = { "Codigo","Nombre", "Tipo"};
+	private JTextField txtPagina;
+	private JTextField txtPrecio;
 	private JButton btnAgregar;
 	private JButton btnEliminar;
 	private JButton btnAceptar;
@@ -29,7 +31,7 @@ public class VentanaEditarPromocion
 	{
 		frame = new JDialog();
 		frame.setTitle("Editar Promocion");
-		frame.setSize(281, 360);
+		frame.setSize(281, 431);
 		frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		frame.setModal(true);
 		frame.getContentPane().setLayout(null);
@@ -73,6 +75,26 @@ public class VentanaEditarPromocion
 	    tablaProducto = new JTable(modelProducto);
 	    scrollPaneProductos.setViewportView(tablaProducto);
 	    
+		JLabel labelPagina = new JLabel("Pagina");
+		labelPagina.setBounds(23, 290, 84, 14);
+		frame.getContentPane().add(labelPagina);
+		
+		txtPagina = new JTextField();
+		txtPagina.setHorizontalAlignment(SwingConstants.CENTER);
+		txtPagina.setColumns(10);
+		txtPagina.setBounds(108, 287, 136, 20);
+		frame.getContentPane().add(txtPagina);
+		
+		JLabel labelPrecio = new JLabel("Precio");
+		labelPrecio.setBounds(23, 321, 84, 14);
+		frame.getContentPane().add(labelPrecio);
+		
+		txtPrecio = new JTextField();
+		txtPrecio.setHorizontalAlignment(SwingConstants.CENTER);
+		txtPrecio.setColumns(10);
+		txtPrecio.setBounds(108, 318, 136, 20);
+		frame.getContentPane().add(txtPrecio);
+	    
 	    btnAgregar = new JButton("Agregar");
 	    btnAgregar.setBounds(23, 250, 110, 23);
 	    frame.getContentPane().add(btnAgregar);
@@ -82,7 +104,7 @@ public class VentanaEditarPromocion
 	    frame.getContentPane().add(btnEliminar);
 
 		btnAceptar = new JButton("Aceptar");
-		btnAceptar.setBounds(23, 287, 221, 23);
+		btnAceptar.setBounds(23, 358, 221, 23);
 		frame.getContentPane().add(btnAceptar);
 	}
 
@@ -109,6 +131,16 @@ public class VentanaEditarPromocion
 	public String[] getNombreColumnasProducto() 
 	{
 		return nombreColumnasProducto;
+	}
+	
+	public JTextField getTxtPagina() 
+	{
+		return txtPagina;
+	}
+
+	public JTextField getTxtPrecio() 
+	{
+		return txtPrecio;
 	}
 	
 	public JButton getBtnAgregar() 

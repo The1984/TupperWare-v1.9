@@ -13,7 +13,7 @@ public class VentanaPromocionesABM
 
 	private JDialog frame;
 	private DefaultTableModel modelPromocion;
-	private String[] nombreColumnasPromocion = { "Nombre","Descripcion","Productos"};
+	private String[] nombreColumnasPromocion = { "Nombre","Descripcion","Productos","Pagina","Precio"};
 	private JTable tablaPromocion;
 	private JButton btnAgregar;
 	private JButton btnEditar;

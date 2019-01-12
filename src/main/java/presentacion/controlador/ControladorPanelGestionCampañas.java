@@ -32,6 +32,10 @@ public class ControladorPanelGestionCampañas implements MouseListener, Observado
 		this.panelCampaña.getBtnPromociones().addActionListener(e -> this.promocionesABM());
 		this.panelCampaña.getBtnPremios().addActionListener(e -> this.premiosABM());
 		this.panelCampaña.getTablaCampaña().addMouseListener(this);
+		this.panelCampaña.getBtnEditar().setEnabled(false);
+		this.panelCampaña.getBtnEliminar().setEnabled(false);
+		this.panelCampaña.getBtnPremios().setEnabled(false);
+		this.panelCampaña.getBtnPromociones().setEnabled(false);
 	}
 	
 	public void initialize()
@@ -135,6 +139,21 @@ public class ControladorPanelGestionCampañas implements MouseListener, Observado
 			this.ventana.show();
 			ControladorPanelGestionCompras contro = new ControladorPanelGestionCompras(panelCompra, campañaSelect);
 			contro.initialize();
+		}
+		
+		if(this.panelCampaña.getTablaCampaña().getSelectedRow() != -1)
+		{
+			this.panelCampaña.getBtnEditar().setEnabled(true);
+			this.panelCampaña.getBtnEliminar().setEnabled(true);
+			this.panelCampaña.getBtnPremios().setEnabled(true);
+			this.panelCampaña.getBtnPromociones().setEnabled(true);
+		}
+		else
+		{
+			this.panelCampaña.getBtnEditar().setEnabled(false);
+			this.panelCampaña.getBtnEliminar().setEnabled(false);
+			this.panelCampaña.getBtnPremios().setEnabled(false);
+			this.panelCampaña.getBtnPromociones().setEnabled(false);
 		}
 	}
 

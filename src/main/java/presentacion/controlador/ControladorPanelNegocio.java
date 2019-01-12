@@ -32,6 +32,8 @@ public class ControladorPanelNegocio implements KeyListener, MouseListener, Obse
 		this.panelNegocio.getBtnEditarProducto().addActionListener(e -> this.editarProducto());
 		this.panelNegocio.getTablaProducto().addMouseListener(this);
 		this.panelNegocio.getTablaPromocion().addMouseListener(this);
+		this.panelNegocio.getBtnEditarProducto().setEnabled(false);
+		this.panelNegocio.getBtnEliminarProducto().setEnabled(false);
 	}
 
 	public void initialize()
@@ -64,23 +66,28 @@ public class ControladorPanelNegocio implements KeyListener, MouseListener, Obse
 		
 		CampañaDTO campañaMasReciente;
 		List<CampañaDTO> campañas = GestorCampaña.getInstance().readAll();
-		campañaMasReciente = campañas.get(0);
-		for (CampañaDTO campaña : campañas)
+		if(campañas.size()!=0)
 		{
-			if(campañaMasReciente.getCierre().before(campaña.getCierre()))
-				campañaMasReciente = campaña;
+			campañaMasReciente = campañas.get(0);
+			for (CampañaDTO campaña : campañas)
+			{
+				if(campañaMasReciente.getCierre().before(campaña.getCierre()))
+					campañaMasReciente = campaña;
+			}
+		
+			for (PromocionDTO promocion : campañaMasReciente.getPromociones())
+			{
+				Object[] fila = {
+									promocion.getNombre(),
+									promocion.getDescripcion(),
+									this.listarProductos(promocion.getProductos()),
+									promocion.getPagina(),
+									Integer.toString(promocion.getPrecio())
+								};
+				this.promociones.add(promocion);
+				this.panelNegocio.getModelPromocion().addRow(fila);
+			}	
 		}
-	
-		for (PromocionDTO promocion : campañaMasReciente.getPromociones())
-		{
-			Object[] fila = {
-								promocion.getNombre(),
-								promocion.getDescripcion(),
-								this.listarProductos(promocion.getProductos())
-							};
-			this.promociones.add(promocion);
-			this.panelNegocio.getModelPromocion().addRow(fila);
-		}	
 	}
 	
 	public String listarProductos(List<ProductoDTO> productos)
@@ -183,6 +190,17 @@ public class ControladorPanelNegocio implements KeyListener, MouseListener, Obse
 			PromocionDTO promoSelect = this.promociones.get(this.panelNegocio.getTablaPromocion().getSelectedRow());
 			ControladorVentanaComprarPromocion contro = new ControladorVentanaComprarPromocion(promoSelect);
 			contro.initialize();
+		}
+		
+		if(this.panelNegocio.getTablaProducto().getSelectedRow() != -1)
+		{
+			this.panelNegocio.getBtnEditarProducto().setEnabled(true);
+			this.panelNegocio.getBtnEliminarProducto().setEnabled(true);
+		}
+		else
+		{
+			this.panelNegocio.getBtnEditarProducto().setEnabled(false);
+			this.panelNegocio.getBtnEliminarProducto().setEnabled(false);
 		}
 	}
 

@@ -41,11 +41,11 @@ public class VentanaComprarProducto
 		
 		spinnerUnidades = new JSpinner();
 		spinnerUnidades.setModel(new SpinnerNumberModel(1, 1, 25, 1));
-		spinnerUnidades.setBounds(108, 247, 136, 20);
+		spinnerUnidades.setBounds(108, 202, 136, 20);
 		frame.getContentPane().add(spinnerUnidades);
 		
 		JLabel lblUnidades = new JLabel("Unidades");
-		lblUnidades.setBounds(23, 250, 84, 14);
+		lblUnidades.setBounds(23, 205, 84, 14);
 		frame.getContentPane().add(lblUnidades);
 		
 		JLabel lblPagina = new JLabel("Pagina");
@@ -69,18 +69,18 @@ public class VentanaComprarProducto
 		frame.getContentPane().add(lblPrecio);
 		
 		JLabel lblPag = new JLabel("Pag\u00F3");
-		lblPag.setBounds(22, 205, 85, 14);
+		lblPag.setBounds(23, 250, 85, 14);
 		frame.getContentPane().add(lblPag);
 		
 		txtPago = new JTextField();
 		txtPago.setText("0");
 		txtPago.setHorizontalAlignment(SwingConstants.CENTER);
-		txtPago.setBounds(134, 202, 110, 20);
+		txtPago.setBounds(134, 247, 110, 20);
 		frame.getContentPane().add(txtPago);
 		txtPago.setColumns(10);
 		
 		chckbxPago = new JCheckBox("");
-		chckbxPago.setBounds(108, 202, 20, 20);
+		chckbxPago.setBounds(109, 247, 20, 20);
 		frame.getContentPane().add(chckbxPago);
 		
 		lblProducto = new JLabel("Producto");
