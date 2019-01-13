@@ -28,12 +28,10 @@ public class ControladorPanelGestionCampañas implements MouseListener, Observado
 		this.campañas_en_tabla = null;
 		this.panelCampaña.getBtnAgregar().addActionListener(e -> this.agregarCampaña());
 		this.panelCampaña.getBtnEditar().addActionListener(e -> this.editarCampaña());
-		this.panelCampaña.getBtnEliminar().addActionListener(e -> this.eliminarCampaña());
 		this.panelCampaña.getBtnPromociones().addActionListener(e -> this.promocionesABM());
 		this.panelCampaña.getBtnPremios().addActionListener(e -> this.premiosABM());
 		this.panelCampaña.getTablaCampaña().addMouseListener(this);
 		this.panelCampaña.getBtnEditar().setEnabled(false);
-		this.panelCampaña.getBtnEliminar().setEnabled(false);
 		this.panelCampaña.getBtnPremios().setEnabled(false);
 		this.panelCampaña.getBtnPromociones().setEnabled(false);
 	}
@@ -91,19 +89,9 @@ public class ControladorPanelGestionCampañas implements MouseListener, Observado
 	
 	private void editarCampaña() 
 	{
-		if(this.panelCampaña.getTablaCampaña().getSelectedRow()==-1)
-		{
-			JOptionPane.showMessageDialog(null, "¡Seleccione una campaña!");
-			return;
-		}
 		CampañaDTO campañaSelect = this.campañas_en_tabla.get(this.panelCampaña.getTablaCampaña().getSelectedRow());
 		ControladorVentanaEditarCampaña contro = new ControladorVentanaEditarCampaña(this, campañaSelect);
 		contro.initialize();
-	}
-	
-	public void eliminarCampaña()
-	{
-
 	}
 	
 	public void promocionesABM()
@@ -144,14 +132,12 @@ public class ControladorPanelGestionCampañas implements MouseListener, Observado
 		if(this.panelCampaña.getTablaCampaña().getSelectedRow() != -1)
 		{
 			this.panelCampaña.getBtnEditar().setEnabled(true);
-			this.panelCampaña.getBtnEliminar().setEnabled(true);
 			this.panelCampaña.getBtnPremios().setEnabled(true);
 			this.panelCampaña.getBtnPromociones().setEnabled(true);
 		}
 		else
 		{
 			this.panelCampaña.getBtnEditar().setEnabled(false);
-			this.panelCampaña.getBtnEliminar().setEnabled(false);
 			this.panelCampaña.getBtnPremios().setEnabled(false);
 			this.panelCampaña.getBtnPromociones().setEnabled(false);
 		}

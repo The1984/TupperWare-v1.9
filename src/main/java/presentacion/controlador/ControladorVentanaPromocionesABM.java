@@ -4,8 +4,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
 
-import javax.swing.JOptionPane;
-
 import dto.CampañaDTO;
 import dto.PremioDTO;
 import dto.ProductoDTO;
@@ -29,9 +27,7 @@ public class ControladorVentanaPromocionesABM implements MouseListener, Observad
 		this.ventana.getTablaPromocion().addMouseListener(this);
 		this.ventana.getBtnAgregar().addActionListener(e -> this.agregarPromocion());
 		this.ventana.getBtnEditar().addActionListener(e -> this.editarPromocion());
-		this.ventana.getBtnEliminar().addActionListener(e -> this.eliminarPromocion());
 		this.ventana.getBtnEditar().setEnabled(false);
-		this.ventana.getBtnEliminar().setEnabled(false);
 	}
 	
 	public void initialize()
@@ -51,21 +47,6 @@ public class ControladorVentanaPromocionesABM implements MouseListener, Observad
 		PromocionDTO promocionSelect = GestorPromociones.getInstance().readForCampaña(this.campaña).get(this.ventana.getTablaPromocion().getSelectedRow());
 		ControladorVentanaEditarPromocion contro = new ControladorVentanaEditarPromocion(this, promocionSelect);
 		contro.initialize();			
-	}
-	
-	private void eliminarPromocion()
-	{
-		PromocionDTO promocionSelect = GestorPromociones.getInstance().readForCampaña(this.campaña).get(this.ventana.getTablaPromocion().getSelectedRow());
-		
-		if(JOptionPane.showConfirmDialog(null,"<html>¿Est\u00E1 seguro que quiere eliminar la promocion?</html>", "Eliminar Promocion",JOptionPane.YES_NO_OPTION)==0) 
-		{
-			for(ProductoDTO product : promocionSelect.getProductos()) 
-			{
-				GestorPromociones.getInstance().delete(promocionSelect.getIdPromocion(), product.getIdProducto());
-			}
-			GestorPromociones.getInstance().delete(promocionSelect);
-			this.update();
-		}		
 	}
 	
 	private void llenarTabla()
@@ -123,12 +104,10 @@ public class ControladorVentanaPromocionesABM implements MouseListener, Observad
 		if(this.ventana.getTablaPromocion().getSelectedRow() != -1)
 		{
 			this.ventana.getBtnEditar().setEnabled(true);
-			this.ventana.getBtnEliminar().setEnabled(true);
 		}
 		else
 		{
 			this.ventana.getBtnEditar().setEnabled(false);
-			this.ventana.getBtnEliminar().setEnabled(false);
 		}
 	}
 

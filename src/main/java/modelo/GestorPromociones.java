@@ -14,12 +14,12 @@ public class GestorPromociones
 	
 	private static GestorPromociones instance;
 	private PromocionDAOMYSQL promocionDaoSQL;
-	private PromocionProductoDAOMYSQL promocioncionProductoDaoSQL;
+	private PromocionProductoDAOMYSQL promocionProductoDaoSQL;
 	
 	private GestorPromociones() 
 	{
 		this.promocionDaoSQL = PromocionDAOMYSQL.getInstance();
-		this.promocioncionProductoDaoSQL = PromocionProductoDAOMYSQL.getInstance();
+		this.promocionProductoDaoSQL = PromocionProductoDAOMYSQL.getInstance();
 	}
 
 	public static GestorPromociones getInstance() 
@@ -66,17 +66,17 @@ public class GestorPromociones
 	
 	public void insert(PromocionProductoDTO promocionProducto)
 	{
-		this.promocioncionProductoDaoSQL.insert(promocionProducto);
+		this.promocionProductoDaoSQL.insert(promocionProducto);
 	}
 	
 	public void delete(int promocion, int producto)
 	{
-		this.promocioncionProductoDaoSQL.delete(promocion, producto);
+		this.promocionProductoDaoSQL.delete(promocion, producto);
 	}
 	
 	public List<ProductoDTO> readProductos(int idPromocion)
 	{
-		return this.promocioncionProductoDaoSQL.readProductos(idPromocion);
+		return this.promocionProductoDaoSQL.readProductos(idPromocion);
 	}
 	
 }

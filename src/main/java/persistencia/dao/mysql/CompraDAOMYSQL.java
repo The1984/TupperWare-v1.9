@@ -245,7 +245,7 @@ public class CompraDAOMYSQL implements CompraDAO
 				compra.setMontoPagado(resultSet.getInt("montoPagado"));
 				compra.setPorcentajeDeGanancia(resultSet.getInt("porcentajeDeGanancia"));
 				compra.setCliente(ClienteDAOMYSQL.getInstance().readForId(resultSet.getInt("idCliente")));
-				compra.setCampaña(CampañaDAOMYSQL.getInstance().readForId(resultSet.getInt("idCompaña")));
+				compra.setCampaña(CampañaDAOMYSQL.getInstance().readForId(resultSet.getInt("idCampaña")));
 				compra.setEstadoDeCompra(EstadoDeCompraDAOMYSQL.getInstance().readForId(resultSet.getInt("idEstadoDeCompra")));
 				compra.setProducto(ProductoDAOMYSQL.getInstance().readForId(resultSet.getInt("idProducto")));
 				compra.setCompraPromocion(CompraPromocionDAOMYSQL.getInstance().readForId(resultSet.getInt("idCompraPromocion")));

@@ -36,7 +36,6 @@ public class PanelNegocio extends JPanel
 	private JTextField textFiltro;
 	private JButton btnAgregarProducto;
 	private JButton btnEditarProducto;
-	private JButton btnEliminarProducto;
 	
 	public PanelNegocio() 
 	{
@@ -103,10 +102,6 @@ public class PanelNegocio extends JPanel
 		btnEditarProducto = new JButton("Editar");
 		btnEditarProducto.setBorder(borderButton);
 		panelProducto.add(btnEditarProducto);
-		
-		btnEliminarProducto = new JButton("Eliminar");
-		btnEliminarProducto.setBorder(borderButton);
-		panelProducto.add(btnEliminarProducto);
 		
 		modelProducto = new DefaultTableModel(null, nombreColumnasProducto) 
 		{
@@ -178,9 +173,4 @@ public class PanelNegocio extends JPanel
 		return btnEditarProducto;
 	}
 	
-	public JButton getBtnEliminarProducto() 
-	{
-		return btnEliminarProducto;
-	}
-    
 }

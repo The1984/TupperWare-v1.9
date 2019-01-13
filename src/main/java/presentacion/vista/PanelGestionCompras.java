@@ -33,7 +33,6 @@ public class PanelGestionCompras extends JPanel
 	private JTextField textFiltro;
 	private JPanel panel;
 	private JButton btnEditar;
-	private JButton btnEliminar;
 	private JButton btnCrearReporte;
 	private JLabel lblCampaña;
 
@@ -104,10 +103,6 @@ public class PanelGestionCompras extends JPanel
 		btnEditar.setBorder(borderButton);
 		panel.add(btnEditar);
 		
-		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBorder(borderButton);
-		panel.add(btnEliminar);
-		
 		modelCompra = new DefaultTableModel(null, nombreColumnasCompra) 
 			{
 				private static final long serialVersionUID = 1L;	
@@ -152,11 +147,6 @@ public class PanelGestionCompras extends JPanel
 		return btnEditar;
 	}
 
-	public JButton getBtnEliminar() 
-	{
-		return btnEliminar;
-	}
-	
 	public JButton getBtnCrearReporte() 
 	{
 		return btnCrearReporte;

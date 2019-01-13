@@ -115,7 +115,7 @@ Create Table promocionProducto
 Create Table compraPromocion
 (
 	idCompraPromocion Int NOT NULL AUTO_INCREMENT,
-    idPromocion Int NOT NULL,
+    idPromocion Int,
     FOREIGN KEY (idPromocion) REFERENCES promocion (idPromocion),
     PRIMARY KEY (idCompraPromocion)
 );
@@ -158,7 +158,8 @@ Create Table compra
 INSERT INTO estadoDeCompra (nombre)
 VALUES("Pagado"),
 	  ("Mora"),
-      ("Entregado");
+      ("Entregado"),
+      ("Cancelado");
 
 INSERT INTO tipoDeProducto (nombre, porcentajeDeGanancia)
 VALUES("Tupperware", 33),
