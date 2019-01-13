@@ -26,7 +26,6 @@ public class PanelGestionCampañas extends JPanel
 	private JPanel panel;
 	private JButton btnAgregar;
 	private JButton btnEditar;
-	private JButton btnEliminar;
 	private JButton btnPromociones;
 	private JButton btnPremios;
 	
@@ -69,10 +68,6 @@ public class PanelGestionCampañas extends JPanel
 		btnEditar = new JButton("Editar");
 		btnEditar.setBorder(borderButton);
 		panel.add(btnEditar);
-		
-		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBorder(borderButton);
-		panel.add(btnEliminar);
 
 		btnPromociones = new JButton("Promociones");
 		btnPromociones.setBorder(borderButton);
@@ -119,11 +114,6 @@ public class PanelGestionCampañas extends JPanel
 	public JButton getBtnEditar() 
 	{
 		return btnEditar;
-	}
-
-	public JButton getBtnEliminar() 
-	{
-		return btnEliminar;
 	}
 	
 	public JButton getBtnPromociones() 

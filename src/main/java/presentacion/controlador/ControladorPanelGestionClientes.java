@@ -10,7 +10,9 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import dto.ClienteDTO;
+import dto.CompraDTO;
 import modelo.GestorClientes;
+import modelo.GestorCompra;
 import observer.Observador;
 import presentacion.vista.PanelGestionClientes;
 
@@ -113,25 +115,22 @@ public class ControladorPanelGestionClientes implements KeyListener, MouseListen
 	
 	private void eliminarCliente()
 	{
-		if(this.panelCliente.getTablaCliente().getSelectedRow()==-1)
+		ClienteDTO clientSelect = this.clientes_filtrados.get(this.panelCliente.getTablaCliente().getSelectedRow());
+		List<CompraDTO> compras = GestorCompra.getInstance().readForIdCliente(clientSelect.getIdCliente());
+		
+		if(compras.size()==0)
 		{
-			JOptionPane.showMessageDialog(null, "¡Seleccione un cliente!");
-			return;
+			if(JOptionPane.showConfirmDialog(null,"<html>¿Est\u00E1 seguro que quiere eliminar al cliente?</html>", "Eliminar Cliente",JOptionPane.YES_NO_OPTION)==0) 
+			{
+				GestorClientes.getInstance().delete(clientSelect);
+				this.update();
+			}
 		}
-//		ClienteDTO clientSelect = this.clientes_filtrados.get(this.panelCliente.getTablaCliente().getSelectedRow());
-//		if(clientSelect.getCompras().size()==0)
-//		{
-//			if(JOptionPane.showConfirmDialog(null,"<html>¿Est\u00E1 seguro que quiere eliminar al cliente?</html>", "Eliminar Cliente",JOptionPane.YES_NO_OPTION)==0) 
-//			{
-//				GestorClientes.getInstance().delete(clientSelect);
-//				this.update();
-//			}
-//		}
-//		else
-//		{
-//			JOptionPane.showMessageDialog(null, "Este cliente posee comprar no puede eliminarse");
-//			return;			
-//		}
+		else
+		{
+			JOptionPane.showMessageDialog(null, "Este cliente posee compras, no puede eliminarse.");
+			return;			
+		}
 	}
 	
 	@Override
@@ -165,6 +164,14 @@ public class ControladorPanelGestionClientes implements KeyListener, MouseListen
 		{
 			this.panelCliente.getBtnEditar().setEnabled(false);
 			this.panelCliente.getBtnEliminar().setEnabled(false);
+		}
+		
+		if(e.getClickCount()==2)
+		{		
+			ClienteDTO clientSelect = this.clientes_filtrados.get(this.panelCliente.getTablaCliente().getSelectedRow());
+			List<CompraDTO> compras = GestorCompra.getInstance().readForIdCliente(clientSelect.getIdCliente());
+			ControladorVentanaVerCompras contro = new ControladorVentanaVerCompras(compras);
+			contro.initialize();
 		}
 	}
 

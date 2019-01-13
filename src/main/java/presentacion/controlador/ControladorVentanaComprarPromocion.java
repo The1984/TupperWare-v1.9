@@ -7,6 +7,8 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import dto.CampañaDTO;
 import dto.ClienteDTO;
 import dto.CompraDTO;
@@ -149,8 +151,9 @@ public class ControladorVentanaComprarPromocion implements MouseListener
 		newCompra.setProducto(null);
 		
 		GestorCompra.getInstance().insert(newCompra);
-		
 		this.ventana.close();
+		
+		JOptionPane.showMessageDialog(null, "Compra realizada exitosamente!!");
 	}
 
 	@Override

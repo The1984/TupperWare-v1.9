@@ -17,8 +17,7 @@ public class VentanaPromocionesABM
 	private JTable tablaPromocion;
 	private JButton btnAgregar;
 	private JButton btnEditar;
-	private JButton btnEliminar;
-	
+
 	public VentanaPromocionesABM() 
 	{
 		frame = new JDialog();
@@ -55,9 +54,6 @@ public class VentanaPromocionesABM
 		btnEditar = new JButton("Editar");
 		panel.add(btnEditar);
 		
-		btnEliminar = new JButton("Eliminar");
-		panel.add(btnEliminar);
-		
 		frame.setLocationRelativeTo(null);
 	}
 
@@ -86,11 +82,6 @@ public class VentanaPromocionesABM
 		return btnEditar;
 	}
 
-	public JButton getBtnEliminar() 
-	{
-		return btnEliminar;
-	}
-	
 	public void show() 
 	{
 		frame.setVisible(true);

@@ -57,6 +57,11 @@ public class GestorCompra
 		return this.compraDaoSQL.readForId(idCompra);
 	}
 	
+	public List<CompraDTO> readForIdCliente(int idCliente)
+	{
+		return this.compraDaoSQL.readForIdCliente(idCliente);
+	}
+	
 	public void insert(CompraPromocionDTO compraPromocion)
 	{
 		this.compraPromocionDaoSQL.insert(compraPromocion);

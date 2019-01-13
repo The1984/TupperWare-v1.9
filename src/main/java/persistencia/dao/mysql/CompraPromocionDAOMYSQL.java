@@ -61,7 +61,6 @@ public class CompraPromocionDAOMYSQL implements CompraPromocionDAO
 			e.printStackTrace();
 		}
 		return false;
-
 	}
 
 	@Override

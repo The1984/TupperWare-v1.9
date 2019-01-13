@@ -33,7 +33,6 @@ public class ControladorPanelNegocio implements KeyListener, MouseListener, Obse
 		this.panelNegocio.getTablaProducto().addMouseListener(this);
 		this.panelNegocio.getTablaPromocion().addMouseListener(this);
 		this.panelNegocio.getBtnEditarProducto().setEnabled(false);
-		this.panelNegocio.getBtnEliminarProducto().setEnabled(false);
 	}
 
 	public void initialize()
@@ -156,7 +155,7 @@ public class ControladorPanelNegocio implements KeyListener, MouseListener, Obse
 		ControladorVentanaEditarProducto contro = new ControladorVentanaEditarProducto(this, productSelect);
 		contro.initialize();
 	}
-
+	
 	@Override
 	public void keyPressed(KeyEvent e) 
 	{
@@ -195,12 +194,10 @@ public class ControladorPanelNegocio implements KeyListener, MouseListener, Obse
 		if(this.panelNegocio.getTablaProducto().getSelectedRow() != -1)
 		{
 			this.panelNegocio.getBtnEditarProducto().setEnabled(true);
-			this.panelNegocio.getBtnEliminarProducto().setEnabled(true);
 		}
 		else
 		{
 			this.panelNegocio.getBtnEditarProducto().setEnabled(false);
-			this.panelNegocio.getBtnEliminarProducto().setEnabled(false);
 		}
 	}
 

@@ -28,10 +28,8 @@ public class ControladorPanelGestionCompras implements KeyListener, MouseListene
 		this.compras_filtradas = new ArrayList<CompraDTO>();
 		this.panelCompras.getTextFiltro().addKeyListener(this);
 		this.panelCompras.getBtnEditar().addActionListener(e -> this.editarCompra());
-		this.panelCompras.getBtnEliminar().addActionListener(e -> this.eliminarCompra());
 		this.panelCompras.getTablaCompra().addMouseListener(this);
 		this.panelCompras.getBtnEditar().setEnabled(false);
-		this.panelCompras.getBtnEliminar().setEnabled(false);
 	}
 	
 	public void initialize()
@@ -97,7 +95,7 @@ public class ControladorPanelGestionCompras implements KeyListener, MouseListene
 		
 		this.compras_filtradas.clear();
 		
-		for (CompraDTO compra : this.campañaSelect.getCompras()) 
+		for (CompraDTO compra : this.campañaSelect.getCompras())
 		{
 			String getNombre = compra.getCliente().getNombre().toUpperCase()+" "+compra.getCliente().getApellido().toUpperCase()+
 							   listarProductos(compra).toUpperCase()+
@@ -124,11 +122,6 @@ public class ControladorPanelGestionCompras implements KeyListener, MouseListene
 		
 	}
 	
-	public void eliminarCompra()
-	{
-
-	}
-
 	@Override
 	public void keyPressed(KeyEvent e) 
 	{
@@ -154,12 +147,10 @@ public class ControladorPanelGestionCompras implements KeyListener, MouseListene
 		if(this.panelCompras.getTablaCompra().getSelectedRow() != -1)
 		{
 			this.panelCompras.getBtnEditar().setEnabled(true);
-			this.panelCompras.getBtnEliminar().setEnabled(true);
 		}
 		else
 		{
 			this.panelCompras.getBtnEditar().setEnabled(false);
-			this.panelCompras.getBtnEliminar().setEnabled(false);
 		}
 	}
 

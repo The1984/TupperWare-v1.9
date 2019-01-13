@@ -1,11 +1,8 @@
 package main;
 
 import java.util.Properties;
-
 import javax.swing.UIManager;
-
 import com.jtattoo.plaf.hifi.HiFiLookAndFeel;
-
 import presentacion.controlador.ControladorVentanaLogin;
 
 public class Main 
@@ -45,7 +42,7 @@ public class Main
 		{
 			e.printStackTrace();
 		}
-		
+
 		ControladorVentanaLogin controladorLogin = new ControladorVentanaLogin();
 		controladorLogin.initialize();
 		
