@@ -119,7 +119,9 @@ public class ControladorPanelGestionCompras implements KeyListener, MouseListene
 	
 	private void editarCompra() 
 	{
-		
+		CompraDTO compraSelect = this.compras_filtradas.get(this.panelCompras.getTablaCompra().getSelectedRow());
+		ControladorVentanaEditarCompra contro = new ControladorVentanaEditarCompra(this, compraSelect);
+		contro.initialize();
 	}
 	
 	@Override

@@ -25,5 +25,10 @@ public class EstadoDeCompraDTO
 	{
 		this.nombre = nombre;
 	}
-	
+
+    public String toString()
+    {
+        return this.getNombre();
+    }
+    
 }
