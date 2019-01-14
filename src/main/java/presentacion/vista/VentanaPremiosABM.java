@@ -13,7 +13,7 @@ public class VentanaPremiosABM
 
 	private JDialog frame;
 	private DefaultTableModel modelPremio;
-	private String[] nombreColumnasPremio = { "Nombre","Descripcion","Uni. Min.", "Uni. Restantes","Ganado","Recibido"};
+	private String[] nombreColumnasPremio = { "Nombre","Descripcion","Unidades","Ganado","Recibido"};
 	private JTable tablaPremio;
 	private JButton btnAgregar;
 	private JButton btnEditar;

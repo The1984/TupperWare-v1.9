@@ -2,26 +2,32 @@ package presentacion.controlador;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 
 import dto.CampañaDTO;
+import dto.CompraDTO;
 import dto.PremioDTO;
 import modelo.GestorPremios;
 import observer.Observador;
+import observer.SujetoObservable;
 import presentacion.vista.VentanaPremiosABM;
 import presentacion.vista.VentanaVerPremio;
 
-public class ControladorVentanaPremiosABM implements MouseListener, Observador
+public class ControladorVentanaPremiosABM implements MouseListener, Observador, SujetoObservable
 {
-	
+	private ArrayList<Observador> observadores;
 	private VentanaPremiosABM ventana;
 	private CampañaDTO campaña;
 	
-	public ControladorVentanaPremiosABM(CampañaDTO campaña)
+	public ControladorVentanaPremiosABM(CampañaDTO campaña, ControladorPanelGestionCampañas control)
 	{
 		this.ventana = new VentanaPremiosABM();
 		this.campaña = campaña;
+		this.observadores = new ArrayList<Observador>();
+		this.observadores.add(control);
 		this.ventana.getTablaPremio().addMouseListener(this);
 		this.ventana.getBtnAgregar().addActionListener(e -> this.agregarPremio());
 		this.ventana.getBtnEditar().addActionListener(e -> this.editarPremio());
@@ -71,14 +77,39 @@ public class ControladorVentanaPremiosABM implements MouseListener, Observador
 								premio.getNombre(),
 								premio.getDescripcion(),
 								premio.getUnidadesMinimas(),
-								"Uni. Falt.",
-								"GANO?",
-								premio.getRecibido()
+								this.ganoPremio(this.campaña.getCompras(), premio),
+								this.recibioPremio(premio)
 							};
 			this.ventana.getModelPremio().addRow(fila);
 		}			
 	}
+	
+	private String ganoPremio(List<CompraDTO> compras, PremioDTO premio)
+	{
+		int contadorDeCompras = 0;
+		for (CompraDTO compra : compras)
+		{
+			if(compra.getProducto().getNombre()!=null&&!compra.getEstadoDeCompra().getNombre().equals("Cancelado"))
+			{
+				contadorDeCompras = contadorDeCompras + compra.getUnidades();				
+			}
+		}
+		if(contadorDeCompras >= premio.getUnidadesMinimas())
+		{
+			return "Si";
+		}
+		return "No";
+	}
 
+	private String recibioPremio(PremioDTO premio)
+	{
+		if(premio.getRecibido()) 
+		{ 
+			return "Si";
+		}
+		return "No";
+	}
+	
 	private void reiniciarTabla() 
 	{
 		this.ventana.getModelPremio().setRowCount(0); // Para vaciar la tabla
@@ -141,6 +172,16 @@ public class ControladorVentanaPremiosABM implements MouseListener, Observador
 	{
 		this.llenarTabla();
 		this.ventana.getTablaPremio().repaint();
+		this.notificar();
+	}
+
+	@Override
+	public void notificar() 
+	{
+		for(Observador o : observadores) 
+		{
+			o.update();
+		}	
 	}
 	
 }

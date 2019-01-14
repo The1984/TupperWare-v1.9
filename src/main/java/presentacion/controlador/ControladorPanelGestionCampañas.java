@@ -8,6 +8,8 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import dto.CampañaDTO;
+import dto.CompraDTO;
+import dto.PremioDTO;
 import modelo.GestorCampaña;
 import observer.Observador;
 import presentacion.vista.PanelGestionCampañas;
@@ -54,15 +56,67 @@ public class ControladorPanelGestionCampañas implements MouseListener, Observado
 								campaña.getAño(),
 								campaña.getNumero(),
 								campaña.getCierre(),
-								"Aqui venta",
-								"Aqui ganancia",
-								"Aqui si gano premios",
-								"Aqui si tiene algo pendiente"
+								this.montoDeVenta(campaña.getCompras()),
+								this.gananciaDeVenta(campaña.getCompras()),
+								this.premioPendiente(campaña),
+								this.pagosEntregasPendientes(campaña.getCompras())
 							};
 			this.panelCampaña.getModelCampaña().addRow(fila);
 		}			
 	}
 
+	private int montoDeVenta(List<CompraDTO> compras)
+	{
+		int sumatoria = 0;
+		for (CompraDTO compra : compras)
+		{
+			if(!compra.getEstadoDeCompra().getNombre().equals("Cancelado"))
+				sumatoria = sumatoria + (compra.getPrecio()*compra.getUnidades());
+		}
+		return sumatoria;
+	}
+	
+	private int gananciaDeVenta(List<CompraDTO> compras)
+	{
+		int ganancia = 0;
+		for (CompraDTO compra : compras)
+		{
+			if(!compra.getEstadoDeCompra().getNombre().equals("Cancelado"))
+				ganancia = ganancia + ((compra.getPrecio()*compra.getUnidades())*compra.getPorcentajeDeGanancia())/100;
+		}
+		return ganancia;
+	}
+	
+	private String premioPendiente(CampañaDTO campaña)
+	{
+		int contadorDeCompras = 0;
+		for (CompraDTO compra : campaña.getCompras())
+		{
+			if(compra.getProducto().getNombre()!=null&&!compra.getEstadoDeCompra().getNombre().equals("Cancelado"))
+			{
+				contadorDeCompras = contadorDeCompras + compra.getUnidades();				
+			}
+		}
+		for (PremioDTO premio : campaña.getPremios())
+		{
+			if(contadorDeCompras >= premio.getUnidadesMinimas() && premio.getRecibido()==false)
+				return "Si";
+		}
+		return "No";
+	}
+	
+	private String pagosEntregasPendientes(List<CompraDTO> compras)
+	{
+		for (CompraDTO compra : compras)
+		{
+			if(compra.getEstadoDeCompra().getNombre().equals("Mora") || compra.getEstadoDeCompra().getNombre().equals("Pagado"))
+			{
+				return "Si";
+			}
+		}
+		return "No";
+	}
+	
 	private void reiniciarTabla() 
 	{
 		this.panelCampaña.getModelCampaña().setRowCount(0); // Para vaciar la tabla
@@ -104,15 +158,8 @@ public class ControladorPanelGestionCampañas implements MouseListener, Observado
 	public void premiosABM()
 	{
 		CampañaDTO campañaSelect = this.campañas_en_tabla.get(this.panelCampaña.getTablaCampaña().getSelectedRow());
-		ControladorVentanaPremiosABM contro = new ControladorVentanaPremiosABM( campañaSelect );
+		ControladorVentanaPremiosABM contro = new ControladorVentanaPremiosABM( campañaSelect, this);
 		contro.initialize();
-	}
-	
-	@Override
-	public void update() 
-	{
-		this.llenarTabla();
-		this.panelCampaña.repaint();
 	}
 
 	@Override
@@ -167,4 +214,11 @@ public class ControladorPanelGestionCampañas implements MouseListener, Observado
 		// TODO Auto-generated method stub
 	}
 
+	@Override
+	public void update() 
+	{
+		this.llenarTabla();
+		this.panelCampaña.repaint();
+	}
+	
 }
