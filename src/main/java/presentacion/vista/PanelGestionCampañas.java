@@ -22,7 +22,7 @@ public class PanelGestionCampañas extends JPanel
 
 	private JTable tablaCampaña;
 	private DefaultTableModel modelCampaña;
-	private String[] nombreColumnasCampaña = { "Año","Numero","Cierre","Venta","Ganancia","Premios Pend.","Pagos/Entregas Pendientes"};
+	private String[] nombreColumnasCampaña = { "Año","Numero","Cierre","Venta ($)","Ganancia ($)","Premios Pendientes","Pagos/Entregas Pendientes"};
 	private JPanel panel;
 	private JButton btnAgregar;
 	private JButton btnEditar;
