@@ -22,7 +22,7 @@ public class ControladorVentanaEditarCliente implements SujetoObservable
 	public ControladorVentanaEditarCliente(ControladorPanelGestionClientes control, ClienteDTO cliente)
 	{
 		ventana = new VentanaEditarCliente();
-		ventana.getBtnAceptar().addActionListener(e -> this.EditarCliente());
+		ventana.getBtnAceptar().addActionListener(e -> this.editarCliente());
 		observadores = new ArrayList<Observador>();
 		observadores.add(control);
 		cliente_a_editar = cliente;
@@ -38,7 +38,7 @@ public class ControladorVentanaEditarCliente implements SujetoObservable
 		ventana.show();
 	}
 
-	public void EditarCliente()
+	public void editarCliente()
 	{
 		if(ValidadorCampos.campoVacio(this.ventana.getTxtNombre().getText())||
 		   ValidadorCampos.campoVacio(this.ventana.getTxtApellido().getText())||

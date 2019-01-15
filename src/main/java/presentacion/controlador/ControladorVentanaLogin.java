@@ -30,7 +30,6 @@ public class ControladorVentanaLogin implements KeyListener
 	public void keyPressed(KeyEvent e) 
 	{
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

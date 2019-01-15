@@ -103,11 +103,6 @@ public class ControladorPanelGestionClientes implements KeyListener, MouseListen
 	
 	private void editarCliente() 
 	{
-		if(this.panelCliente.getTablaCliente().getSelectedRow()==-1)
-		{
-			JOptionPane.showMessageDialog(null, "¡Seleccione un cliente!");
-			return;
-		}
 		ClienteDTO clientSelect = this.clientes_filtrados.get(this.panelCliente.getTablaCliente().getSelectedRow());
 		ControladorVentanaEditarCliente contro = new ControladorVentanaEditarCliente(this, clientSelect);
 		contro.initialize();
