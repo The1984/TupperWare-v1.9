@@ -8,31 +8,31 @@ import javax.swing.JPanel;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 
-public class VentanaPremiosABM
+public class VentanaTipoDeProductoABM
 {
 
 	private JDialog frame;
-	private DefaultTableModel modelPremio;
-	private String[] nombreColumnasPremio = { "Nombre","Descripcion","Unidades","Ganado","Recibido"};
-	private JTable tablaPremio;
+	private DefaultTableModel modelTipoDeProducto;
+	private String[] nombreTipoDeProducto = { "Nombre","Ganancia (%)"};
+	private JTable tablaTipoDeProducto;
 	private JButton btnAgregar;
 	private JButton btnEditar;
 	private JButton btnEliminar;
 	
-	public VentanaPremiosABM() 
+	public VentanaTipoDeProductoABM() 
 	{
 		frame = new JDialog();
-		frame.setTitle("Gestion Premios");
-		frame.setBounds(100, 100, 600, 215);
+		frame.setTitle("Gestion - Tipo de producto");
+		frame.setBounds(100, 100, 420, 215);
 		frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		frame.setModal(true);
 		frame.getContentPane().setLayout(null);
 		
-		JScrollPane scrollPane_premio = new JScrollPane();
-		scrollPane_premio.setBounds(10, 11, 564, 118);
-		frame.getContentPane().add(scrollPane_premio);
+		JScrollPane scrollPane_tipoDeProducto = new JScrollPane();
+		scrollPane_tipoDeProducto.setBounds(10, 11, 384, 118);
+		frame.getContentPane().add(scrollPane_tipoDeProducto);
 		
-		modelPremio = new DefaultTableModel(null, nombreColumnasPremio) 
+		modelTipoDeProducto = new DefaultTableModel(null, nombreTipoDeProducto) 
 		{
 			private static final long serialVersionUID = 1L;	
 			public boolean isCellEditable(int row, int column) 
@@ -41,11 +41,11 @@ public class VentanaPremiosABM
 			}
 		};
 	
-		tablaPremio = new JTable(modelPremio);
-		scrollPane_premio.setViewportView(tablaPremio);
+		tablaTipoDeProducto = new JTable(modelTipoDeProducto);
+		scrollPane_tipoDeProducto.setViewportView(tablaTipoDeProducto);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 145, 564, 20);
+		panel.setBounds(10, 145, 384, 20);
 		frame.getContentPane().add(panel);
 		panel.setLayout(new GridLayout(1, 0, 0, 0));
 		
@@ -61,19 +61,19 @@ public class VentanaPremiosABM
 		frame.setLocationRelativeTo(null);
 	}
 
-	public DefaultTableModel getModelPremio() 
+	public DefaultTableModel getModelTipoDeProducto() 
 	{
-		return modelPremio;
+		return modelTipoDeProducto;
 	}
 
-	public String[] getNombreColumnasPremio() 
+	public String[] getNombreColumnasTipoDeProducto() 
 	{
-		return nombreColumnasPremio;
+		return nombreTipoDeProducto;
 	}
 
-	public JTable getTablaPremio() 
+	public JTable getTablaTipoDeProducto() 
 	{
-		return tablaPremio;
+		return tablaTipoDeProducto;
 	}
 
 	public JButton getBtnAgregar() 

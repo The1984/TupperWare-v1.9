@@ -2,6 +2,7 @@ package presentacion.controlador;
 
 import presentacion.vista.PanelNegocio;
 import persistencia.conexion.Conexion;
+import presentacion.vista.PanelCorreo;
 import presentacion.vista.PanelGestionCampañas;
 import presentacion.vista.PanelGestionClientes;
 import presentacion.vista.VentanaPrincipal;
@@ -21,6 +22,8 @@ public class ControladorVentanaPrincipal
 		this.ventanaPrincipal.getBtnGestionClientes().addActionListener(e -> this.mostrarPanelGestionClientes());
 		this.ventanaPrincipal.getBtnNegocio().addActionListener(e -> this.mostrarPanelNegocio());
 		this.ventanaPrincipal.getBtnGestionCampañas().addActionListener(e -> this.mostrarPanelGestionCampañas());
+		this.ventanaPrincipal.getBtnCorreo().addActionListener(e -> this.mostrarPanelCorreo());
+		this.ventanaPrincipal.getBtnConfiguraciones().addActionListener(e -> this.mostrarPanelConfiguracion());
 	}
 	
 	public void initialize() 
@@ -68,6 +71,22 @@ public class ControladorVentanaPrincipal
 		this.ventanaPrincipal.show();
 		ControladorPanelGestionCampañas contro = new ControladorPanelGestionCampañas(panelCampaña, this.ventanaPrincipal);
 		contro.initialize();
+	}
+
+	private void mostrarPanelCorreo()
+	{
+		this.ventanaPrincipal.limpiarPanelCentral();
+		PanelCorreo panelCorreo = new PanelCorreo();
+		this.ventanaPrincipal.setearPanelCentral(panelCorreo);
+		this.ventanaPrincipal.show();
+		ControladorPanelCorreo contro = new ControladorPanelCorreo(panelCorreo);
+		contro.initialize();		
+	}
+	
+	private void mostrarPanelConfiguracion()
+	{
+		ControladorPanelConfiguracion contro = new ControladorPanelConfiguracion();
+		contro.initialize();		
 	}
 	
 }

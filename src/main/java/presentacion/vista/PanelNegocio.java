@@ -39,7 +39,7 @@ public class PanelNegocio extends JPanel
 	
 	public PanelNegocio() 
 	{
-		this.setBackground(new Color(71,14,18));
+		this.setBackground(new Color(117,23,31));
 		
 		JScrollPane scrollPane_Producto = new JScrollPane();
 		scrollPane_Producto.setBorder(new TitledBorder(null, "Productos", TitledBorder.CENTER, TitledBorder.TOP, null, null));
