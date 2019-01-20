@@ -1,6 +1,9 @@
 package presentacion.controlador;
 
 import presentacion.vista.PanelNegocio;
+
+import javax.swing.JPanel;
+
 import persistencia.conexion.Conexion;
 import presentacion.vista.PanelCorreo;
 import presentacion.vista.PanelGestionCampañas;
@@ -80,11 +83,15 @@ public class ControladorVentanaPrincipal
 		this.ventanaPrincipal.setearPanelCentral(panelCorreo);
 		this.ventanaPrincipal.show();
 		ControladorPanelCorreo contro = new ControladorPanelCorreo(panelCorreo);
-		contro.initialize();		
+		contro.initialize();
 	}
 	
 	private void mostrarPanelConfiguracion()
 	{
+		this.ventanaPrincipal.limpiarPanelCentral();
+		JPanel panelVacio = new JPanel();
+		this.ventanaPrincipal.setearPanelCentral(panelVacio);
+		this.ventanaPrincipal.show();
 		ControladorPanelConfiguracion contro = new ControladorPanelConfiguracion();
 		contro.initialize();		
 	}

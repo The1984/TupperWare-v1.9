@@ -32,5 +32,11 @@
       <artifactId>JTattoo</artifactId>
       <version>1.6.11</version>
     </dependency>
+    <!-- Mail -->
+    <dependency>
+      <groupId>javax.mail</groupId>
+      <artifactId>mail</artifactId>
+      <version>1.5.0-b01</version>
+    </dependency>
   </dependencies>
 </project>

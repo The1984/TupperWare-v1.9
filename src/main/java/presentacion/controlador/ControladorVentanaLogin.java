@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import presentacion.vista.VentanaLogin;
+import servicio.Correo;
 import util.Encriptador;
 import util.OwnerProperties;
 
@@ -42,6 +43,9 @@ public class ControladorVentanaLogin implements KeyListener
 			if (passIntro.equals(passOriginal)) 
 			{
 				this.ventanaLogin.close();
+				Correo.getInstance().setNombreEmisor(OwnerProperties.getInstance().getApellido()+" "+OwnerProperties.getInstance().getNombre());
+				Correo.getInstance().setMailEmisor(OwnerProperties.getInstance().getEmail());
+				Correo.getInstance().setPasswordEmisor(this.ventanaLogin.getPassword().getText());
 				ControladorVentanaPrincipal controladorPrincipal = new ControladorVentanaPrincipal();
 				controladorPrincipal.initialize();
 			}
