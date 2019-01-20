@@ -44,7 +44,7 @@ public class ControladorVentanaExportBD implements ActionListener
 			if(seGuarda == JFileChooser.APPROVE_OPTION)
 			{
 				String ruta = select.getSelectedFile().getPath();
-				this.ventanaExpBD.getTextField().setText(ruta);;
+				this.ventanaExpBD.getTextField().setText(ruta);
 			}
 		}
 		

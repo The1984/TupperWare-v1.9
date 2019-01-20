@@ -50,7 +50,7 @@ public class ControladorVentanaImportBD implements ActionListener{
 			if(seOpen == JFileChooser.APPROVE_OPTION)
 			{
 				String ruta = select.getSelectedFile().getPath();
-				this.ventanaImpBD.getTextField().setText(ruta);;
+				this.ventanaImpBD.getTextField().setText(ruta);
 			}
 		}
 		
