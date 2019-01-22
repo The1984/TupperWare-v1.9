@@ -1,9 +1,10 @@
+/Imagenes/
 /dto/
 /main/
 /modelo/
 /observer/
 /persistencia/
 /presentacion/
-/util/
-/Servicio/
+/script/
 /servicio/
+/util/

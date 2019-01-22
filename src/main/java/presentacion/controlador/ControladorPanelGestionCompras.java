@@ -27,6 +27,7 @@ public class ControladorPanelGestionCompras implements KeyListener, MouseListene
 		this.panelCompras.getLblCampaña().setText("Campaña:  "+this.campañaSelect.getAño()+" - N°"+this.campañaSelect.getNumero());
 		this.compras_filtradas = new ArrayList<CompraDTO>();
 		this.panelCompras.getTextFiltro().addKeyListener(this);
+		this.panelCompras.getBtnGenerarReporte().addActionListener(e -> this.generarReporte());
 		this.panelCompras.getBtnEditar().addActionListener(e -> this.editarCompra());
 		this.panelCompras.getTablaCompra().addMouseListener(this);
 		this.panelCompras.getBtnEditar().setEnabled(false);
@@ -115,6 +116,12 @@ public class ControladorPanelGestionCompras implements KeyListener, MouseListene
 				this.panelCompras.getModelCompra().addRow(fila);
 			}
 		}
+	}
+	
+	private void generarReporte()
+	{
+		ControladorVentanaGenerarReporte contro = new ControladorVentanaGenerarReporte(this.campañaSelect);
+		contro.initialize();
 	}
 	
 	private void editarCompra() 

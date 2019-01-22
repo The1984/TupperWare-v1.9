@@ -6,20 +6,21 @@ import javax.swing.JDialog;
 
 import java.awt.Color;
 
-public class VentanaExportBD 
+public class VentanaGenerarReporte 
 {
 
 	private JDialog frame;
 	private JTextField textField;
 	private JButton btnSelectFolder;
-	private JButton btnExport;
+	private JButton btnGenerarReporteVendedor;
+	private JButton btnGenerarReporteLider;
 
-	public VentanaExportBD()  
+	public VentanaGenerarReporte()  
 	{
 		frame = new JDialog();
-		frame.setTitle("Exportar BD");
+		frame.setTitle("Generar Reporte");
 		frame.setResizable(false);
-		frame.setSize(425, 160);
+		frame.setSize(425, 190);
 		frame.getContentPane().setBackground(Color.lightGray);
 		frame.setModal(true);
 	    frame.setLocationRelativeTo(null);
@@ -35,12 +36,17 @@ public class VentanaExportBD
 		btnSelectFolder.setBounds(250, 30, 160, 23);
 		frame.getContentPane().add(btnSelectFolder);
 		
-		btnExport = new JButton("Exportar");
-		btnExport.setBounds(10, 79, 400, 31);
-		btnExport.setBackground(Color.darkGray);
-		btnExport.setForeground(Color.white);
+		btnGenerarReporteVendedor = new JButton("Reporte - Vendedor");
+		btnGenerarReporteVendedor.setBounds(10, 79, 400, 31);
+		btnGenerarReporteVendedor.setBackground(Color.darkGray);
+		btnGenerarReporteVendedor.setForeground(Color.white);
+		frame.getContentPane().add(btnGenerarReporteVendedor);
 		
-		frame.getContentPane().add(btnExport);
+		btnGenerarReporteLider = new JButton("Reporte - Lider");
+		btnGenerarReporteLider.setBounds(10, 119, 400, 31);
+		btnGenerarReporteLider.setBackground(Color.darkGray);
+		btnGenerarReporteLider.setForeground(Color.white);
+		frame.getContentPane().add(btnGenerarReporteLider);
 	}
 	
 	public JTextField getTextField() 
@@ -53,11 +59,16 @@ public class VentanaExportBD
 		return btnSelectFolder;
 	}
 
-	public JButton getBtnExport() 
+	public JButton getBtnGenerarReporteVendedor() 
 	{
-		return btnExport;
+		return btnGenerarReporteVendedor;
 	}
-
+	
+	public JButton getBtnGenerarReporteLider() 
+	{
+		return btnGenerarReporteLider;
+	}
+	
 	public void show()
 	{
 		this.frame.setVisible(true);
@@ -67,5 +78,4 @@ public class VentanaExportBD
 	{
 		this.frame.dispose();
 	}
-	
 }
