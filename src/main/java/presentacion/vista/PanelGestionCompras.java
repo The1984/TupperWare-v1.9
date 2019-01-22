@@ -33,7 +33,7 @@ public class PanelGestionCompras extends JPanel
 	private JTextField textFiltro;
 	private JPanel panel;
 	private JButton btnEditar;
-	private JButton btnCrearReporte;
+	private JButton btnGenerarReporte;
 	private JLabel lblCampaña;
 
 	public PanelGestionCompras() 
@@ -95,9 +95,9 @@ public class PanelGestionCompras extends JPanel
 
 		Border borderButton = BorderFactory.createLineBorder(Color.black, 3);
 		
-		btnCrearReporte = new JButton("Crear Reporte");
-		btnCrearReporte.setBorder(borderButton);
-		panel.add(btnCrearReporte);
+		btnGenerarReporte = new JButton("Generar Reporte");
+		btnGenerarReporte.setBorder(borderButton);
+		panel.add(btnGenerarReporte);
 		
 		btnEditar = new JButton("Editar");
 		btnEditar.setBorder(borderButton);
@@ -147,9 +147,9 @@ public class PanelGestionCompras extends JPanel
 		return btnEditar;
 	}
 
-	public JButton getBtnCrearReporte() 
+	public JButton getBtnGenerarReporte() 
 	{
-		return btnCrearReporte;
+		return btnGenerarReporte;
 	}
 	
 }

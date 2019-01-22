@@ -6,8 +6,8 @@
   <classpathentry kind="var" path="M2_REPO/javax/mail/mail/1.5.0-b01/mail-1.5.0-b01.jar"/>
   <classpathentry kind="var" path="M2_REPO/javax/activation/activation/1.1/activation-1.1.jar"/>
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-  <classpathentry kind="var" path="M2_REPO/junit/junit/3.8.1/junit-3.8.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/mysql/mysql-connector-java/5.1.35/mysql-connector-java-5.1.35.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/toedter/jcalendar/1.4/jcalendar-1.4.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/jtattoo/JTattoo/1.6.11/JTattoo-1.6.11.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/itextpdf/itextpdf/5.5.13/itextpdf-5.5.13.jar"/>
 </classpath>
