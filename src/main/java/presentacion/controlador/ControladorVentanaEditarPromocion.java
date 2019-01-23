@@ -3,6 +3,9 @@ package presentacion.controlador;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
+import dto.CampañaDTO;
 import dto.ProductoDTO;
 import dto.PromocionDTO;
 import dto.PromocionProductoDTO;
@@ -10,19 +13,23 @@ import modelo.GestorPromociones;
 import observer.Observador;
 import observer.SujetoObservable;
 import presentacion.vista.VentanaEditarPromocion;
+import util.ValidadorCampos;
+import util.ValidadorLogico;
 
 public class ControladorVentanaEditarPromocion implements SujetoObservable
 {
 
 	private VentanaEditarPromocion ventana;
 	private ArrayList<Observador> observadores;
+	private CampañaDTO campaña;
 	private PromocionDTO promocion;
 	private List<ProductoDTO> listProductAntes;
 	private List<ProductoDTO> listProductDespues;
 	
-	public ControladorVentanaEditarPromocion(ControladorVentanaPromocionesABM control, PromocionDTO promocion)
+	public ControladorVentanaEditarPromocion(ControladorVentanaPromocionesABM control, PromocionDTO promocion, CampañaDTO campaña)
 	{
 		this.ventana = new VentanaEditarPromocion();
+		this.campaña = campaña;
 		this.promocion = promocion;
 		this.ventana.getTxtNombre().setText(this.promocion.getNombre());
 		this.ventana.getTxtrDescripcion().setText(this.promocion.getDescripcion());
@@ -96,6 +103,31 @@ public class ControladorVentanaEditarPromocion implements SujetoObservable
 	
 	private void actualizarPromocion()
 	{	
+		if(ValidadorCampos.campoVacio(this.ventana.getTxtNombre().getText()))
+		{
+			JOptionPane.showMessageDialog(null, "¡El campo nombre es obligatorio!", "Warning", JOptionPane.WARNING_MESSAGE);
+			return;
+		}
+		if(ValidadorCampos.campoVacio(this.ventana.getTxtPagina().getText()))
+		{
+			JOptionPane.showMessageDialog(null, "¡El campo pagina es obligatorio!", "Warning", JOptionPane.WARNING_MESSAGE);
+			return;
+		}
+		if(ValidadorCampos.campoVacio(this.ventana.getTxtPrecio().getText()))
+		{
+			JOptionPane.showMessageDialog(null, "¡El campo precio es obligatorio!", "Warning", JOptionPane.WARNING_MESSAGE);
+			return;
+		}
+		if(this.listProductDespues.size()==0)
+		{
+			JOptionPane.showMessageDialog(null, "¡Introduzca productos en la promocion!", "Warning", JOptionPane.WARNING_MESSAGE);
+			return;			
+		}
+		if(ValidadorLogico.existePromocionNombreEditar(this.promocion.getIdPromocion(), this.ventana.getTxtNombre().getText(), this.campaña.getPromociones()))
+		{
+			JOptionPane.showMessageDialog(null, "¡Nombre de promocion ya existente!", "Warning", JOptionPane.WARNING_MESSAGE);
+			return;		
+		}
 		this.promocion.setNombre(this.ventana.getTxtNombre().getText());
 		this.promocion.setDescripcion(this.ventana.getTxtrDescripcion().getText());
 		this.promocion.setPagina(this.ventana.getTxtPagina().getText());

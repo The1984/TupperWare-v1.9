@@ -3,11 +3,13 @@ package presentacion.controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 import dto.CampañaDTO;
 import presentacion.vista.VentanaGenerarReporte;
 import util.GeneradorDeReporte;
 import util.OwnerProperties;
+import util.ValidadorCampos;
 
 public class ControladorVentanaGenerarReporte implements ActionListener
 {
@@ -32,7 +34,6 @@ public class ControladorVentanaGenerarReporte implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{	
-		
 		if (e.getSource() == this.ventanaGenerarReporte.getBtnSelectFolder())
 		{
 			JFileChooser select = new JFileChooser();
@@ -47,9 +48,13 @@ public class ControladorVentanaGenerarReporte implements ActionListener
 				this.ventanaGenerarReporte.getTextField().setText(ruta);
 			}
 		}
-		
 		if (e.getSource() == this.ventanaGenerarReporte.getBtnGenerarReporteVendedor())
 		{
+			if(ValidadorCampos.campoVacio(this.ventanaGenerarReporte.getTextField().getText())) 
+			{
+				JOptionPane.showMessageDialog(null, "¡Falta introducir la ruta del archivo!", "Warning", JOptionPane.WARNING_MESSAGE);
+				return;
+			}
 			String ruta = this.ventanaGenerarReporte.getTextField().getText()+"\\Reporte - Campaña - "+this.campaña.getAño()+" - N°"+this.campaña.getNumero()+".pdf";
 			GeneradorDeReporte gen = new GeneradorDeReporte(ruta);
 			gen.openDocument();
@@ -59,12 +64,18 @@ public class ControladorVentanaGenerarReporte implements ActionListener
 		
 		if (e.getSource() == this.ventanaGenerarReporte.getBtnGenerarReporteLider())
 		{
+			if(ValidadorCampos.campoVacio(this.ventanaGenerarReporte.getTextField().getText())) 
+			{
+				JOptionPane.showMessageDialog(null, "¡Falta introducir la ruta del archivo!", "Warning", JOptionPane.WARNING_MESSAGE);
+				return;
+			}
 			String ruta = this.ventanaGenerarReporte.getTextField().getText()+"\\Pedido - "+OwnerProperties.getInstance().getApellido()+" "+OwnerProperties.getInstance().getNombre()+" - Campaña - "+this.campaña.getAño()+" - N°"+this.campaña.getNumero()+".pdf";
 			GeneradorDeReporte gen = new GeneradorDeReporte(ruta);
 			gen.openDocument();
 			gen.ReporteLider(this.campaña);
 			gen.closeDocument();
-		}
+		}		
+		
 	}
 		
 }

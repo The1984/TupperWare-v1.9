@@ -4,11 +4,13 @@ import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import dto.ClienteDTO;
 import presentacion.vista.PanelCorreo;
 import servicio.Correo;
+import util.ValidadorCampos;
 
 public class ControladorPanelCorreo
 {
@@ -74,6 +76,16 @@ public class ControladorPanelCorreo
 
 	private void enviarMensaje()
 	{
+		if(ValidadorCampos.campoVacio(this.panelCorreo.getTxtReceptor().getText()))
+		{
+			JOptionPane.showMessageDialog(null, "¡Falta completar el receptor!", "Warning", JOptionPane.WARNING_MESSAGE);
+			return;
+		}
+		if(ValidadorCampos.campoVacio(this.panelCorreo.getTxtAsunto().getText()))
+		{
+			JOptionPane.showMessageDialog(null, "¡Introduzca asunto al mensaje!", "Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
 		Correo.getInstance().setDestinatario(this.client.getEmail());
 		Correo.getInstance().setAsunto(this.panelCorreo.getTxtAsunto().getText());
 		Correo.getInstance().setMensaje(this.panelCorreo.getTextAreaMensaje().getText());

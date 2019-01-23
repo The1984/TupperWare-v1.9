@@ -20,6 +20,8 @@ import modelo.GestorTipoDeProducto;
 import observer.Observador;
 import observer.SujetoObservable;
 import presentacion.vista.VentanaAgregarProducto;
+import util.ValidadorCampos;
+import util.ValidadorLogico;
 
 public class ControladorVentanaAgregarProducto implements SujetoObservable, MouseListener
 {
@@ -49,6 +51,22 @@ public class ControladorVentanaAgregarProducto implements SujetoObservable, Mous
 
 	public void registrarProducto()
 	{
+		if(ValidadorCampos.campoVacio(this.ventana.getTxtCodigo().getText())||
+		   ValidadorCampos.campoVacio(this.ventana.getTxtNombre().getText()))
+		{
+			JOptionPane.showMessageDialog(null, "¡Los campos codigo y nombre son obligatorios!", "Warning", JOptionPane.WARNING_MESSAGE);
+			return;
+		}
+		if(ValidadorLogico.existeProductoNombreAgregar(this.ventana.getTxtNombre().getText(), GestorProductos.getInstance().readAll())) 
+		{
+			JOptionPane.showMessageDialog(null, "¡Nombre de producto ya existente!", "Warning", JOptionPane.WARNING_MESSAGE);
+			return;	
+		}
+		if(ValidadorLogico.existeProductoCodigoAgregar(this.ventana.getTxtCodigo().getText(), GestorProductos.getInstance().readAll())) 
+		{
+			JOptionPane.showMessageDialog(null, "¡Codigo de producto ya existente!", "Warning", JOptionPane.WARNING_MESSAGE);
+			return;	
+		}
 		newProducto.setCodigo(this.ventana.getTxtCodigo().getText());
 		newProducto.setNombre(this.ventana.getTxtNombre().getText());
 		newProducto.setDescripcion(this.ventana.getTxtrDescripcion().getText());

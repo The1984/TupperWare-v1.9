@@ -38,7 +38,8 @@ public class PanelGestionCompras extends JPanel
 
 	public PanelGestionCompras() 
 	{
-		this.setBackground(new Color(5,35,27));//181,30,20
+		this.setBackground(new Color(5,35,27));
+
 		JScrollPane scrollPane_compra = new JScrollPane();
 		scrollPane_compra.setBorder(new TitledBorder(null, "Compras", TitledBorder.CENTER, TitledBorder.TOP, null, null));
 		

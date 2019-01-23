@@ -31,7 +31,7 @@ public class PanelGestionCampañas extends JPanel
 	
 	public PanelGestionCampañas() 
 	{
-		this.setBackground(new Color(181,30,20));
+		this.setBackground(new Color(5,35,27));
 		
 		JScrollPane scrollPane_campaña = new JScrollPane();
 		scrollPane_campaña.setBorder(new TitledBorder(null, "Campañas", TitledBorder.CENTER, TitledBorder.TOP, null, null));

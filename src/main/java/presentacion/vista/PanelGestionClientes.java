@@ -38,7 +38,8 @@ public class PanelGestionClientes extends JPanel
     
 	public PanelGestionClientes() 
 	{
-		this.setBackground(new Color(9,57,45));
+		this.setBackground(new Color(5,35,27));
+	
 		JScrollPane scrollPane_cliente = new JScrollPane();
 		scrollPane_cliente.setBorder(new TitledBorder(null, "Clientes", TitledBorder.CENTER, TitledBorder.TOP, null, null));
 		
