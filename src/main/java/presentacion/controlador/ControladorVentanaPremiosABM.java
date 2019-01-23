@@ -15,6 +15,7 @@ import observer.Observador;
 import observer.SujetoObservable;
 import presentacion.vista.VentanaPremiosABM;
 import presentacion.vista.VentanaVerPremio;
+import util.RenderForPremios;
 
 public class ControladorVentanaPremiosABM implements MouseListener, Observador, SujetoObservable
 {
@@ -39,6 +40,7 @@ public class ControladorVentanaPremiosABM implements MouseListener, Observador, 
 	public void initialize()
 	{
 		this.llenarTabla();
+		this.ventana.getTablaPremio().setDefaultRenderer(Object.class, new RenderForPremios());
 		this.ventana.show();
 	}
 
@@ -51,8 +53,17 @@ public class ControladorVentanaPremiosABM implements MouseListener, Observador, 
 	private void editarPremio()
 	{
 		PremioDTO premioSelect = GestorPremios.getInstance().readForIdCampaña(this.campaña.getIdCampaña()).get(this.ventana.getTablaPremio().getSelectedRow());
-		
-		ControladorVentanaEditarPremio contro = new ControladorVentanaEditarPremio(this, premioSelect);
+		String habilitarRecibido = this.ganoPremio(this.campaña.getCompras(), premioSelect);
+		Boolean enable;
+		if(habilitarRecibido.equals("Si"))
+		{
+			enable = true;
+		}
+		else
+		{
+			enable = false;
+		}
+		ControladorVentanaEditarPremio contro = new ControladorVentanaEditarPremio(this, premioSelect, enable);
 		contro.initialize();
 	}
 

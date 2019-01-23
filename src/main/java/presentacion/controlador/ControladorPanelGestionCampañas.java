@@ -15,6 +15,7 @@ import observer.Observador;
 import presentacion.vista.PanelGestionCampañas;
 import presentacion.vista.PanelGestionCompras;
 import presentacion.vista.VentanaPrincipal;
+import util.RenderForCampañas;
 
 public class ControladorPanelGestionCampañas implements MouseListener, Observador
 {
@@ -41,6 +42,7 @@ public class ControladorPanelGestionCampañas implements MouseListener, Observado
 	public void initialize()
 	{
 		this.llenarTabla();
+		this.panelCampaña.getTablaCampaña().setDefaultRenderer(Object.class, new RenderForCampañas());
 		this.panelCampaña.repaint();
 	}
 	

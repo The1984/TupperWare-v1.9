@@ -15,7 +15,7 @@ public class ControladorVentanaEditarPremio implements SujetoObservable
 	private ArrayList<Observador> observadores;
 	private PremioDTO premio;
 	
-	public ControladorVentanaEditarPremio(ControladorVentanaPremiosABM control, PremioDTO premio)
+	public ControladorVentanaEditarPremio(ControladorVentanaPremiosABM control, PremioDTO premio, Boolean habilitarRecibido)
 	{
 		this.ventana = new VentanaEditarPremio();
 		this.premio = premio;
@@ -23,9 +23,7 @@ public class ControladorVentanaEditarPremio implements SujetoObservable
 		this.ventana.getTextArea().setText(this.premio.getDescripcion());
 		this.ventana.getSpinnerUnidadesMinimas().setValue(this.premio.getUnidadesMinimas());
 		this.ventana.getChckbxRecibido().setSelected(this.premio.getRecibido());
-		//
-		// Habilitar o no edicion de Recibido...
-		//
+		this.ventana.getChckbxRecibido().setEnabled(habilitarRecibido);
 		this.ventana.getBtnAceptar().addActionListener(e -> this.editarPremio());
 		this.observadores = new ArrayList<Observador>();
 		this.observadores.add(control);
