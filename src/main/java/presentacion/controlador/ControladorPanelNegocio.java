@@ -4,7 +4,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import dto.CampañaDTO;
@@ -21,12 +23,14 @@ public class ControladorPanelNegocio implements KeyListener, MouseListener, Obse
 	private List<ProductoDTO> productos_filtrados;
 	private List<PromocionDTO> promociones;
 	private PanelNegocio panelNegocio;
+	private boolean existeCampaña;
 	
 	public ControladorPanelNegocio(PanelNegocio panel)
 	{
 		this.panelNegocio = panel;
 		this.productos_filtrados = new ArrayList<ProductoDTO>();
 		this.promociones = new ArrayList<PromocionDTO>();
+		this.existeCampaña = false;
 		this.panelNegocio.getTextFiltro().addKeyListener(this);
 		this.panelNegocio.getBtnAgregarProducto().addActionListener(e -> this.agregarProducto());
 		this.panelNegocio.getBtnEditarProducto().addActionListener(e -> this.editarProducto());
@@ -73,19 +77,26 @@ public class ControladorPanelNegocio implements KeyListener, MouseListener, Obse
 				if(campañaMasReciente.getCierre().before(campaña.getCierre()))
 					campañaMasReciente = campaña;
 			}
-		
-			for (PromocionDTO promocion : campañaMasReciente.getPromociones())
+			
+			Date fechaActual = new Date();
+			String fechaActualString = new SimpleDateFormat("dd-MM-yyyy").format(fechaActual);
+			String fechaCampañaMasRecienteString = new SimpleDateFormat("dd-MM-yyyy").format(campañaMasReciente.getCierre());
+			if(campañaMasReciente.getCierre().after(new Date())||fechaCampañaMasRecienteString.equals(fechaActualString)) 
 			{
-				Object[] fila = {
-									promocion.getNombre(),
-									promocion.getDescripcion(),
-									this.listarProductos(promocion.getProductos()),
-									promocion.getPagina(),
-									Integer.toString(promocion.getPrecio())
-								};
-				this.promociones.add(promocion);
-				this.panelNegocio.getModelPromocion().addRow(fila);
-			}	
+				for (PromocionDTO promocion : campañaMasReciente.getPromociones())
+				{
+					Object[] fila = {
+										promocion.getNombre(),
+										promocion.getDescripcion(),
+										this.listarProductos(promocion.getProductos()),
+										promocion.getPagina(),
+										Integer.toString(promocion.getPrecio())
+									};
+					this.promociones.add(promocion);
+					this.panelNegocio.getModelPromocion().addRow(fila);
+				}
+				this.existeCampaña = true;
+			}
 		}
 	}
 	
@@ -181,7 +192,7 @@ public class ControladorPanelNegocio implements KeyListener, MouseListener, Obse
 		if(e.getClickCount()==2 && e.getSource().equals(this.panelNegocio.getTablaProducto()))
 		{
 			ProductoDTO productSelect = this.productos_filtrados.get(this.panelNegocio.getTablaProducto().getSelectedRow());
-			ControladorVentanaVerProducto contro = new ControladorVentanaVerProducto(productSelect);
+			ControladorVentanaVerProducto contro = new ControladorVentanaVerProducto(productSelect, this.existeCampaña);
 			contro.initialize();
 		}
 		if(e.getClickCount()==2 && e.getSource().equals(this.panelNegocio.getTablaPromocion()))

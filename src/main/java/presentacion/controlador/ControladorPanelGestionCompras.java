@@ -12,6 +12,7 @@ import dto.CompraDTO;
 import dto.ProductoDTO;
 import observer.Observador;
 import presentacion.vista.PanelGestionCompras;
+import util.RenderForCompras;
 
 public class ControladorPanelGestionCompras implements KeyListener, MouseListener, Observador
 {
@@ -36,6 +37,7 @@ public class ControladorPanelGestionCompras implements KeyListener, MouseListene
 	public void initialize()
 	{
 		this.llenarTabla();
+		this.panelCompras.getTablaCompra().setDefaultRenderer(Object.class, new RenderForCompras());
 		this.panelCompras.repaint();
 	}
 	

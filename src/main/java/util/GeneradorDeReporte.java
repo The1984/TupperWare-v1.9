@@ -25,6 +25,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import dto.CampañaDTO;
 import dto.CompraDTO;
+import dto.PremioDTO;
 import dto.ProductoDTO;
 
 public class GeneradorDeReporte 
@@ -92,7 +93,7 @@ public class GeneradorDeReporte
 	        //CREAR UNA TABLA
 	        //----------------------------------------------------------------
 	        
-	        PdfPTable table = new PdfPTable(6);
+	        PdfPTable table = new PdfPTable(7);
 	
 	        PdfPCell c1 = new PdfPCell(new Phrase("N°"));
 	        c1.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -123,32 +124,76 @@ public class GeneradorDeReporte
 	        c1.setHorizontalAlignment(Element.ALIGN_CENTER);
 	        c1.setBackgroundColor(new BaseColor(255,206,36));
 	        table.addCell(c1);
+
+	        c1 = new PdfPCell(new Phrase("Estado"));
+	        c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+	        c1.setBackgroundColor(new BaseColor(255,206,36));
+	        table.addCell(c1);
 	        table.setHeaderRows(1);
 	        
 
-	        float[] medidaCeldas = {0.45f, 1.25f, 1.25f, 1.25f, 1.25f, 1.25f};
+	        float[] medidaCeldas = {0.45f, 1.25f, 1.25f, 1.25f, 1.25f, 1.25f, 1.25f};
 	        table.setWidths(medidaCeldas);
 	        
 	        int contador = 1;
 	        
-	        for (CompraDTO compra : campaña.getCompras())
+	        List<CompraDTO> listOrdenada = this.ordenarPorEstado(campaña.getCompras());
+	        
+	        for (CompraDTO compra : listOrdenada)
 	        {
-	        	if(!compra.getEstadoDeCompra().getNombre().equals("Cancelado"))
-	        	{
-			        c1 = new PdfPCell(new Phrase(Integer.toString(contador)));
-		 	        c1.setHorizontalAlignment(Element.ALIGN_CENTER);
-		 	        c1.setBackgroundColor(new BaseColor(255,206,36));
-		        	table.addCell(c1);
-		        	table.addCell(compra.getCliente().getApellido()+" "+compra.getCliente().getNombre());
-		        	table.addCell(this.listarProductosNombre(compra));
-		        	table.addCell(Integer.toString(compra.getPrecio()));
-		        	table.addCell(Integer.toString(compra.getUnidades())+this.esPromocion(compra));
-		        	table.addCell(Integer.toString((compra.getUnidades()*compra.getPrecio())-compra.getMontoPagado()));
-		        	contador++;	        		
-	        	}
+		        c1 = new PdfPCell(new Phrase(Integer.toString(contador)));
+	 	        c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+	 	        c1.setBackgroundColor(new BaseColor(255,206,36));
+	        	table.addCell(c1);
+	        	table.addCell(compra.getCliente().getApellido()+" "+compra.getCliente().getNombre());
+	        	table.addCell(this.listarProductosNombre(compra));
+	        	table.addCell(Integer.toString(compra.getPrecio()));
+	        	table.addCell(Integer.toString(compra.getUnidades())+this.esPromocion(compra));
+	        	table.addCell(Integer.toString((compra.getUnidades()*compra.getPrecio())-compra.getMontoPagado()));
+	        	table.addCell(compra.getEstadoDeCompra().getNombre());
+	        	contador++;
 	        }
 	        
 	        document.add(table);
+
+	        document.add(new Paragraph(" "));
+
+	        PdfPTable tableResul = new PdfPTable(2);
+	
+	        c1 = new PdfPCell(new Phrase("Venta"));
+	        c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+	        c1.setBackgroundColor(new BaseColor(0,162,232));
+	        tableResul.addCell(c1);
+	        
+	        c1 = new PdfPCell(new Phrase("Ganancia"));
+	        c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+	        c1.setBackgroundColor(new BaseColor(0,162,232));
+	        tableResul.addCell(c1);
+	
+	        tableResul.addCell("$ "+this.montoDeVenta(campaña.getCompras()));
+	        tableResul.addCell("$ "+this.gananciaDeVenta(campaña.getCompras()));
+	        document.add(tableResul);
+	        
+	        if(this.premioGanados(campaña).size()!=0)
+	        {
+		        document.add(new Paragraph(" "));
+		        Paragraph p5 = new Paragraph();
+		        fuenteDatos.setColor(new BaseColor(128,0,0));
+		        p5.setFont(fuenteDatos);
+		        p5.add("*** Premios Ganados ***");
+		        document.add(p5);
+		        document.add(new Paragraph(" "));		        
+		        for(String premio : this.premioGanados(campaña))
+		        {
+			        Paragraph p6 = new Paragraph();
+			        fuenteDatos.setColor(new BaseColor(0,0,0));
+			        fuenteDatos.setSize(10);
+			        p6.setFont(fuenteDatos);
+			        p6.add(premio);
+			        document.add(p6);		        	
+		        }
+	        }
+	        
 	        JOptionPane.showMessageDialog(null, "Reporte generado exitosamente.");    
 		} 
 		catch (DocumentException | IOException e) 
@@ -156,6 +201,40 @@ public class GeneradorDeReporte
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	private List<CompraDTO> ordenarPorEstado(List<CompraDTO> compras)
+	{
+		List<CompraDTO> listCompras = new ArrayList<>();
+		for(CompraDTO compra : compras)
+		{
+			if(compra.getEstadoDeCompra().getNombre().equals("Entregado/Mora"))
+			{
+				listCompras.add(compra);
+			}
+		}
+		for(CompraDTO compra : compras)
+		{
+			if(compra.getEstadoDeCompra().getNombre().equals("Mora"))
+			{
+				listCompras.add(compra);
+			}
+		}
+		for(CompraDTO compra : compras)
+		{
+			if(compra.getEstadoDeCompra().getNombre().equals("Pagado"))
+			{
+				listCompras.add(compra);
+			}
+		}
+		for(CompraDTO compra : compras)
+		{
+			if(compra.getEstadoDeCompra().getNombre().equals("Entregado"))
+			{
+				listCompras.add(compra);
+			}
+		}
+		return listCompras;
 	}
 	
 	private String listarProductosNombre(CompraDTO compra) 
@@ -187,6 +266,47 @@ public class GeneradorDeReporte
 			return " (Set)";
 		}
 		return "";
+	}
+
+	private int montoDeVenta(List<CompraDTO> compras)
+	{
+		int sumatoria = 0;
+		for (CompraDTO compra : compras)
+		{
+			if(!compra.getEstadoDeCompra().getNombre().equals("Cancelado"))
+				sumatoria = sumatoria + (compra.getPrecio()*compra.getUnidades());
+		}
+		return sumatoria;
+	}
+	
+	private int gananciaDeVenta(List<CompraDTO> compras)
+	{
+		int ganancia = 0;
+		for (CompraDTO compra : compras)
+		{
+			if(!compra.getEstadoDeCompra().getNombre().equals("Cancelado"))
+				ganancia = ganancia + ((compra.getPrecio()*compra.getUnidades())*compra.getPorcentajeDeGanancia())/100;
+		}
+		return ganancia;
+	}
+	
+	private List<String> premioGanados(CampañaDTO campaña)
+	{
+		int contadorDeCompras = 0;
+		List<String> listString = new ArrayList<>();
+		for (CompraDTO compra : campaña.getCompras())
+		{
+			if(compra.getProducto().getNombre()!=null&&!compra.getEstadoDeCompra().getNombre().equals("Cancelado"))
+			{
+				contadorDeCompras = contadorDeCompras + compra.getUnidades();				
+			}
+		}
+		for (PremioDTO premio : campaña.getPremios())
+		{
+			if(contadorDeCompras >= premio.getUnidadesMinimas() && premio.getRecibido()==false)
+				listString.add("* Premio: "+premio.getNombre()+" - Descripcion: "+premio.getDescripcion()+" - Unidades: "+premio.getUnidadesMinimas());
+		}
+		return listString;
 	}
 	
 	public void ReporteLider( CampañaDTO campaña ) 
@@ -404,19 +524,19 @@ public class GeneradorDeReporte
 		return compraReturn;
 	}
 	
-	 private boolean isNumeric(String cadena) 
-	 {
-		 boolean resultado;
-	     try 
-	     {
-	    	 Integer.parseInt(cadena);
-	         resultado = true;
-	     }
-	     catch (NumberFormatException excepcion) 
-	     {
-	    	 resultado = false;
-	     }
-	     return resultado;
+	private boolean isNumeric(String cadena) 
+	{
+		boolean resultado;
+	    try 
+	    {
+	    	Integer.parseInt(cadena);
+	        resultado = true;
+	    }
+	    catch (NumberFormatException excepcion) 
+	    {
+	    	resultado = false;
+	    }
+	    return resultado;
 	}
 	
 	public void openDocument()

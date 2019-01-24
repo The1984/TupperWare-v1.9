@@ -17,7 +17,7 @@ public class ControladorVentanaVerProducto
 	private VentanaVerProducto ventana;
 	private ProductoDTO product;
 	
-	public ControladorVentanaVerProducto(ProductoDTO producto)
+	public ControladorVentanaVerProducto(ProductoDTO producto, Boolean enableCompra)
 	{
 		this.product = producto;
 		ventana = new VentanaVerProducto();
@@ -26,7 +26,8 @@ public class ControladorVentanaVerProducto
 		ImagenDeProductoDTO imagen = GestorProductos.getInstance().readForIdProducto(this.product.getIdProducto());
 	    Icon icono = new ImageIcon(imagen.getImagen().getScaledInstance(this.ventana.getLblImagen().getWidth(), this.ventana.getLblImagen().getHeight(), Image.SCALE_DEFAULT));
 	    this.ventana.getLblImagen().setIcon(icono);
-
+	    this.ventana.getBtnComprar().setEnabled(enableCompra);
+	    
 		ventana.getBtnComprar().addActionListener(e -> this.comprarProducto());
 	}
 	

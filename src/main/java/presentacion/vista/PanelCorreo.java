@@ -138,6 +138,7 @@ public class PanelCorreo extends JPanel{
 		
 		JPanel panelNorte = new JPanel();
 		panelNorte.setLayout(new FlowLayout(FlowLayout.CENTER));
+		panelNorte.setBackground(new Color(5,35,27));
 		panelNorte.add(lblReceptor);
 		panelNorte.add(txtReceptor);
 		panelNorte.add(btnAsignarReceptor);	
@@ -204,6 +205,7 @@ public class PanelCorreo extends JPanel{
 				
 		JPanel panelSur = new JPanel();
 		panelSur.setLayout(new GridLayout(1, 0, 0, 0));
+		panelSur.setBackground(new Color(5,35,27));
 		panelSur.add(boldButton);
 		panelSur.add(italicButton);
 		panelSur.add(underlineButton);

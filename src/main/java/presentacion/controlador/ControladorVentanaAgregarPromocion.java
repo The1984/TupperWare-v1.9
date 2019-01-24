@@ -3,6 +3,8 @@ package presentacion.controlador;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import dto.CampañaDTO;
 import dto.ProductoDTO;
 import dto.PromocionDTO;
@@ -11,6 +13,8 @@ import modelo.GestorPromociones;
 import observer.Observador;
 import observer.SujetoObservable;
 import presentacion.vista.VentanaAgregarPromocion;
+import util.ValidadorCampos;
+import util.ValidadorLogico;
 
 public class ControladorVentanaAgregarPromocion implements SujetoObservable
 {
@@ -83,6 +87,36 @@ public class ControladorVentanaAgregarPromocion implements SujetoObservable
 	
 	private void registrarPromocion()
 	{	
+		if(ValidadorCampos.campoVacio(this.ventana.getTxtNombre().getText()))
+		{
+			JOptionPane.showMessageDialog(null, "¡El campo nombre es obligatorios!", "Warning", JOptionPane.WARNING_MESSAGE);
+			return;
+		}
+		if(ValidadorCampos.campoVacio(this.ventana.getTxtPagina().getText()))
+		{
+			JOptionPane.showMessageDialog(null, "¡El campo pagina es obligatorio!", "Warning", JOptionPane.WARNING_MESSAGE);
+			return;
+		}
+		if(ValidadorCampos.campoVacio(this.ventana.getTxtPrecio().getText()))
+		{
+			JOptionPane.showMessageDialog(null, "¡El campo precio es obligatorio!", "Warning", JOptionPane.WARNING_MESSAGE);
+			return;
+		}
+		if(this.listProduct.size()==0)
+		{
+			JOptionPane.showMessageDialog(null, "¡Introduzca productos en la promocion!", "Warning", JOptionPane.WARNING_MESSAGE);
+			return;			
+		}
+		if(ValidadorLogico.existePromocionNombreAgregar(this.ventana.getTxtNombre().getText(), this.campaña.getPromociones()))
+		{
+			JOptionPane.showMessageDialog(null, "¡Nombre de promocion ya existente!", "Warning", JOptionPane.WARNING_MESSAGE);
+			return;		
+		}
+		if(!ValidadorCampos.isNumeric(this.ventana.getTxtPrecio().getText()))
+		{
+			JOptionPane.showMessageDialog(null, "¡Precio no es un numero!", "Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
 		this.newPromocion.setNombre(this.ventana.getTxtNombre().getText());
 		this.newPromocion.setDescripcion(this.ventana.getTxtrDescripcion().getText());
 		this.newPromocion.setPagina(this.ventana.getTxtPagina().getText());

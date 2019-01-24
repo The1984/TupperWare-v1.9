@@ -45,7 +45,7 @@ public class ControladorVentanaPromocionesABM implements MouseListener, Observad
 	private void editarPromocion() 
 	{
 		PromocionDTO promocionSelect = GestorPromociones.getInstance().readForCampaña(this.campaña).get(this.ventana.getTablaPromocion().getSelectedRow());
-		ControladorVentanaEditarPromocion contro = new ControladorVentanaEditarPromocion(this, promocionSelect);
+		ControladorVentanaEditarPromocion contro = new ControladorVentanaEditarPromocion(this, promocionSelect, this.campaña);
 		contro.initialize();			
 	}
 	

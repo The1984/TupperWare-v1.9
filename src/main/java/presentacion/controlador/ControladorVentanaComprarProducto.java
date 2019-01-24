@@ -1,6 +1,7 @@
 package presentacion.controlador;
 
 import presentacion.vista.VentanaComprarProducto;
+import util.ValidadorCampos;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -61,6 +62,18 @@ public class ControladorVentanaComprarProducto implements MouseListener
 	
 	public void comprarProducto()
 	{
+		if(ValidadorCampos.campoVacio(this.ventana.getTxtNameCliente().getText())||
+		   ValidadorCampos.campoVacio(this.ventana.getTxtPagina().getText())||
+		   ValidadorCampos.campoVacio(this.ventana.getTxtPrecio().getText()))
+		{
+			JOptionPane.showMessageDialog(null, "¡Los campos cliente, pagina y precio son obligatorios!", "Warning", JOptionPane.WARNING_MESSAGE);
+			return;
+		}
+		if(!ValidadorCampos.isNumeric(this.ventana.getTxtPrecio().getText()))
+		{
+			JOptionPane.showMessageDialog(null, "¡Precio no es un numero!", "Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
 		CampañaDTO campañaMasReciente;
 		List<CampañaDTO> campañas = GestorCampaña.getInstance().readAll();
 		campañaMasReciente = campañas.get(0);

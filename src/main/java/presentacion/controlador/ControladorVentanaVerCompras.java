@@ -8,6 +8,7 @@ import java.util.List;
 import dto.CompraDTO;
 import dto.ProductoDTO;
 import presentacion.vista.VentanaVerCompras;
+import util.RenderForCompras;
 
 public class ControladorVentanaVerCompras implements KeyListener
 {
@@ -27,6 +28,7 @@ public class ControladorVentanaVerCompras implements KeyListener
 	public void initialize()
 	{
 		this.llenarTabla();
+		this.ventana.getTablaCompras().setDefaultRenderer(Object.class, new RenderForCompras());
 		this.ventana.show();
 	}
 

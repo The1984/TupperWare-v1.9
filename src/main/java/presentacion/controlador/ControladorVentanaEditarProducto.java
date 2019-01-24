@@ -21,6 +21,8 @@ import modelo.GestorTipoDeProducto;
 import observer.Observador;
 import observer.SujetoObservable;
 import presentacion.vista.VentanaEditarProducto;
+import util.ValidadorCampos;
+import util.ValidadorLogico;
 
 public class ControladorVentanaEditarProducto implements SujetoObservable, MouseListener
 {
@@ -60,6 +62,22 @@ public class ControladorVentanaEditarProducto implements SujetoObservable, Mouse
 
 	public void editarProducto()
 	{
+		if(ValidadorCampos.campoVacio(this.ventana.getTxtCodigo().getText())||
+	       ValidadorCampos.campoVacio(this.ventana.getTxtNombre().getText()))
+		{
+			JOptionPane.showMessageDialog(null, "¡Los campos Codigo y Nombre son obligatorios!", "Warning", JOptionPane.WARNING_MESSAGE);
+			return;
+		}
+		if(ValidadorLogico.existeProductoNombreEditar(producto_a_editar.getIdProducto(), this.ventana.getTxtNombre().getText(), GestorProductos.getInstance().readAll())) 
+		{
+			JOptionPane.showMessageDialog(null, "¡Nombre de producto ya existente!", "Warning", JOptionPane.WARNING_MESSAGE);
+			return;									
+		}
+		if(ValidadorLogico.existeProductoCodigoEditar(producto_a_editar.getIdProducto(), this.ventana.getTxtCodigo().getText(), GestorProductos.getInstance().readAll())) 
+		{
+			JOptionPane.showMessageDialog(null, "¡Codigo de producto ya existente!", "Warning", JOptionPane.WARNING_MESSAGE);
+			return;									
+		}
 		producto_a_editar.setCodigo(this.ventana.getTxtCodigo().getText());
 		producto_a_editar.setNombre(this.ventana.getTxtNombre().getText());
 		producto_a_editar.setDescripcion(this.ventana.getTxtrDescripcion().getText());
