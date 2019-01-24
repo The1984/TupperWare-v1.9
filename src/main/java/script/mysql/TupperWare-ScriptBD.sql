@@ -159,6 +159,7 @@ INSERT INTO estadoDeCompra (nombre)
 VALUES("Pagado"),
 	  ("Mora"),
       ("Entregado"),
+      ("Entregado/Mora"),
       ("Cancelado");
 
 INSERT INTO tipoDeProducto (nombre, porcentajeDeGanancia)

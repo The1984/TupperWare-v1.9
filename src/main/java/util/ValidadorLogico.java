@@ -4,6 +4,7 @@ import java.util.List;
 
 import dto.CampañaDTO;
 import dto.ClienteDTO;
+import dto.PremioDTO;
 import dto.ProductoDTO;
 import dto.PromocionDTO;
 
@@ -135,6 +136,27 @@ public class ValidadorLogico
 		{
 			if(promocion.getNombre().toLowerCase().equals(nombre.toLowerCase())&&
 			   promocion.getIdPromocion()!=idPromocion)
+				return true;
+		}
+		return false;
+	}
+	
+	public static boolean existePremioNombreAgregar(String nombre, List<PremioDTO> premios)
+	{
+		for(PremioDTO premio : premios)
+		{
+			if(premio.getNombre().toLowerCase().equals(nombre.toLowerCase()))
+				return true;
+		}
+		return false;
+	}
+
+	public static boolean existePremioNombreEditar(int idPremio, String nombre, List<PremioDTO> premios)
+	{
+		for(PremioDTO premio : premios)
+		{
+			if(premio.getNombre().toLowerCase().equals(nombre.toLowerCase())&&
+			   premio.getIdPremio()!=idPremio)
 				return true;
 		}
 		return false;

@@ -111,7 +111,9 @@ public class ControladorPanelGestionCampañas implements MouseListener, Observado
 	{
 		for (CompraDTO compra : compras)
 		{
-			if(compra.getEstadoDeCompra().getNombre().equals("Mora") || compra.getEstadoDeCompra().getNombre().equals("Pagado"))
+			if(compra.getEstadoDeCompra().getNombre().equals("Mora")|| 
+			   compra.getEstadoDeCompra().getNombre().equals("Pagado")||
+			   compra.getEstadoDeCompra().getNombre().equals("Entregado/Mora"))
 			{
 				return "Si";
 			}

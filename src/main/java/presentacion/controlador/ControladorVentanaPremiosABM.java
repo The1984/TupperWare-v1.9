@@ -63,7 +63,7 @@ public class ControladorVentanaPremiosABM implements MouseListener, Observador, 
 		{
 			enable = false;
 		}
-		ControladorVentanaEditarPremio contro = new ControladorVentanaEditarPremio(this, premioSelect, enable);
+		ControladorVentanaEditarPremio contro = new ControladorVentanaEditarPremio(this, premioSelect, this.campaña, enable);
 		contro.initialize();
 	}
 

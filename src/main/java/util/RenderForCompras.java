@@ -25,21 +25,30 @@ public class RenderForCompras extends DefaultTableCellRenderer
       super.getTableCellRendererComponent (table, value, isSelected, hasFocus, row, column);
       if(value.equals("Mora"))
       {
-         this.setBackground(new Color(215,0,0));
+         this.setBackground(new Color(136,0,21));
          this.setForeground(Color.white);
       }
       else 
       {
-    	  if(value.equals("Pagado"))
+    	  if(value.equals("Entregado/Mora"))
           {
-             this.setBackground(new Color(206,206,0));
-             this.setForeground(Color.black);
+             this.setBackground(new Color(215,0,0));
+             this.setForeground(Color.white);
           }
-    	  else
+    	  else 
     	  {
-    		 this.setBackground(Color.darkGray);
-        	 this.setForeground(Color.white);
+    		 if(value.equals("Pagado"))
+             {
+                this.setBackground(new Color(206,206,0));
+                this.setForeground(Color.black);
+             }
+        	 else
+        	 {
+        		this.setBackground(Color.darkGray);
+            	this.setForeground(Color.white);
+        	 }  
     	  }
+    	  
       }
       return this;
    }

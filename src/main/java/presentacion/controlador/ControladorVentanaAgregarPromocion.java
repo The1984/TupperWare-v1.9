@@ -112,6 +112,11 @@ public class ControladorVentanaAgregarPromocion implements SujetoObservable
 			JOptionPane.showMessageDialog(null, "¡Nombre de promocion ya existente!", "Warning", JOptionPane.WARNING_MESSAGE);
 			return;		
 		}
+		if(!ValidadorCampos.isNumeric(this.ventana.getTxtPrecio().getText()))
+		{
+			JOptionPane.showMessageDialog(null, "¡Precio no es un numero!", "Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
 		this.newPromocion.setNombre(this.ventana.getTxtNombre().getText());
 		this.newPromocion.setDescripcion(this.ventana.getTxtrDescripcion().getText());
 		this.newPromocion.setPagina(this.ventana.getTxtPagina().getText());

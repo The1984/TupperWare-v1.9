@@ -1,5 +1,7 @@
 package presentacion.vista;
 
+import java.awt.Color;
+
 import javax.swing.JButton;
 import javax.swing.JDialog;
 
@@ -18,6 +20,7 @@ public class VentanaConfiguracion
 		frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		frame.setModal(true);
 		frame.getContentPane().setLayout(null);
+		frame.getContentPane().setBackground(Color.lightGray);
 		frame.setLocationRelativeTo(null);
 		
 		btnCuenta = new JButton("Cuenta");
