@@ -1,5 +1,7 @@
 package presentacion.vista;
 
+import java.awt.Color;
+
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -29,6 +31,7 @@ public class VentanaEditarCompra
 		frame.setModal(true);
 		frame.getContentPane().setLayout(null);
 		frame.setLocationRelativeTo(null);
+		frame.getContentPane().setBackground(new Color(0,64,64));
 		
 		comboBoxEstadoDeCompra = new JComboBox<EstadoDeCompraDTO>();
 		comboBoxEstadoDeCompra.setBounds(108, 101, 136, 20);

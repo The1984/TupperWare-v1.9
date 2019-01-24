@@ -5,6 +5,8 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import dto.CompraDTO;
 import dto.EstadoDeCompraDTO;
 import modelo.GestorCompra;
@@ -12,6 +14,7 @@ import modelo.GestorEstadoDeCompra;
 import observer.Observador;
 import observer.SujetoObservable;
 import presentacion.vista.VentanaEditarCompra;
+import util.ValidadorCampos;
 
 public class ControladorVentanaEditarCompra implements SujetoObservable, MouseListener
 {
@@ -48,6 +51,17 @@ public class ControladorVentanaEditarCompra implements SujetoObservable, MouseLi
 
 	public void editarCompra()
 	{
+		if(ValidadorCampos.campoVacio(this.ventana.getTxtPago().getText()))
+		{
+			JOptionPane.showMessageDialog(null, "¡El campo monto pagado es obligatorio!", "Warning", JOptionPane.WARNING_MESSAGE);
+			return;
+		}
+		if(Integer.parseInt(this.ventana.getTxtMontoTotal().getText())
+		   <Integer.parseInt(this.ventana.getTxtPago().getText()))
+		{
+			JOptionPane.showMessageDialog(null, "¡El monto pagado es mayor al monto total!", "Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
 		this.compra_a_editar.setMontoPagado(Integer.parseInt(this.ventana.getTxtPago().getText()));
 		this.compra_a_editar.setEstadoDeCompra(this.ventana.getComboBoxEstadoDeCompra().getItemAt(this.ventana.getComboBoxEstadoDeCompra().getSelectedIndex()));
 		GestorCompra.getInstance().update(compra_a_editar);

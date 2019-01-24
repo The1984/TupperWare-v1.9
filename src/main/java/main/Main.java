@@ -15,7 +15,7 @@ public class Main
 		{
 			Properties props = new Properties();
 			props.put("logoString", "");
-            props.put("buttonColorDark", "0 30 60");
+            props.put("buttonColorDark", "128 0 0");
             props.put("windowTitleColorLight", "0 0 0");
 			HiFiLookAndFeel.setCurrentTheme(props);
 			UIManager.setLookAndFeel("com.jtattoo.plaf.hifi.HiFiLookAndFeel");

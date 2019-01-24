@@ -64,14 +64,26 @@ public class ControladorVentanaComprarProducto implements MouseListener
 	{
 		if(ValidadorCampos.campoVacio(this.ventana.getTxtNameCliente().getText())||
 		   ValidadorCampos.campoVacio(this.ventana.getTxtPagina().getText())||
-		   ValidadorCampos.campoVacio(this.ventana.getTxtPrecio().getText()))
+		   ValidadorCampos.campoVacio(this.ventana.getTxtPrecio().getText())||
+		   ValidadorCampos.campoVacio(this.ventana.getTxtPago().getText()))
 		{
-			JOptionPane.showMessageDialog(null, "¡Los campos cliente, pagina y precio son obligatorios!", "Warning", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "¡Los campos cliente, pagina, precio y monto pagado son obligatorios!", "Warning", JOptionPane.WARNING_MESSAGE);
 			return;
 		}
 		if(!ValidadorCampos.isNumeric(this.ventana.getTxtPrecio().getText()))
 		{
 			JOptionPane.showMessageDialog(null, "¡Precio no es un numero!", "Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		if(!ValidadorCampos.isNumeric(this.ventana.getTxtPago().getText()))
+		{
+			JOptionPane.showMessageDialog(null, "¡El monto pagado no es un numero!", "Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		if(Integer.parseInt(this.ventana.getTxtPrecio().getText())*Integer.parseInt(this.ventana.getSpinnerUnidades().getValue().toString())
+				<Integer.parseInt(this.ventana.getTxtPago().getText()))
+		{
+			JOptionPane.showMessageDialog(null, "¡El monto pagado es mayor al monto total!", "Error", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		CampañaDTO campañaMasReciente;

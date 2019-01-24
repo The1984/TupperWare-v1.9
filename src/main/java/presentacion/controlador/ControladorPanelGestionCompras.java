@@ -7,6 +7,8 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import dto.CampañaDTO;
 import dto.CompraDTO;
 import dto.ProductoDTO;
@@ -122,6 +124,11 @@ public class ControladorPanelGestionCompras implements KeyListener, MouseListene
 	
 	private void generarReporte()
 	{
+		if(this.campañaSelect.getCompras().size()==0)
+		{
+			JOptionPane.showMessageDialog(null, "¡No posee compras en esta campaña!", "Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
 		ControladorVentanaGenerarReporte contro = new ControladorVentanaGenerarReporte(this.campañaSelect);
 		contro.initialize();
 	}

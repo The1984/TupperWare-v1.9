@@ -1,5 +1,7 @@
 package presentacion.vista;
 
+import java.awt.Color;
+
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JTextField;
@@ -41,6 +43,7 @@ public class VentanaComprarPromocion
 		frame.setModal(true);
 		frame.getContentPane().setLayout(null);
 		frame.setLocationRelativeTo(null);
+		frame.getContentPane().setBackground(new Color(0,64,64));
 		
 		JScrollPane scrollPaneDescripcion = new JScrollPane();
 	    scrollPaneDescripcion.setBounds(23, 11, 221, 65);

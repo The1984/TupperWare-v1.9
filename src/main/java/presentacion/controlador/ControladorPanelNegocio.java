@@ -9,11 +9,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import dto.CampañaDTO;
+import dto.CompraDTO;
 import dto.ProductoDTO;
 import dto.PromocionDTO;
 import modelo.GestorCampaña;
+import modelo.GestorCompra;
 import modelo.GestorProductos;
+import modelo.GestorPromociones;
 import observer.Observador;
 import presentacion.vista.PanelNegocio;
 
@@ -34,9 +39,11 @@ public class ControladorPanelNegocio implements KeyListener, MouseListener, Obse
 		this.panelNegocio.getTextFiltro().addKeyListener(this);
 		this.panelNegocio.getBtnAgregarProducto().addActionListener(e -> this.agregarProducto());
 		this.panelNegocio.getBtnEditarProducto().addActionListener(e -> this.editarProducto());
+		this.panelNegocio.getBtnEliminarProducto().addActionListener(e -> this.eliminarProducto());
 		this.panelNegocio.getTablaProducto().addMouseListener(this);
 		this.panelNegocio.getTablaPromocion().addMouseListener(this);
 		this.panelNegocio.getBtnEditarProducto().setEnabled(false);
+		this.panelNegocio.getBtnEliminarProducto().setEnabled(false);
 	}
 
 	public void initialize()
@@ -167,6 +174,53 @@ public class ControladorPanelNegocio implements KeyListener, MouseListener, Obse
 		contro.initialize();
 	}
 	
+	private void eliminarProducto() 
+	{
+		ProductoDTO productSelect = this.productos_filtrados.get(this.panelNegocio.getTablaProducto().getSelectedRow());
+
+		List<CompraDTO> compras = GestorCompra.getInstance().readAll();
+		
+		for(CompraDTO compra : compras)
+		{
+			if(compra.getProducto().getIdProducto()==productSelect.getIdProducto())
+			{
+				JOptionPane.showMessageDialog(null, "Este producto esta asociado a una compra, no puede eliminarse.");
+				return;
+			}
+			if(compra.getCompraPromocion().getProductos()!=null)
+			{
+				for(ProductoDTO producto : compra.getCompraPromocion().getProductos())
+				{
+					if(producto.getIdProducto()==productSelect.getIdProducto())
+					{
+						JOptionPane.showMessageDialog(null, "Este producto esta asociado a una compra, no puede eliminarse.");
+						return;
+					}
+				}				
+			}
+		}
+		
+		List<PromocionDTO> promociones = GestorPromociones.getInstance().readAll();
+		for(PromocionDTO promocion : promociones)
+		{
+			for(ProductoDTO producto : promocion.getProductos())
+			{
+				if(producto.getIdProducto()==productSelect.getIdProducto())
+				{
+					JOptionPane.showMessageDialog(null, "Este producto esta asociado a una promocion, no puede eliminarse.");
+					return;
+				}
+			}
+		}				
+		
+		if(JOptionPane.showConfirmDialog(null,"<html>¿Est\u00E1 seguro que quiere eliminar el producto?</html>", "Eliminar Producto",JOptionPane.YES_NO_OPTION)==0) 
+		{
+			GestorProductos.getInstance().delete(productSelect.getIdProducto());
+			GestorProductos.getInstance().delete(productSelect);
+			this.update();
+		}
+	}
+	
 	@Override
 	public void keyPressed(KeyEvent e) 
 	{
@@ -205,10 +259,12 @@ public class ControladorPanelNegocio implements KeyListener, MouseListener, Obse
 		if(this.panelNegocio.getTablaProducto().getSelectedRow() != -1)
 		{
 			this.panelNegocio.getBtnEditarProducto().setEnabled(true);
+			this.panelNegocio.getBtnEliminarProducto().setEnabled(true);
 		}
 		else
 		{
 			this.panelNegocio.getBtnEditarProducto().setEnabled(false);
+			this.panelNegocio.getBtnEliminarProducto().setEnabled(false);
 		}
 	}
 

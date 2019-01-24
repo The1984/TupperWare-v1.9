@@ -1,5 +1,7 @@
 package presentacion.vista;
 
+import java.awt.Color;
+
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JTextField;
@@ -25,6 +27,7 @@ public class VentanaAgregarTipoDeProducto
 		frame.setModal(true);
 		frame.getContentPane().setLayout(null);
 		frame.setLocationRelativeTo(null);
+		frame.getContentPane().setBackground(new Color(0,64,64));
 		
 		txtNombre = new JTextField();
 		txtNombre.setHorizontalAlignment(SwingConstants.CENTER);
@@ -45,7 +48,7 @@ public class VentanaAgregarTipoDeProducto
 		frame.getContentPane().add(btnAceptar);
 		
 		spinnerGanancia = new JSpinner();
-		spinnerGanancia.setModel(new SpinnerNumberModel(0, null, 100, 1));
+		spinnerGanancia.setModel(new SpinnerNumberModel(0, 0, 100, 1));
 		spinnerGanancia.setBounds(119, 69, 125, 20);
 		frame.getContentPane().add(spinnerGanancia);
 	}

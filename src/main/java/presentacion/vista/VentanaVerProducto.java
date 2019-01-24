@@ -29,6 +29,7 @@ public class VentanaVerProducto
 		frame.setModal(true);
 		frame.getContentPane().setLayout(null);
 		frame.setLocationRelativeTo(null);
+		frame.getContentPane().setBackground(new Color(0,64,64));
 		
 		btnComprar = new JButton("Comprar");
 		btnComprar.setBounds(23, 348, 221, 23);

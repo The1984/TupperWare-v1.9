@@ -1,5 +1,7 @@
 package presentacion.vista;
 
+import java.awt.Color;
+
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JTextField;
@@ -26,6 +28,7 @@ public class VentanaEditarCuenta
 		frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		frame.setModal(true);
 		frame.getContentPane().setLayout(null);
+		frame.getContentPane().setBackground(new Color(0,64,64));
 		frame.setLocationRelativeTo(null);
 		
 		txtNombre = new JTextField();
