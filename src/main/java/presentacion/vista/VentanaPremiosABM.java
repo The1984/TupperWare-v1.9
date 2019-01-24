@@ -5,6 +5,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import javax.swing.JPanel;
+
+import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 
@@ -27,6 +29,7 @@ public class VentanaPremiosABM
 		frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		frame.setModal(true);
 		frame.getContentPane().setLayout(null);
+		frame.getContentPane().setBackground(new Color(0,64,64));
 		
 		JScrollPane scrollPane_premio = new JScrollPane();
 		scrollPane_premio.setBounds(10, 11, 564, 118);

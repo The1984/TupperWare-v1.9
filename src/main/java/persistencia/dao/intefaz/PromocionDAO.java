@@ -13,6 +13,8 @@ public interface PromocionDAO
 	public boolean update (PromocionDTO promocion);
 	
 	public boolean delete (PromocionDTO promocion);
+
+	public List<PromocionDTO> readAll ();
 	
 	public List<PromocionDTO> readForCampaña (CampañaDTO campaña);
 	

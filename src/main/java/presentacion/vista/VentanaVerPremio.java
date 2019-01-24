@@ -1,5 +1,7 @@
 package presentacion.vista;
 
+import java.awt.Color;
+
 import javax.swing.JDialog;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -22,6 +24,7 @@ public class VentanaVerPremio
 		frame.setModal(true);
 		frame.getContentPane().setLayout(null);
 		frame.setLocationRelativeTo(null);
+		frame.getContentPane().setBackground(new Color(0,64,64));
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(23, 11, 221, 132);

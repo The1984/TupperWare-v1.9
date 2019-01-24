@@ -34,6 +34,7 @@ public class VentanaSeleccionarCliente
 		frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		frame.setModal(true);
 		frame.getContentPane().setLayout(null);
+		frame.getContentPane().setBackground(new Color(0,64,64));
 
 		lblLupa = new JLabel("");
 		lblLupa.setBounds(10, 11, 20, 20);

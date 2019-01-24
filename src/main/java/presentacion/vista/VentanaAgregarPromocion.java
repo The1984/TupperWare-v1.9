@@ -1,5 +1,7 @@
 package presentacion.vista;
 
+import java.awt.Color;
+
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JTextField;
@@ -36,6 +38,7 @@ public class VentanaAgregarPromocion
 		frame.setModal(true);
 		frame.getContentPane().setLayout(null);
 		frame.setLocationRelativeTo(null);
+		frame.getContentPane().setBackground(new Color(0,64,64));
 		
 		txtNombre = new JTextField();
 		txtNombre.setHorizontalAlignment(SwingConstants.CENTER);

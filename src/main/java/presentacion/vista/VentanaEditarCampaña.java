@@ -7,6 +7,8 @@ import com.toedter.calendar.JYearChooser;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
+
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -29,6 +31,7 @@ public class VentanaEditarCampaña
 		frame.setModal(true);
 		frame.getContentPane().setLayout(null);
 		frame.setLocationRelativeTo(null);
+		frame.getContentPane().setBackground(new Color(0,64,64));
 		
 		JLabel lblAño = new JLabel("A\u00F1o");
 		lblAño.setFont(new Font("Tahoma", Font.BOLD, 11));

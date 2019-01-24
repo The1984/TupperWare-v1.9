@@ -1,5 +1,7 @@
 package presentacion.vista;
 
+import java.awt.Color;
+
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JSpinner;
@@ -34,6 +36,7 @@ public class VentanaComprarProducto
 		frame.setModal(true);
 		frame.getContentPane().setLayout(null);
 		frame.setLocationRelativeTo(null);
+		frame.getContentPane().setBackground(new Color(0,64,64));
 		
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.setBounds(23, 293, 221, 23);

@@ -38,6 +38,11 @@ public class GestorPromociones
 	{
 		this.promocionDaoSQL.delete(promocion);
 	}
+
+	public List<PromocionDTO> readAll() 
+	{
+		return this.promocionDaoSQL.readAll();
+	}
 	
 	public void update(PromocionDTO promocion)
 	{
