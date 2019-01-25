@@ -29,7 +29,7 @@ public class VentanaLogin
 		frame.setResizable(false);
 		frame.getContentPane().setLayout(null);
 		
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaLogin.class.getResource("/Imagenes/iconVentana.png")));
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaLogin.class.getResource("/Imagenes/IconVentana.png")));
 		
 		WelcomeLabel = new JLabel();
 		WelcomeLabel.setHorizontalAlignment(SwingConstants.CENTER);

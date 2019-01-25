@@ -39,7 +39,7 @@ public class VentanaPrincipal
 	{
 		frame = new JFrame();
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaPrincipal.class.getResource("/Imagenes/iconVentana.png")));
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaPrincipal.class.getResource("/Imagenes/IconVentana.png")));
 		frame.setTitle("TupperWare");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
