@@ -21,11 +21,11 @@ public class ControladorVentanaEditarCliente implements SujetoObservable
 	
 	public ControladorVentanaEditarCliente(ControladorPanelGestionClientes control, ClienteDTO cliente)
 	{
-		ventana = new VentanaEditarCliente();
-		ventana.getBtnAceptar().addActionListener(e -> this.editarCliente());
-		observadores = new ArrayList<Observador>();
-		observadores.add(control);
-		cliente_a_editar = cliente;
+		this.ventana = new VentanaEditarCliente();
+		this.ventana.getBtnAceptar().addActionListener(e -> this.editarCliente());
+		this.observadores = new ArrayList<Observador>();
+		this.observadores.add(control);
+		this.cliente_a_editar = cliente;
 	}
 	
 	public void initialize()
@@ -57,7 +57,7 @@ public class ControladorVentanaEditarCliente implements SujetoObservable
 			JOptionPane.showMessageDialog(null, "¡Formato de apellido invalido!", "Error", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
-		if(ValidadorLogico.existeNombreApellidoEditar(cliente_a_editar.getIdCliente(), this.ventana.getTxtNombre().getText(), this.ventana.getTxtApellido().getText(), GestorClientes.getInstance().readAll())) 
+		if(ValidadorLogico.existeNombreApellidoEditar(this.cliente_a_editar.getIdCliente(), this.ventana.getTxtNombre().getText(), this.ventana.getTxtApellido().getText(), GestorClientes.getInstance().readAll())) 
 		{
 			JOptionPane.showMessageDialog(null, "¡Nombre y Apellido ya existente!", "Warning", JOptionPane.WARNING_MESSAGE);
 			return;									
@@ -77,19 +77,19 @@ public class ControladorVentanaEditarCliente implements SujetoObservable
 				JOptionPane.showMessageDialog(null, "¡Formato de e-mail invalido!", "Error", JOptionPane.ERROR_MESSAGE);
 				return;						
 			}
-			if(ValidadorLogico.existeEmailEditar(cliente_a_editar.getIdCliente(), this.ventana.getTxtEmail().getText().toLowerCase(), GestorClientes.getInstance().readAll())) 
+			if(ValidadorLogico.existeEmailEditar(this.cliente_a_editar.getIdCliente(), this.ventana.getTxtEmail().getText().toLowerCase(), GestorClientes.getInstance().readAll())) 
 			{
 				JOptionPane.showMessageDialog(null, "¡Email ya existente!", "Warning", JOptionPane.WARNING_MESSAGE);
 				return;									
 			}
 		}
 		
-		cliente_a_editar.setNombre(this.ventana.getTxtNombre().getText());
-		cliente_a_editar.setApellido(this.ventana.getTxtApellido().getText());
-		cliente_a_editar.setDireccion(this.ventana.getTxtDireccion().getText());
-		cliente_a_editar.setCelular(this.ventana.getTxtCelular().getText());
-		cliente_a_editar.setEmail(this.ventana.getTxtEmail().getText().toLowerCase());
-		GestorClientes.getInstance().update(cliente_a_editar);
+		this.cliente_a_editar.setNombre(this.ventana.getTxtNombre().getText());
+		this.cliente_a_editar.setApellido(this.ventana.getTxtApellido().getText());
+		this.cliente_a_editar.setDireccion(this.ventana.getTxtDireccion().getText());
+		this.cliente_a_editar.setCelular(this.ventana.getTxtCelular().getText());
+		this.cliente_a_editar.setEmail(this.ventana.getTxtEmail().getText().toLowerCase());
+		GestorClientes.getInstance().update(this.cliente_a_editar);
 		this.ventana.close();
 		this.notificar();
 	}

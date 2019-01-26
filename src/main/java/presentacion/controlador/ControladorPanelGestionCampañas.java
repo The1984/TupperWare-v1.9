@@ -50,9 +50,9 @@ public class ControladorPanelGestionCampañas implements MouseListener, Observado
 	{
 		reiniciarTabla();
 		
-		campañas_en_tabla = GestorCampaña.getInstance().readAll();
+		this.campañas_en_tabla = GestorCampaña.getInstance().readAll();
 		
-		for (CampañaDTO campaña : campañas_en_tabla)
+		for (CampañaDTO campaña : this.campañas_en_tabla)
 		{
 			Object[] fila = {
 								campaña.getAño(),

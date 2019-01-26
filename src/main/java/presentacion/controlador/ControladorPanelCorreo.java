@@ -1,6 +1,7 @@
 package presentacion.controlador;
 
 import java.awt.Color;
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JFileChooser;
@@ -67,6 +68,12 @@ public class ControladorPanelCorreo
 
 		if(seOpen == JFileChooser.APPROVE_OPTION)
 		{
+			float longitud = new File(select.getSelectedFile().getPath()).length();
+			if(longitud/1024000 >= 5)
+			{
+				JOptionPane.showMessageDialog(null, "¡Tamaño de archivo mayor a 5 Mb!", "Error", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
 			Correo.getInstance().adjuntarArchivo(select.getSelectedFile().getPath());
 			this.panelCorreo.getBtnAdjuntarArchivo().setBackground(new Color(34,177,76));
 			this.panelCorreo.getBtnAdjuntarArchivo().setForeground(Color.black);

@@ -34,14 +34,14 @@ public class ControladorVentanaEditarProducto implements SujetoObservable, Mouse
 	
 	public ControladorVentanaEditarProducto(ControladorPanelNegocio control, ProductoDTO producto)
 	{
-		ventana = new VentanaEditarProducto();
+		this.ventana = new VentanaEditarProducto();
 		this.producto_a_editar = producto;
 		
-		this.ventana.getTxtCodigo().setText(producto_a_editar.getCodigo());
-		this.ventana.getTxtNombre().setText(producto_a_editar.getNombre());
-		this.ventana.getTxtrDescripcion().setText(producto_a_editar.getDescripcion());
+		this.ventana.getTxtCodigo().setText(this.producto_a_editar.getCodigo());
+		this.ventana.getTxtNombre().setText(this.producto_a_editar.getNombre());
+		this.ventana.getTxtrDescripcion().setText(this.producto_a_editar.getDescripcion());
 		this.llenarComboBoxTipoDeProducto();
-		this.ventana.getComboBoxTipoDeProducto().setSelectedIndex(producto_a_editar.getTipoDeProducto().getIdTipoDeProducto()-1);
+		this.ventana.getComboBoxTipoDeProducto().setSelectedIndex(this.producto_a_editar.getTipoDeProducto().getIdTipoDeProducto()-1);
 
 		ImagenDeProductoDTO imagen = GestorProductos.getInstance().readForIdProducto(this.producto_a_editar.getIdProducto());
 	    Icon icono = new ImageIcon(imagen.getImagen().getScaledInstance(this.ventana.getLblImagen().getWidth(), this.ventana.getLblImagen().getHeight(), Image.SCALE_DEFAULT));
@@ -50,14 +50,14 @@ public class ControladorVentanaEditarProducto implements SujetoObservable, Mouse
 		ventana.getBtnAceptar().addActionListener(e -> this.editarProducto());
 		ventana.getLblImagen().addMouseListener(this);
 		
-	    observadores = new ArrayList<Observador>();
-		observadores.add(control);
+		this.observadores = new ArrayList<Observador>();
+		this.observadores.add(control);
 		this.rutaImagen = "";
 	}
 	
 	public void initialize()
 	{
-		ventana.show();
+		this.ventana.show();
 	}
 
 	public void editarProducto()
@@ -68,25 +68,25 @@ public class ControladorVentanaEditarProducto implements SujetoObservable, Mouse
 			JOptionPane.showMessageDialog(null, "¡Los campos Codigo y Nombre son obligatorios!", "Warning", JOptionPane.WARNING_MESSAGE);
 			return;
 		}
-		if(ValidadorLogico.existeProductoNombreEditar(producto_a_editar.getIdProducto(), this.ventana.getTxtNombre().getText(), GestorProductos.getInstance().readAll())) 
+		if(ValidadorLogico.existeProductoNombreEditar(this.producto_a_editar.getIdProducto(), this.ventana.getTxtNombre().getText(), GestorProductos.getInstance().readAll())) 
 		{
 			JOptionPane.showMessageDialog(null, "¡Nombre de producto ya existente!", "Warning", JOptionPane.WARNING_MESSAGE);
 			return;									
 		}
-		if(ValidadorLogico.existeProductoCodigoEditar(producto_a_editar.getIdProducto(), this.ventana.getTxtCodigo().getText(), GestorProductos.getInstance().readAll())) 
+		if(ValidadorLogico.existeProductoCodigoEditar(this.producto_a_editar.getIdProducto(), this.ventana.getTxtCodigo().getText(), GestorProductos.getInstance().readAll())) 
 		{
 			JOptionPane.showMessageDialog(null, "¡Codigo de producto ya existente!", "Warning", JOptionPane.WARNING_MESSAGE);
 			return;									
 		}
-		producto_a_editar.setCodigo(this.ventana.getTxtCodigo().getText());
-		producto_a_editar.setNombre(this.ventana.getTxtNombre().getText());
-		producto_a_editar.setDescripcion(this.ventana.getTxtrDescripcion().getText());
-		producto_a_editar.setTipoDeProducto(this.ventana.getComboBoxTipoDeProducto().getItemAt(this.ventana.getComboBoxTipoDeProducto().getSelectedIndex()));
+		this.producto_a_editar.setCodigo(this.ventana.getTxtCodigo().getText());
+		this.producto_a_editar.setNombre(this.ventana.getTxtNombre().getText());
+		this.producto_a_editar.setDescripcion(this.ventana.getTxtrDescripcion().getText());
+		this.producto_a_editar.setTipoDeProducto(this.ventana.getComboBoxTipoDeProducto().getItemAt(this.ventana.getComboBoxTipoDeProducto().getSelectedIndex()));
 		GestorProductos.getInstance().update(this.producto_a_editar);
 		
 		if(this.rutaImagen != "")
 		{
-			GestorProductos.getInstance().update(this.rutaImagen, producto_a_editar.getIdProducto());			
+			GestorProductos.getInstance().update(this.rutaImagen, this.producto_a_editar.getIdProducto());			
 		}
 
 		this.ventana.close();
@@ -120,7 +120,7 @@ public class ControladorVentanaEditarProducto implements SujetoObservable, Mouse
 				float longitud = new File(select.getSelectedFile().getPath()).length();
 				if(longitud/1024 >= 64)
 				{
-					JOptionPane.showMessageDialog(null, "¡Tamaño de imagen mayor a 64kb!", "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "¡Tamaño de imagen mayor a 64 Kb!", "Error", JOptionPane.ERROR_MESSAGE);
 					return;			
 				}
 				this.rutaImagen = select.getSelectedFile().getPath();

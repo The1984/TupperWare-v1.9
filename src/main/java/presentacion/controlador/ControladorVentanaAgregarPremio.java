@@ -33,7 +33,7 @@ public class ControladorVentanaAgregarPremio implements SujetoObservable
 	
 	public void initialize()
 	{
-		ventana.show();
+		this.ventana.show();
 	}
 
 	private void registrarPremio()

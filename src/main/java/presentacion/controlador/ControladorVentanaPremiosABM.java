@@ -19,6 +19,7 @@ import util.RenderForPremios;
 
 public class ControladorVentanaPremiosABM implements MouseListener, Observador, SujetoObservable
 {
+	
 	private ArrayList<Observador> observadores;
 	private VentanaPremiosABM ventana;
 	private CampañaDTO campaña;

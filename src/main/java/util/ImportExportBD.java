@@ -40,7 +40,7 @@ public class ImportExportBD
 		}
 	}
 	
-	public void Importar(String rutaImport, VentanaImportBD vista, VentanaPrincipal view) 
+	public void Importar(String rutaImport, VentanaImportBD vista, VentanaPrincipal ventanaPrincipal) 
 	{
 		String ruta = rutaImport;
 		String comando = "";
@@ -52,7 +52,7 @@ public class ImportExportBD
 				Runtime rt = Runtime.getRuntime();
 				rt.exec(comando);
 				vista.close();
-				view.close();
+				ventanaPrincipal.close();
 				JOptionPane.showMessageDialog(null, "Importacion Exitosa!!");
 				ControladorVentanaLogin controladoLogin=new ControladorVentanaLogin();
 				controladoLogin.initialize();

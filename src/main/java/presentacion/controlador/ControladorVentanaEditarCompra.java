@@ -35,13 +35,13 @@ public class ControladorVentanaEditarCompra implements SujetoObservable, MouseLi
 		{
 			this.ventana.getChckbxPago().setSelected(true);
 		}
-		this.ventana.getComboBoxEstadoDeCompra().setSelectedIndex(compra_a_editar.getEstadoDeCompra().getIdEstadoDeCompra()-1);
+		this.ventana.getComboBoxEstadoDeCompra().setSelectedIndex(this.compra_a_editar.getEstadoDeCompra().getIdEstadoDeCompra()-1);
 		
-		ventana.getBtnAceptar().addActionListener(e -> this.editarCompra());
+		this.ventana.getBtnAceptar().addActionListener(e -> this.editarCompra());
 		this.ventana.getChckbxPago().addMouseListener(this);
 		
-	    observadores = new ArrayList<Observador>();
-		observadores.add(control);
+		this.observadores = new ArrayList<Observador>();
+		this.observadores.add(control);
 	}
 	
 	public void initialize()
@@ -56,6 +56,16 @@ public class ControladorVentanaEditarCompra implements SujetoObservable, MouseLi
 			JOptionPane.showMessageDialog(null, "¡El campo monto pagado es obligatorio!", "Warning", JOptionPane.WARNING_MESSAGE);
 			return;
 		}
+		if(!ValidadorCampos.isNumeric(this.ventana.getTxtPago().getText()))
+		{
+			JOptionPane.showMessageDialog(null, "¡El monto pagado no es un numero!", "Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		if(Integer.parseInt(this.ventana.getTxtPago().getText())<0)
+		{
+			JOptionPane.showMessageDialog(null, "¡El monto pagado es un valor invalido!", "Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
 		if(Integer.parseInt(this.ventana.getTxtMontoTotal().getText())
 		   <Integer.parseInt(this.ventana.getTxtPago().getText()))
 		{
@@ -64,7 +74,7 @@ public class ControladorVentanaEditarCompra implements SujetoObservable, MouseLi
 		}
 		this.compra_a_editar.setMontoPagado(Integer.parseInt(this.ventana.getTxtPago().getText()));
 		this.compra_a_editar.setEstadoDeCompra(this.ventana.getComboBoxEstadoDeCompra().getItemAt(this.ventana.getComboBoxEstadoDeCompra().getSelectedIndex()));
-		GestorCompra.getInstance().update(compra_a_editar);
+		GestorCompra.getInstance().update(this.compra_a_editar);
 		this.ventana.close();
 		this.notificar();
 	}

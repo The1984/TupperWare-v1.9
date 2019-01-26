@@ -59,9 +59,9 @@ public class ControladorVentanaSeleccionarProductoEditar implements KeyListener,
 	
 	public void filtrarTabla(String cadena) 
 	{
-		reiniciarTabla();
+		this.reiniciarTabla();
 		
-		productos_filtrados.clear();
+		this.productos_filtrados.clear();
 		
 		for (ProductoDTO producto : GestorProductos.getInstance().readAll())
 		{
@@ -70,7 +70,7 @@ public class ControladorVentanaSeleccionarProductoEditar implements KeyListener,
 							   producto.getTipoDeProducto().getNombre().toUpperCase();
 			if (getNombre.indexOf(cadena.toUpperCase()) != -1) 
 			{
-				productos_filtrados.add(producto);
+				this.productos_filtrados.add(producto);
 				Object[] fila = 
 					{ 
 						producto.getCodigo(),

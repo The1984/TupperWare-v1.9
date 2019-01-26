@@ -33,7 +33,6 @@ public class ControladorVentanaSeleccionarClienteCompraPromocion implements KeyL
 		this.ventana.show();
 	}
 
-	
 	private void llenarTabla()
 	{
 		this.reiniciarTabla();
@@ -60,9 +59,9 @@ public class ControladorVentanaSeleccionarClienteCompraPromocion implements KeyL
 	
 	public void filtrarTabla(String cadena) 
 	{
-		reiniciarTabla();
+		this.reiniciarTabla();
 		
-		clientes_filtrados.clear();
+		this.clientes_filtrados.clear();
 		
 		for (ClienteDTO cliente : GestorClientes.getInstance().readAll())
 		{
@@ -72,7 +71,7 @@ public class ControladorVentanaSeleccionarClienteCompraPromocion implements KeyL
 							   cliente.getEmail().toUpperCase();
 			if (getNombre.indexOf(cadena.toUpperCase()) != -1) 
 			{
-				clientes_filtrados.add(cliente);
+				this.clientes_filtrados.add(cliente);
 				Object[] fila = 
 					{ 
 						cliente.getNombre(),

@@ -15,15 +15,15 @@ public class ControladorVentanaAgregarTipoDeProducto implements SujetoObservable
 	
 	public ControladorVentanaAgregarTipoDeProducto(ControladorVentanaTipoDeProductoABM control)
 	{
-		ventana = new VentanaAgregarTipoDeProducto();
-		ventana.getBtnAceptar().addActionListener(e -> this.registrarCliente());
-		observadores = new ArrayList<Observador>();
-		observadores.add(control);
+		this.ventana = new VentanaAgregarTipoDeProducto();
+		this.ventana.getBtnAceptar().addActionListener(e -> this.registrarCliente());
+		this.observadores = new ArrayList<Observador>();
+		this.observadores.add(control);
 	}
 	
 	public void initialize()
 	{
-		ventana.show();
+		this.ventana.show();
 	}
 
 	public void registrarCliente()

@@ -1,5 +1,7 @@
 package util;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import dto.CampañaDTO;
@@ -118,6 +120,21 @@ public class ValidadorLogico
 				return true;
 		}
 		return false;
+	}
+	
+	public static boolean fechaCierreCampañaExistente(Date fechaInput, List<CampañaDTO> campañas)
+	{
+		String fechaIngresada = new SimpleDateFormat("dd-MM-yyyy").format(fechaInput);
+		String fechaComparada;
+		for(CampañaDTO campaña : campañas)
+		{
+			fechaComparada = new SimpleDateFormat("dd-MM-yyyy").format(campaña.getCierre());
+			if(fechaIngresada.equals(fechaComparada))
+			{
+				return true;
+			}
+		}
+		return false;		
 	}
 	
 	public static boolean existePromocionNombreAgregar(String nombre, List<PromocionDTO> promociones)

@@ -21,15 +21,15 @@ public class ControladorVentanaAgregarCampaña implements SujetoObservable
 	
 	public ControladorVentanaAgregarCampaña(ControladorPanelGestionCampañas control)
 	{
-		ventana = new VentanaAgregarCampaña();
-		ventana.getBtnAceptar().addActionListener(e -> this.registrarCampaña());
-		observadores = new ArrayList<Observador>();
-		observadores.add(control);
+		this.ventana = new VentanaAgregarCampaña();
+		this.ventana.getBtnAceptar().addActionListener(e -> this.registrarCampaña());
+		this.observadores = new ArrayList<Observador>();
+		this.observadores.add(control);
 	}
 	
 	public void initialize()
 	{
-		ventana.show();
+		this.ventana.show();
 	}
 
 	public void registrarCampaña()
@@ -50,6 +50,11 @@ public class ControladorVentanaAgregarCampaña implements SujetoObservable
 		{
 			JOptionPane.showMessageDialog(null, "¡Fecha de cierre debe ser posterior a la fecha actual!", "Warning", JOptionPane.WARNING_MESSAGE);
 			return;			
+		}
+		if(ValidadorLogico.fechaCierreCampañaExistente(this.ventana.getCierreChooser().getDate(), GestorCampaña.getInstance().readAll()))
+		{
+			JOptionPane.showMessageDialog(null, "¡Fecha de cierre ya existente!", "Warning", JOptionPane.WARNING_MESSAGE);
+			return;												
 		}
 		CampañaDTO newCampaña = new CampañaDTO();
 		newCampaña.setAño(Integer.toString(this.ventana.getAñoChooser().getValue()));

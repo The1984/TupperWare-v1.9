@@ -60,9 +60,9 @@ public class ControladorVentanaSeleccionarClienteCompraProducto implements KeyLi
 	
 	public void filtrarTabla(String cadena) 
 	{
-		reiniciarTabla();
+		this.reiniciarTabla();
 		
-		clientes_filtrados.clear();
+		this.clientes_filtrados.clear();
 		
 		for (ClienteDTO cliente : GestorClientes.getInstance().readAll())
 		{
@@ -72,7 +72,7 @@ public class ControladorVentanaSeleccionarClienteCompraProducto implements KeyLi
 							   cliente.getEmail().toUpperCase();
 			if (getNombre.indexOf(cadena.toUpperCase()) != -1) 
 			{
-				clientes_filtrados.add(cliente);
+				this.clientes_filtrados.add(cliente);
 				Object[] fila = 
 					{ 
 						cliente.getNombre(),

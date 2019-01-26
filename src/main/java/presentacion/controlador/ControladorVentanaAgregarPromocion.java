@@ -41,7 +41,7 @@ public class ControladorVentanaAgregarPromocion implements SujetoObservable
 	public void initialize()
 	{
 		this.llenarTabla();
-		ventana.show();
+		this.ventana.show();
 	}
 
 	public void llenarTabla()
@@ -115,6 +115,11 @@ public class ControladorVentanaAgregarPromocion implements SujetoObservable
 		if(!ValidadorCampos.isNumeric(this.ventana.getTxtPrecio().getText()))
 		{
 			JOptionPane.showMessageDialog(null, "¡Precio no es un numero!", "Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		if(Integer.parseInt(this.ventana.getTxtPrecio().getText())<0)
+		{
+			JOptionPane.showMessageDialog(null, "¡El precio es un valor invalido!", "Error", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		this.newPromocion.setNombre(this.ventana.getTxtNombre().getText());

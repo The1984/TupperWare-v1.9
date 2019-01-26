@@ -83,9 +83,9 @@ public class ControladorVentanaVerCompras implements KeyListener
 	
 	public void filtrarTabla(String cadena) 
 	{
-		reiniciarTabla();
+		this.reiniciarTabla();
 		
-		compras_filtradas.clear();
+		this.compras_filtradas.clear();
 		
 		for (CompraDTO compra : this.compra_en_tabla)
 		{
@@ -94,7 +94,7 @@ public class ControladorVentanaVerCompras implements KeyListener
 							   compra.getEstadoDeCompra().getNombre().toUpperCase();
 			if (getNombre.indexOf(cadena.toUpperCase()) != -1) 
 			{
-				compras_filtradas.add(compra);
+				this.compras_filtradas.add(compra);
 				Object[] fila = 
 					{ 
 						compra.getCampaña().getAño()+" - "+compra.getCampaña().getNumero(),

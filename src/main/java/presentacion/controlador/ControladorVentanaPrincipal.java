@@ -92,7 +92,7 @@ public class ControladorVentanaPrincipal
 		JPanel panelVacio = new JPanel();
 		this.ventanaPrincipal.setearPanelCentral(panelVacio);
 		this.ventanaPrincipal.show();
-		ControladorPanelConfiguracion contro = new ControladorPanelConfiguracion();
+		ControladorPanelConfiguracion contro = new ControladorPanelConfiguracion(this.ventanaPrincipal);
 		contro.initialize();		
 	}
 	

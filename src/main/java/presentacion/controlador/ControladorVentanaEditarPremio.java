@@ -38,7 +38,7 @@ public class ControladorVentanaEditarPremio implements SujetoObservable
 	
 	public void initialize()
 	{
-		ventana.show();
+		this.ventana.show();
 	}
 
 	private void editarPremio()

@@ -51,7 +51,7 @@ public class ControladorVentanaExportBD implements ActionListener
 		if (e.getSource() == this.ventanaExpBD.getBtnExport())
 		{
 			String rutaExport = this.ventanaExpBD.getTextField().getText();
-			importExportBD.Exportar(rutaExport,this.ventanaExpBD);
+			this.importExportBD.Exportar(rutaExport,this.ventanaExpBD);
 		}
 		
 	}

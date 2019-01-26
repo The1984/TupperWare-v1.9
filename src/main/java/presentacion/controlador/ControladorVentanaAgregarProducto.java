@@ -33,14 +33,14 @@ public class ControladorVentanaAgregarProducto implements SujetoObservable, Mous
 	
 	public ControladorVentanaAgregarProducto(ControladorPanelNegocio control)
 	{
-		ventana = new VentanaAgregarProducto();
+		this.ventana = new VentanaAgregarProducto();
 		this.llenarComboBoxTipoDeProducto();
-		ventana.getBtnAceptar().addActionListener(e -> this.registrarProducto());
-		ventana.getLblImagen().addMouseListener(this);
+		this.ventana.getBtnAceptar().addActionListener(e -> this.registrarProducto());
+		this.ventana.getLblImagen().addMouseListener(this);
 		
-	    observadores = new ArrayList<Observador>();
-		observadores.add(control);
-		newProducto = new ProductoDTO();
+		this.observadores = new ArrayList<Observador>();
+		this.observadores.add(control);
+		this.newProducto = new ProductoDTO();
 		this.rutaImagen = System.getProperty("user.dir") + "/src/main/resources/Imagenes/ImagenProductoDefault.png";
 	}
 	
@@ -67,10 +67,10 @@ public class ControladorVentanaAgregarProducto implements SujetoObservable, Mous
 			JOptionPane.showMessageDialog(null, "¡Codigo de producto ya existente!", "Warning", JOptionPane.WARNING_MESSAGE);
 			return;	
 		}
-		newProducto.setCodigo(this.ventana.getTxtCodigo().getText());
-		newProducto.setNombre(this.ventana.getTxtNombre().getText());
-		newProducto.setDescripcion(this.ventana.getTxtrDescripcion().getText());
-		newProducto.setTipoDeProducto(this.ventana.getComboBoxTipoDeProducto().getItemAt(this.ventana.getComboBoxTipoDeProducto().getSelectedIndex()));
+		this.newProducto.setCodigo(this.ventana.getTxtCodigo().getText());
+		this.newProducto.setNombre(this.ventana.getTxtNombre().getText());
+		this.newProducto.setDescripcion(this.ventana.getTxtrDescripcion().getText());
+		this.newProducto.setTipoDeProducto(this.ventana.getComboBoxTipoDeProducto().getItemAt(this.ventana.getComboBoxTipoDeProducto().getSelectedIndex()));
 		GestorProductos.getInstance().insert(this.newProducto);
 		
 		int idNewProducto = GestorProductos.getInstance().idUltimoInsert();
@@ -107,7 +107,7 @@ public class ControladorVentanaAgregarProducto implements SujetoObservable, Mous
 				float longitud = new File(select.getSelectedFile().getPath()).length();
 				if(longitud/1024 >= 64)
 				{
-					JOptionPane.showMessageDialog(null, "¡Tamaño de imagen mayor a 64kb!", "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "¡Tamaño de imagen mayor a 64 Kb!", "Error", JOptionPane.ERROR_MESSAGE);
 					return;			
 				}
 				this.rutaImagen = select.getSelectedFile().getPath();

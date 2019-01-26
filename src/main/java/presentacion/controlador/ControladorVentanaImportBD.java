@@ -10,17 +10,18 @@ import presentacion.vista.VentanaImportBD;
 import presentacion.vista.VentanaPrincipal;
 import util.ImportExportBD;
 
-public class ControladorVentanaImportBD implements ActionListener{
+public class ControladorVentanaImportBD implements ActionListener
+{
 
 	private VentanaImportBD ventanaImpBD;
 	private ImportExportBD importExportBD;
-	private VentanaPrincipal view;
+	private VentanaPrincipal ventanaPrincipal;
 	
-	public ControladorVentanaImportBD(VentanaPrincipal vista)
+	public ControladorVentanaImportBD(VentanaPrincipal ventanaPrincipal)
 	{
-		view = vista;
-		importExportBD = new ImportExportBD();
-		ventanaImpBD = new VentanaImportBD();
+		this.ventanaPrincipal = ventanaPrincipal;
+		this.importExportBD = new ImportExportBD();
+		this.ventanaImpBD = new VentanaImportBD();
 		this.ventanaImpBD.getBtnImport().addActionListener(this);
 		this.ventanaImpBD.getBtnSelectFile().addActionListener(this);	
 		this.initialize();
@@ -31,7 +32,6 @@ public class ControladorVentanaImportBD implements ActionListener{
 		this.ventanaImpBD.show();
 	}
 
-	
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{	
@@ -57,7 +57,7 @@ public class ControladorVentanaImportBD implements ActionListener{
 		if (e.getSource() == this.ventanaImpBD.getBtnImport())
 		{
 			String rutaImport = this.ventanaImpBD.getTextField().getText();
-			importExportBD.Importar(rutaImport,this.ventanaImpBD,this.view);
+			this.importExportBD.Importar(rutaImport,this.ventanaImpBD,this.ventanaPrincipal);
 		}
 		
 	}

@@ -21,11 +21,11 @@ public class ControladorVentanaEditarCampaña implements SujetoObservable
 	
 	public ControladorVentanaEditarCampaña(ControladorPanelGestionCampañas control, CampañaDTO campaña)
 	{
-		ventana = new VentanaEditarCampaña();
+		this.ventana = new VentanaEditarCampaña();
 		this.campaña_a_editar = campaña;
-		ventana.getBtnAceptar().addActionListener(e -> this.editarCampaña());
-		observadores = new ArrayList<Observador>();
-		observadores.add(control);
+		this.ventana.getBtnAceptar().addActionListener(e -> this.editarCampaña());
+		this.observadores = new ArrayList<Observador>();
+		this.observadores.add(control);
 	}
 	
 	public void initialize()
@@ -33,7 +33,7 @@ public class ControladorVentanaEditarCampaña implements SujetoObservable
 		this.ventana.getAñoChooser().setYear(Integer.parseInt(this.campaña_a_editar.getAño()));
 		this.ventana.getNumeroSpinner().setValue(Integer.parseInt(this.campaña_a_editar.getNumero()));
 		this.ventana.getCierreChooser().setDate(this.campaña_a_editar.getCierre());
-		ventana.show();
+		this.ventana.show();
 	}
 
 	public void editarCampaña()
@@ -49,6 +49,11 @@ public class ControladorVentanaEditarCampaña implements SujetoObservable
 		{
 			JOptionPane.showMessageDialog(null, "¡Año y Numero de campaña ya existente!", "Warning", JOptionPane.WARNING_MESSAGE);
 			return;									
+		}
+		if(ValidadorLogico.fechaCierreCampañaExistente(this.ventana.getCierreChooser().getDate(), GestorCampaña.getInstance().readAll()))
+		{
+			JOptionPane.showMessageDialog(null, "¡Fecha de cierre ya existente!", "Warning", JOptionPane.WARNING_MESSAGE);
+			return;												
 		}
 		this.campaña_a_editar.setAño(Integer.toString(this.ventana.getAñoChooser().getValue()));
 		this.campaña_a_editar.setNumero(this.ventana.getNumeroSpinner().getValue().toString());

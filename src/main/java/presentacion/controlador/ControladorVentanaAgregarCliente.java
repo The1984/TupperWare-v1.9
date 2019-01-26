@@ -20,15 +20,15 @@ public class ControladorVentanaAgregarCliente implements SujetoObservable
 	
 	public ControladorVentanaAgregarCliente(ControladorPanelGestionClientes control)
 	{
-		ventana = new VentanaAgregarCliente();
-		ventana.getBtnAceptar().addActionListener(e -> this.registrarCliente());
-		observadores = new ArrayList<Observador>();
-		observadores.add(control);
+		this.ventana = new VentanaAgregarCliente();
+		this.ventana.getBtnAceptar().addActionListener(e -> this.registrarCliente());
+		this.observadores = new ArrayList<Observador>();
+		this.observadores.add(control);
 	}
 	
 	public void initialize()
 	{
-		ventana.show();
+		this.ventana.show();
 	}
 
 	public void registrarCliente()

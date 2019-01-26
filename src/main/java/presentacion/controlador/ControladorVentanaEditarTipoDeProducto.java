@@ -21,14 +21,14 @@ public class ControladorVentanaEditarTipoDeProducto implements SujetoObservable
 		this.tipoDeProducto = tipoDeProducto;
 		this.ventana.getTxtNombre().setText(this.tipoDeProducto.getNombre());
 		this.ventana.getSpinnerGanancia().setValue(this.tipoDeProducto.getPorcentajeDeGanancia());
-		ventana.getBtnAceptar().addActionListener(e -> this.editarTipoDeProducto());
+		this.ventana.getBtnAceptar().addActionListener(e -> this.editarTipoDeProducto());
 		this.observadores = new ArrayList<Observador>();
 		this.observadores.add(control);
 	}
 	
 	public void initialize()
 	{
-		ventana.show();
+		this.ventana.show();
 	}
 
 	public void editarTipoDeProducto()

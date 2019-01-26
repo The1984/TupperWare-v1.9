@@ -36,7 +36,7 @@ public class ControladorVentanaComprarProducto implements MouseListener
 	
 	public void initialize()
 	{
-		ventana.show();
+		this.ventana.show();
 	}
 	
 	public void setearTextProducto(ProductoDTO producto)
@@ -75,9 +75,19 @@ public class ControladorVentanaComprarProducto implements MouseListener
 			JOptionPane.showMessageDialog(null, "¡Precio no es un numero!", "Error", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
+		if(Integer.parseInt(this.ventana.getTxtPrecio().getText())<0)
+		{
+			JOptionPane.showMessageDialog(null, "¡El precio es un valor invalido!", "Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
 		if(!ValidadorCampos.isNumeric(this.ventana.getTxtPago().getText()))
 		{
 			JOptionPane.showMessageDialog(null, "¡El monto pagado no es un numero!", "Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		if(Integer.parseInt(this.ventana.getTxtPago().getText())<0)
+		{
+			JOptionPane.showMessageDialog(null, "¡El monto pagado es un valor invalido!", "Error", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		if(Integer.parseInt(this.ventana.getTxtPrecio().getText())*Integer.parseInt(this.ventana.getSpinnerUnidades().getValue().toString())
